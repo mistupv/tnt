@@ -1,0 +1,4 @@
+(VAR x y z w)
+(RULES
+  f(f(x,y,a),z,w) -> f(z,w,f(y,x,z))
+)

@@ -1,0 +1,15 @@
+(VAR x y z)
+(THEORY (AC plus times))
+(RULES
+  zero(S) -> S
+  plus(x, S) -> x
+  plus(zero(x), zero(y)) -> zero(plus(x, y))
+  plus(zero(x), un(y)) -> un(plus(x, y))
+  plus(un(x), un(y)) -> zero(plus(x, plus(y, un(S))))
+  times(x, S) -> S
+  times(x, times(S, z)) -> times(S, z)
+  times(x, zero(y)) -> zero(times(x, y))
+  times(x, times(zero(y), z)) -> times(zero(times(x, y)), z)
+  times(x, un(y)) -> plus(x, zero(times(x, y)))
+  times(x, times(un(y), z)) -> times(plus(x, zero(times(x, y))), z)
+)

@@ -1,0 +1,10 @@
+(VAR X XS N)
+(RULES 
+from(X) -> cons(X)
+head(cons(X)) -> X
+2nd(cons(X)) -> head(XS)
+take(0,XS) -> nil
+take(s(N),cons(X)) -> cons(X)
+sel(0,cons(X)) -> X
+sel(s(N),cons(X)) -> sel(N,XS)
+)

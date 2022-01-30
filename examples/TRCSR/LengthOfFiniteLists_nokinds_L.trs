@@ -1,0 +1,16 @@
+(VAR L X N)
+(RULES 
+zeros -> cons(0)
+U11(tt) -> s(length(L))
+and(tt) -> X
+isNat -> tt
+isNat -> isNatList
+isNat -> isNat
+isNatIList -> isNatList
+isNatIList -> tt
+isNatIList -> and(isNat)
+isNatList -> tt
+isNatList -> and(isNat)
+length(nil) -> 0
+length(cons(N)) -> U11(and(isNatList))
+)

@@ -1,0 +1,12 @@
+(VAR x y)
+(THEORY (AC plus times))
+(RULES
+  plus(x, 0) -> x
+  plus(x, s(y)) -> s(plus(x, y))
+  times(x, 0) -> 0
+  times(x, s(y)) -> plus(times(x, y), x)
+  minus(x, 0) -> x
+  minus(s(x), s(y)) -> minus(x, y)
+  div(0, s(y)) -> 0
+  div(s(x), s(y)) -> s(div(minus(x, y), s(y)))
+)

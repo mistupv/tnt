@@ -1,0 +1,6 @@
+(VAR X)
+(RULES 
+f(a,X) -> f(X,X)
+c -> a
+c -> b
+)

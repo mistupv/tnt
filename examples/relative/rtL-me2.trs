@@ -1,0 +1,23 @@
+(COMMENT
+ Liveness problem: Mutual exclusion
+)
+(VAR x y i)
+(RULES
+topA(i, N1, y) ->= topA(1, T1, y)
+topB(i, N1, y) -> topA(1, T1, y)
+
+topB(i, x, N2) ->= topB(0, x, T2)
+topA(i, x, N2) -> topB(0, x, T2)
+
+topA(i, S1, y) ->= topA(i, N1, y)
+topB(i, S1, y) -> topA(i, N1, y)
+
+topB(i, x, S2) ->= topB(i, x, N2)
+topA(i, x, S2) -> topB(i, x, N2)
+
+topB(i, N1, T2) ->= topB(i, N1, S2)
+topA(i, N1, T2) -> topB(i, N1, S2)
+
+topB(1, T1, T2) ->= topB(1, T1, S2)
+topA(1, T1, T2) -> topB(1, T1, S2)
+)

@@ -1,0 +1,20 @@
+(VAR T IL M N L)
+(RULES 
+and(tt,T) -> T
+isNatIList -> isNatList
+isNat -> tt
+isNat -> isNat
+isNat -> isNatList
+isNatIList -> tt
+isNatIList -> and(isNat,isNatIList)
+isNatList -> tt
+isNatList -> and(isNat,isNatList)
+isNatList -> and(isNat,isNatIList)
+zeros -> cons(0)
+take(0,IL) -> uTake1(isNatIList)
+uTake1(tt) -> nil
+take(s(M),cons(N)) -> uTake2(and(isNat,and(isNat,isNatIList)))
+uTake2(tt) -> cons(N)
+length(cons(N)) -> uLength(and(isNat,isNatList))
+uLength(tt) -> s(length(L))
+)

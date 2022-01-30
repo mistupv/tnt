@@ -1,0 +1,8 @@
+(VAR x y z)
+(RULES
++(+(x,y),z) -> +(x,+(y,z))
++(f(x),f(y)) -> f(+(x,y))
++(f(x),+(f(y),z)) -> +(f(+(x,y)),z)
+)
+
+(COMMENT Example 2.2 (Associativity and Endomorphism) in \cite{SK90})

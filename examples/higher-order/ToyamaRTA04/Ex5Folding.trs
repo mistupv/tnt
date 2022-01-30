@@ -1,0 +1,11 @@
+(VAR f x y z)
+(RULES
+  app(app(app(fold, f), x), nil) -> x
+  app(app(app(fold, f), x), app(app(cons, y), z)) -> app(app(f, y), app(app(app(fold, f), x), z))
+  app(app(plus, 0), y) -> y
+  app(app(plus, app(s, x)), y) -> app(s, app(app(plus, x), y))
+  app(app(times, 0), y) -> 0
+  app(app(times, app(s, x)), y) -> app(app(plus, app(app(times, x), y)), y)
+  sum -> app(app(fold, add), 0)
+  prod -> app(app(fold, mul), app(s, 0))
+)

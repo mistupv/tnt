@@ -1,0 +1,6 @@
+(VAR x y)
+(RULES
+f(s(x),y) -> f(x,s(s(x)))
+f(x,s(s(y))) -> f(y,x)
+)
+(COMMENT this terminates with s(x) = 2x, f(x,y) = 4x+y) 

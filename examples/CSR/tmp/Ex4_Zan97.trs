@@ -1,0 +1,16 @@
+(VAR X Y Z)
+(STRATEGY CONTEXTSENSITIVE 
+  (f 1)
+  (cons 1)
+  (g 1)
+  (0)
+  (s 1)
+  (sel 1 2)
+)
+(RULES 
+f(X) -> cons(X,f(g(X)))
+g(0) -> s(0)
+g(s(X)) -> s(s(g(X)))
+sel(0,cons(X,Y)) -> X
+sel(s(X),cons(Y,Z)) -> sel(X,Z)
+)

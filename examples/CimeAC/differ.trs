@@ -1,0 +1,29 @@
+(COMMENT 
+
+  Claude Marché
+
+  Formal differentiation.
+
+  + and * are AC.
+
+)
+
+(VAR g  f)
+(THEORY (AC * +))
+
+(RULES
+
+dx(X) -> 1 
+dx(0) -> 0 
+dx(1) -> 0 
+dx(a) -> 0 
+dx(+(f,g)) -> +(dx(f),dx(g)) 
+dx(*(f,g)) -> +(*(dx(f),g),*(dx(g),f)) 
+dx(-(f,g)) -> -(dx(f),dx(g)) 
+dx(neg(f)) -> neg(dx(f)) 
+dx(/(f,g)) -> -(/(dx(f),g),/(*(dx(g),f),exp(g,2))) 
+dx(ln(f)) -> /(dx(f),f) 
+dx(exp(f,g)) -> +(*(dx(f),*(exp(f,-(g,1)),g)),*(dx(g),*(exp(f,g),ln(f)))) 
+
+
+)

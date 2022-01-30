@@ -1,0 +1,9 @@
+(VAR x y z)
+(RULES
+++(nil,y) -> y
+++(x,nil) -> x
+++(.(x,y),z) -> .(x,++(y,z))
+++(++(x,y),z) -> ++(x,++(y,z))
+)
+
+(COMMENT Example 2.38 (Functional List Append) in \cite{SK90})

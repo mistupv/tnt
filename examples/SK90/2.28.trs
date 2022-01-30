@@ -1,0 +1,5 @@
+(VAR x y z)
+(RULES
+dfib(s(s(x)),y) -> dfib(s(x),dfib(x,y))
+)
+(COMMENT Example 2.28 in \cite{SK90})

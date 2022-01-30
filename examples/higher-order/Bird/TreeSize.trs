@@ -1,0 +1,9 @@
+(VAR f x xs y)
+(RULES
+  app(app(map, f), nil) -> nil
+  app(app(map, f), app(app(cons, x), xs)) -> app(app(cons, app(f, x)), app(app(map, f), xs))
+  app(sum, app(app(cons, x), xs)) -> app(app(plus, x), app(sum, xs))
+  app(size, app(app(node, x), xs)) -> app(s, app(sum, app(app(map, size), xs)))
+  app(app(plus, 0), x) -> 0
+  app(app(plus, app(s, x)), y) -> app(s, app(app(plus, x), y))
+)

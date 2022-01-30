@@ -1,0 +1,62 @@
+YES
+</pre><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+  <title>Jambox 2.0</title>
+  <link rel="stylesheet" type="text/css" href="http://joerg.endrullis.de/jambox.css">
+</head>
+<script type="text/javascript">
+function show(element, link) {
+  if(link.firstChild.nodeValue != '-') {    document.getElementById(element).style.display="inline";
+    link.firstChild.nodeValue = '-';
+  } else {    document.getElementById(element).style.display="none";
+    link.firstChild.nodeValue = '+';
+  }}
+</script>
+<body>
+<h1 style="padding: 0px;"><table border="0" cellpadding="0" cellspacing="0" class="title"><tr><td><a href="http://joerg.endrullis.de/"><img alt="jambox" title="jambox" src="http://joerg.endrullis.de/jambox.png" style="margin: 0px; border:0px;"></a></td><td>&nbsp;&nbsp; is applied to the string/term rewriting system</td></tr></table></h1><pre class="trs">(RULES
+  T(I(<font class="variable">x</font>),<font class="variable">y</font>) -> T(<font class="variable">x</font>,<font class="variable">y</font>)
+  T(<font class="variable">x</font>,<font class="variable">y</font>) ->= T(<font class="variable">x</font>,I(<font class="variable">y</font>))
+)</pre>
+
+
+
+
+<h2>Proof Overview</h2><ol><li>Matrix Interpretations (upper left diagonal >= 1, upper left size=1, matrix size=2x2)</li><ol></ol></ol>
+
+<h2>1. Matrix Interpretations (upper left diagonal >= 1, upper left size=1, matrix size=2x2)</h2>
+<pre class="trs">(RULES
+  T(I(<font class="variable">x</font>),<font class="variable">y</font>) -> T(<font class="variable">x</font>,<font class="variable">y</font>)
+  T(<font class="variable">x</font>,<font class="variable">y</font>) ->= T(<font class="variable">x</font>,I(<font class="variable">y</font>))
+)</pre>
+<div class="proof_text"><h3>Symbol Interpretations:</h3>
+<div class="indent"><table border="0"><tr>
+<td><pre>T(<font class="variable">x<sub>0</sub></font>,<font class="variable">x<sub>1</sub></font>)</pre></td><td>=</td><td><table border="0" class="matrix"><tr><td>/</td><td>1</td><td>1</td><td>\</td></tr><tr><td>\</td><td>0</td><td>0</td><td>/</td></tr></table></td><td>*</td><td><font class="variable">x<sub>0</sub></font></td><td>+</td><td><table border="0" class="matrix"><tr><td>/</td><td>1</td><td>0</td><td>\</td></tr><tr><td>\</td><td>0</td><td>0</td><td>/</td></tr></table></td><td>*</td><td><font class="variable">x<sub>1</sub></font></td><td>+</td><td><table border="0" class="matrix"><tr><td>/</td><td>0</td><td>\</td></tr><tr><td>\</td><td>0</td><td>/</td></tr></table></td>
+</tr>
+<tr>
+<td><pre>I(<font class="variable">x<sub>0</sub></font>)</pre></td><td>=</td><td><table border="0" class="matrix"><tr><td>/</td><td>1</td><td>0</td><td>\</td></tr><tr><td>\</td><td>0</td><td>1</td><td>/</td></tr></table></td><td>*</td><td><font class="variable">x<sub>0</sub></font></td><td>+</td><td><table border="0" class="matrix"><tr><td>/</td><td>0</td><td>\</td></tr><tr><td>\</td><td>1</td><td>/</td></tr></table></td>
+</tr>
+</table>
+</div><h3><span onclick="show('span0',this)" style="cursor:pointer; color:#880000;">+</span> Rule Interpretations:</h3>
+<span id="span0" style="display:none"><pre class="trslight">T(I(<font class="variable">x</font>),<font class="variable">y</font>) -> T(<font class="variable">x</font>,<font class="variable">y</font>)</pre><div class="indent"><table border="0">
+<tr>
+<td><table border="0" class="matrix"><tr><td>/</td><td>1</td><td>\</td></tr><tr><td>\</td><td>0</td><td>/</td></tr></table></td><td>+</td><td><table border="0" class="matrix"><tr><td>/</td><td>1</td><td>1</td><td>\</td></tr><tr><td>\</td><td>0</td><td>0</td><td>/</td></tr></table></td><td>*</td><td><font class="variable">x</font></td><td>+</td><td><table border="0" class="matrix"><tr><td>/</td><td>1</td><td>0</td><td>\</td></tr><tr><td>\</td><td>0</td><td>0</td><td>/</td></tr></table></td><td>*</td><td><font class="variable">y</font></td>
+<td>&nbsp;&nbsp;&gt;&nbsp;&nbsp;</td>
+<td><table border="0" class="matrix"><tr><td>/</td><td>0</td><td>\</td></tr><tr><td>\</td><td>0</td><td>/</td></tr></table></td><td>+</td><td><table border="0" class="matrix"><tr><td>/</td><td>1</td><td>1</td><td>\</td></tr><tr><td>\</td><td>0</td><td>0</td><td>/</td></tr></table></td><td>*</td><td><font class="variable">x</font></td><td>+</td><td><table border="0" class="matrix"><tr><td>/</td><td>1</td><td>0</td><td>\</td></tr><tr><td>\</td><td>0</td><td>0</td><td>/</td></tr></table></td><td>*</td><td><font class="variable">y</font></td></tr>
+</table>
+</div><pre class="trslight">T(<font class="variable">x</font>,<font class="variable">y</font>) ->= T(<font class="variable">x</font>,I(<font class="variable">y</font>))</pre><div class="indent"><table border="0">
+<tr>
+<td><table border="0" class="matrix"><tr><td>/</td><td>0</td><td>\</td></tr><tr><td>\</td><td>0</td><td>/</td></tr></table></td><td>+</td><td><table border="0" class="matrix"><tr><td>/</td><td>1</td><td>1</td><td>\</td></tr><tr><td>\</td><td>0</td><td>0</td><td>/</td></tr></table></td><td>*</td><td><font class="variable">x</font></td><td>+</td><td><table border="0" class="matrix"><tr><td>/</td><td>1</td><td>0</td><td>\</td></tr><tr><td>\</td><td>0</td><td>0</td><td>/</td></tr></table></td><td>*</td><td><font class="variable">y</font></td>
+<td>&nbsp;&nbsp;&gt;=&nbsp;&nbsp;</td>
+<td><table border="0" class="matrix"><tr><td>/</td><td>0</td><td>\</td></tr><tr><td>\</td><td>0</td><td>/</td></tr></table></td><td>+</td><td><table border="0" class="matrix"><tr><td>/</td><td>1</td><td>1</td><td>\</td></tr><tr><td>\</td><td>0</td><td>0</td><td>/</td></tr></table></td><td>*</td><td><font class="variable">x</font></td><td>+</td><td><table border="0" class="matrix"><tr><td>/</td><td>1</td><td>0</td><td>\</td></tr><tr><td>\</td><td>0</td><td>0</td><td>/</td></tr></table></td><td>*</td><td><font class="variable">y</font></td></tr>
+</table>
+</div></span><h3>We remove 1 rules:</h3>
+<pre class="trslight">T(I(<font class="variable">x</font>),<font class="variable">y</font>) -> T(<font class="variable">x</font>,<font class="variable">y</font>)
+</pre>
+</div>
+<pre>
+Hence the TRS is terminating.
+time: 0.31s
+</pre>
+<br><br>Jambox uses the following <a href="http://joerg.endrullis.de/jamboxTheorems06.html" target="_blank">Theorems</a>.

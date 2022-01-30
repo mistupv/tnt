@@ -1,0 +1,96 @@
+(COMMENT generated from Maude module 'RENAMED-BOOL' by 'nokinds' transformation)
+(VAR A B C U' U V1 V2 X Z Y)
+(THEORY (AC _xor_)
+(AC _or_)
+(AC _and_))
+(RULES
+U101(tt,A,B) -> _xor_(_and_(A,B),_xor_(A,B))
+
+U11(tt,A) -> A
+
+U111(tt) -> false
+
+U121(tt,A) -> A
+
+U131(tt,B,U') -> U132(equal(_isNotEqualTo_(B,true),true),U')
+
+U132(tt,U') -> U'
+
+U141(tt,U) -> U
+
+U151(tt,A) -> _xor_(A,true)
+
+U21(tt,A,B,C) -> _xor_(_and_(A,B),_and_(A,C))
+
+U31(tt) -> false
+
+U41(tt,A) -> A
+
+U51(tt,A,B) -> not_(_xor_(A,_and_(A,B)))
+
+U61(tt,U',U) -> U62(equal(_isNotEqualTo_(U,U'),true))
+
+U62(tt) -> false
+
+U71(tt) -> true
+
+U81(tt,U',U) -> if_then_else_fi(_isEqualTo_(U,U'),false,true)
+
+U91(tt) -> false
+
+_and_(A,A) -> U11(isBool(A),A)
+
+_and_(A,_xor_(B,C)) -> U21(and(isBool(A),and(isBool(B),isBool(C))),A,B,C)
+
+_and_(false,A) -> U31(isBool(A))
+
+_and_(true,A) -> U41(isBool(A),A)
+
+_implies_(A,B) -> U51(and(isBool(A),isBool(B)),A,B)
+
+_isEqualTo_(U,U') -> U61(and(isS(U'),isS(U)),U',U)
+
+_isEqualTo_(U,U) -> U71(isS(U))
+
+_isNotEqualTo_(U,U') -> U81(and(isS(U'),isS(U)),U',U)
+
+_isNotEqualTo_(U,U) -> U91(isS(U))
+
+_or_(A,B) -> U101(and(isBool(A),isBool(B)),A,B)
+
+_xor_(A,A) -> U111(isBool(A))
+
+_xor_(false,A) -> U121(isBool(A),A)
+
+and(tt,X) -> X
+
+equal(X,X) -> tt
+
+if_then_else_fi(B,U,U') -> U131(and(isBool(B),and(isS(U'),isS(U))),B,U')
+
+if_then_else_fi(true,U,U') -> U141(and(isS(U'),isS(U)),U)
+
+isBool(false) -> tt
+
+isBool(true) -> tt
+
+isBool(_and_(V1,V2)) -> and(isBool(V1),isBool(V2))
+
+isBool(_implies_(V1,V2)) -> and(isBool(V1),isBool(V2))
+
+isBool(_isEqualTo_(V1,V2)) -> and(isUniversal(V1),isUniversal(V2))
+
+isBool(_isNotEqualTo_(V1,V2)) -> and(isUniversal(V1),isUniversal(V2))
+
+isBool(_or_(V1,V2)) -> and(isBool(V1),isBool(V2))
+
+isBool(_xor_(V1,V2)) -> and(isBool(V1),isBool(V2))
+
+isBool(not_(V1)) -> isBool(V1)
+
+not_(A) -> U151(isBool(A),A)
+
+not_(false) -> true
+
+not_(true) -> false
+)

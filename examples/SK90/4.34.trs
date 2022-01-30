@@ -1,0 +1,6 @@
+(VAR x y z)
+(RULES
+a(b(x)) -> b(b(a(a(x))))
+)
+(COMMENT Example 4.34 in \cite{SK90}) 
+(COMMENT This TRS is not terminating!)

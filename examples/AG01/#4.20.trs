@@ -1,0 +1,7 @@
+(from AG01 4.20)
+(VAR x)
+(RULES
+f(f(x)) -> f(x)
+g(0) -> g(f(0))
+)
+(STRATEGY INNERMOST)

@@ -1,0 +1,10 @@
+(COMMENT
+  Non-terminating example which requires a map function
+  of different type than the normal monomorphic map.
+)
+(VAR f n x xs)
+(RULES
+  app(app(f,0),n) -> app(app(hd,app(app(map,f),app(app(cons,0),nil))),n)
+  app(app(map,f),nil) -> nil
+  app(app(map,f),app(app(cons,x),xs)) -> app(app(cons,app(f,x)),app(app(map,f),xs))
+)

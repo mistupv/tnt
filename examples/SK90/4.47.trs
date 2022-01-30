@@ -1,0 +1,8 @@
+(VAR )
+(RULES
+f(g(i(a,b,b'),c),d) ->
+    if(e,f(.(b,c),d'),f(.(b',c),d'))
+f(g(h(a,b),c),d) ->
+    if(e,f(.(b,g(h(a,b),c)),d),f(c,d'))
+)
+(COMMENT Example 4.47 in \cite{SK90})

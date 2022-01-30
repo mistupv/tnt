@@ -1,0 +1,8 @@
+(VAR X Y Z)
+(RULES
+
+div(X,e) -> i(X)
+i(div(X,Y)) -> div(Y,X)
+div(div(X,Y),Z) -> div(Y,div(i(X),Z))
+
+)

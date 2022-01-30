@@ -1,0 +1,15 @@
+(VAR p x xs)
+(RULES
+  app(app(and, true), true) -> true
+  app(app(and, true), false) -> false
+  app(app(and, false), true) -> false
+  app(app(and, false), false) -> false
+  app(app(or, true), true) -> true
+  app(app(or, true), false) -> true
+  app(app(or, false), true) -> true
+  app(app(or, false), false) -> false
+  app(app(forall, p), nil) -> true
+  app(app(forall, p), app(app(cons, x), xs)) -> app(app(and, app(p, x)), app(app(forall, p), xs))
+  app(app(forsome, p), nil) -> false
+  app(app(forsome, p), app(app(cons, x), xs)) -> app(app(or, app(p, x)), app(app(forsome, p), xs))
+)

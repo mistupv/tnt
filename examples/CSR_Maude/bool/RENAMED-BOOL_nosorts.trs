@@ -1,0 +1,52 @@
+(COMMENT generated from Maude module 'RENAMED-BOOL' by 'nosorts' transformation)
+(VAR A B C U' U X Z Y)
+(THEORY (AC _xor_)
+(AC _or_)
+(AC _and_))
+(RULES
+U11(tt,U',U) -> U12(equal(_isNotEqualTo_(U,U'),true))
+
+U12(tt) -> false
+
+U21(tt,B,U') -> U22(equal(_isNotEqualTo_(B,true),true),U')
+
+U22(tt,U') -> U'
+
+_and_(A,A) -> A
+
+_and_(A,_xor_(B,C)) -> _xor_(_and_(A,B),_and_(A,C))
+
+_and_(false,A) -> false
+
+_and_(true,A) -> A
+
+_implies_(A,B) -> not_(_xor_(A,_and_(A,B)))
+
+_isEqualTo_(U,U') -> U11(tt,U',U)
+
+_isEqualTo_(U,U) -> true
+
+_isNotEqualTo_(U,U') -> if_then_else_fi(_isEqualTo_(U,U'),false,true)
+
+_isNotEqualTo_(U,U) -> false
+
+_or_(A,B) -> _xor_(_and_(A,B),_xor_(A,B))
+
+_xor_(A,A) -> false
+
+_xor_(false,A) -> A
+
+and(tt,X) -> X
+
+equal(X,X) -> tt
+
+if_then_else_fi(B,U,U') -> U21(tt,B,U')
+
+if_then_else_fi(true,U,U') -> U
+
+not_(A) -> _xor_(A,true)
+
+not_(false) -> true
+
+not_(true) -> false
+)

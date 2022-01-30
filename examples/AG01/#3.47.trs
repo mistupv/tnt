@@ -1,0 +1,6 @@
+(from AG01 3.47)
+(VAR x y)
+(RULES
+f(x,c(y)) -> f(x,s(f(y,y)))
+f(s(x),y) -> f(x,s(c(y)))
+)

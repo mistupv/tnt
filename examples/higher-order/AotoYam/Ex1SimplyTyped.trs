@@ -1,0 +1,8 @@
+(VAR x y f xs)
+(RULES
+  app(id, x) -> x
+  app(add, 0) -> id
+  app(app(add, app(s, x)), y) -> app(s, app(app(add, x), y))
+  app(app(map, f), nil) -> nil
+  app(app(map, f), app(app(cons, x), xs)) -> app(app(cons, app(f, x)), app(app(map, f), xs))
+)

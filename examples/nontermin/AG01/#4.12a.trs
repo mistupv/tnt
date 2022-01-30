@@ -1,0 +1,9 @@
+(from AG01 4.12a)
+(VAR x y)
+(RULES
+h(x,y) -> f(x,y,x)
+f(0,1,x) -> h(x,x)
+g(x,y) -> x
+g(x,y) -> y
+)
+

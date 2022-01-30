@@ -1,0 +1,12 @@
+(VAR X Y)
+(RULES 
+and(true) -> X
+and(false) -> false
+if(true) -> X
+if(false) -> Y
+add(0) -> X
+add(s) -> s
+first(0,X) -> nil
+first(s,cons) -> cons
+from -> cons
+)

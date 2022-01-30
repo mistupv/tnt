@@ -1,0 +1,9 @@
+(VAR N X Y XS)
+(RULES 
+fib(N) -> sel(N,fib1(s(0),s(0)))
+fib1(X,Y) -> cons(X)
+add(0,X) -> X
+add(s(X),Y) -> s(add(X,Y))
+sel(0,cons(X)) -> X
+sel(s(N),cons(X)) -> sel(N,XS)
+)

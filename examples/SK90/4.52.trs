@@ -1,0 +1,12 @@
+(VAR x y u v)
+(RULES
+s(a) -> a
+s(s(x)) -> x
+s(f(x,y)) -> f(s(y),s(x))
+s(g(x,y)) -> g(s(x),s(y))
+f(x,a) -> x
+f(a,y) -> y
+f(g(x,y),g(u,v)) -> g(f(x,u),f(y,v))
+g(a,a) -> a
+)
+(COMMENT Example 4.52 in \cite{SK90})

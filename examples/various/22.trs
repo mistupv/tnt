@@ -1,0 +1,7 @@
+(VAR x y z)
+(RULES
+f(x,0) -> s(0)
+f(s(x),s(y)) -> s(f(x,y))
+g(0,x) -> g(f(x,x),x)
+)
+(COMMENT Example 4.2.19 in \cite{K00})

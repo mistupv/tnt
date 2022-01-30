@@ -1,0 +1,15 @@
+(VAR x y z)
+(RULES
+and(x,or(y,z)) -> or(and(x,y),and(x,z))
+and(x,and(y,y)) -> and(x,y)
+or(or(x,y),and(y,z)) -> or(x,y)
+or(x,and(x,y)) -> x
+or(true,y) -> true
+or(x,false) -> x
+or(x,x) -> x
+or(x,or(y,y)) -> or(x,y)
+and(x,true) -> x
+and(false,y) -> false
+and(x,x) -> x
+)
+(COMMENT Example 4.21 (Distributive Lattices) in \cite{SK90})

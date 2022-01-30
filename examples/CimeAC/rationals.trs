@@ -1,0 +1,80 @@
+(COMMENT 
+
+  Evelyne Contejean, Claude Marché, Landy Rabehasaina, RTA'97
+
+  AC rewrite system for addition and multiplication of rational
+  numbers, in ternary representation
+
+)
+(VAR v  u  z  y  x)
+(THEORY (AC * +) (C *_Q +_Q))
+
+(RULES
+
+0(#) -> # 
++(#,x) -> x 
++(0(x),0(y)) -> 0(+(x,y)) 
++(0(x),1(y)) -> 1(+(x,y)) 
++(0(x),j(y)) -> j(+(x,y)) 
++(1(x),1(y)) -> j(+(1(#),+(x,y))) 
++(j(x),j(y)) -> 1(+(j(#),+(x,y))) 
++(1(x),j(y)) -> 0(+(x,y)) 
+opp(#) -> # 
+opp(0(x)) -> 0(opp(x)) 
+opp(1(x)) -> j(opp(x)) 
+opp(j(x)) -> 1(opp(x)) 
+-(x,y) -> +(opp(y),x) 
+*(#,x) -> # 
+*(0(x),y) -> 0(*(x,y)) 
+*(1(x),y) -> +(0(*(x,y)),y) 
+*(j(x),y) -> -(0(*(x,y)),y) 
+abs(x) -> test_abs_pos(x,x) 
+test_abs_pos(#,x) -> x 
+test_abs_pos(0(x),y) -> test_abs_pos(x,y) 
+test_abs_pos(1(x),y) -> test_abs_pos(x,y) 
+test_abs_pos(j(x),y) -> test_abs_neg(x,y) 
+test_abs_neg(#,x) -> opp(x) 
+test_abs_neg(0(x),y) -> test_abs_neg(x,y) 
+test_abs_neg(1(x),y) -> test_abs_pos(x,y) 
+test_abs_neg(j(x),y) -> test_abs_neg(x,y) 
+signe(#) -> # 
+signe(0(x)) -> signe(x) 
+signe(1(x)) -> test_signe_pos(x) 
+signe(j(x)) -> test_signe_neg(x) 
+test_signe_pos(#) -> 1(#) 
+test_signe_pos(0(x)) -> test_signe_pos(x) 
+test_signe_pos(1(x)) -> test_signe_pos(x) 
+test_signe_pos(j(x)) -> test_signe_neg(x) 
+test_signe_neg(#) -> j(#) 
+test_signe_neg(0(x)) -> test_signe_neg(x) 
+test_signe_neg(1(x)) -> test_signe_pos(x) 
+test_signe_neg(j(x)) -> test_signe_neg(x) 
+min(x,y) -> test_min_pos(-(abs(y),abs(x)),x,y) 
+min'(x,y) -> test_min_pos(-(abs(1(y)),abs(1(x))),x,y) 
+min''(x,y) -> test_min_pos(-(abs(j(y)),abs(j(x))),x,y) 
+test_min_pos(#,x,y) -> x 
+test_min_pos(0(x),y,z) -> test_min_pos(x,y,z) 
+test_min_pos(1(x),y,z) -> test_min_pos(x,y,z) 
+test_min_pos(j(x),y,z) -> test_min_neg(x,y,z) 
+test_min_neg(#,x,y) -> y 
+test_min_neg(0(x),y,z) -> test_min_neg(x,y,z) 
+test_min_neg(1(x),y,z) -> test_min_pos(x,y,z) 
+test_min_neg(j(x),y,z) -> test_min_neg(x,y,z) 
+f(#,x) -> # 
+f(x,#) -> signe(x) 
+f(0(x),0(y)) -> f(x,y) 
+f(0(x),1(y)) -> 0(f(x,1(y))) 
+f(0(x),j(y)) -> 0(f(x,j(y))) 
+f(1(x),0(y)) -> f(1(x),y) 
+f(1(x),1(y)) -> +(0(f(-(x,min'(x,y)),1(y))),f(min(1(x),1(y)),-(x,y))) 
+f(1(x),j(y)) -> 
++(0(f(+(min''(opp(x),y),x),j(y))),f(min(1(x),1(opp(y))),+(x,y))) 
+f(j(x),0(y)) -> f(j(x),y) 
+f(j(x),1(y)) -> 
++(0(f(+(min'(opp(x),y),x),1(y))),f(min(j(x),j(opp(y))),+(x,y))) 
+f(j(x),j(y)) -> +(0(f(-(x,min''(x,y)),j(y))),f(min(j(x),j(y)),-(x,y))) 
+rat(x,y) -> irred(*(signe(y),f(x,y)),*(signe(y),f(y,x))) 
++_Q(irred(x,y),irred(u,v)) -> irred(+(*(x,v),*(y,u)),*(y,v)) 
+*_Q(irred(x,y),irred(u,v)) -> rat(*(x,u),*(y,v)) 
+
+)

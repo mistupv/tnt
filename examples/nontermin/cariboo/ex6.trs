@@ -1,0 +1,17 @@
+(from
+Fissore, Olivier and Gnaedig, Isabelle and Kirchner, Hélène. 
+Outermost ground termination - Extended version. Technical Report A02-R-493
+2002, LORIA, Nancy, France
+)
+
+(VAR x y)
+
+(RULES
+f(x,x)	-> f(i(x),g(g(x)))
+f(x,y)	-> x
+g(x)	-> i(x)
+f(x,i(x))	-> f(x,x)
+f(i(x),i(g(x)))	-> a
+)
+
+

@@ -1,0 +1,56 @@
+(COMMENT generated from Maude module 'PALINDROME' by 'nokinds' transformation)
+(VAR I P V1 V2 V X Z Y)
+(STRATEGY CONTEXTSENSITIVE
+
+
+(and 1)
+
+
+(isList )
+(isNeList )
+(isNePal )
+(isPal )
+(isQid )
+
+
+
+)
+(RULES
+__(__(X,Y),Z) -> __(X,__(Y,Z))
+
+__(X,nil) -> X
+
+__(nil,X) -> X
+
+and(tt,X) -> X
+
+isList(V) -> isNeList(V)
+
+isList(nil) -> tt
+
+isList(__(V1,V2)) -> and(isList(V1),isList(V2))
+
+isNeList(V) -> isQid(V)
+
+isNeList(__(V1,V2)) -> and(isList(V1),isNeList(V2))
+
+isNeList(__(V1,V2)) -> and(isNeList(V1),isList(V2))
+
+isNePal(V) -> isQid(V)
+
+isNePal(__(I,__(P,I))) -> and(isQid(I),isPal(P))
+
+isPal(V) -> isNePal(V)
+
+isPal(nil) -> tt
+
+isQid(a) -> tt
+
+isQid(e) -> tt
+
+isQid(i) -> tt
+
+isQid(o) -> tt
+
+isQid(u) -> tt
+)

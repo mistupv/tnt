@@ -1,0 +1,16 @@
+(VAR x y z)
+(RULES
+f(0) -> 0
+f(s(0)) -> s(0)
+f(s(s(x))) -> p(h(g(x)))
+g(0) -> pair(s(0),s(0))
+g(s(x)) -> h(g(x))
+h(x) -> pair(+(p(x),q(x)),p(x))
+p(pair(x,y)) -> x
+q(pair(x,y)) -> y
++(x,0) -> x
++(x,s(y)) -> s(+(x,y))
+f(s(s(x))) -> +(p(g(x)),q(g(x)))
+g(s(x)) -> pair(+(p(g(x)),q(g(x))),p(g(x)))
+)
+(COMMENT Example 2.26 (Fibonacci Function) in \cite{SK90})

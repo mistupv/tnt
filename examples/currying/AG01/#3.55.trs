@@ -1,0 +1,31 @@
+(VAR x y n m f xs)
+(RULES
+  app'(app'(minus, x), 0) -> x
+  app'(app'(minus, app'(s, x)), app'(s, y)) -> app'(app'(minus, x), y)
+  app'(app'(quot, 0), app'(s, y)) -> 0
+  app'(app'(quot, app'(s, x)), app'(s, y)) -> app'(s, app'(app'(quot, app'(app'(minus, x), y)), app'(s, y)))
+  app'(app'(le, 0), y) -> true
+  app'(app'(le, app'(s, x)), 0) -> false
+  app'(app'(le, app'(s, x)), app'(s, y)) -> app'(app'(le, x), y)
+  app'(app'(app, nil), y) -> y
+  app'(app'(app, app'(app'(add, n), x)), y) -> app'(app'(add, n), app'(app'(app, x), y))
+  app'(app'(low, n), nil) -> nil
+  app'(app'(low, n), app'(app'(add, m), x)) -> app'(app'(app'(if_low, app'(app'(le, m), n)), n), app'(app'(add, m), x))
+  app'(app'(app'(if_low, true), n), app'(app'(add, m), x)) -> app'(app'(add, m), app'(app'(low, n), x))
+  app'(app'(app'(if_low, false), n), app'(app'(add, m), x)) -> app'(app'(low, n), x)
+  app'(app'(high, n), nil) -> nil
+  app'(app'(high, n), app'(app'(add, m), x)) -> app'(app'(app'(if_high, app'(app'(le, m), n)), n), app'(app'(add, m), x))
+  app'(app'(app'(if_high, true), n), app'(app'(add, m), x)) -> app'(app'(high, n), x)
+  app'(app'(app'(if_high, false), n), app'(app'(add, m), x)) -> app'(app'(add, m), app'(app'(high, n), x))
+  app'(quicksort, nil) -> nil
+  app'(quicksort, app'(app'(add, n), x)) -> app'(app'(app, app'(quicksort, app'(app'(low, n), x))), app'(app'(add, n), app'(quicksort, app'(app'(high, n), x))))
+
+  app'(app'(map,f),nil) -> nil
+  app'(app'(map,f),app'(app'(add,x),xs)) -> app'(app'(add,app'(f,x)),app'(app'(map,f),xs))
+
+  app'(app'(filter,f),nil) -> nil
+  app'(app'(filter,f),app'(app'(add,x),xs)) -> app'(app'(app'(app'(filter2,app'(f, x)),f),x),xs)
+  app'(app'(app'(app'(filter2,true),f),x),xs) -> app'(app'(add,x),app'(app'(filter,f),xs))
+  app'(app'(app'(app'(filter2,false),f),x),xs) -> app'(app'(filter,f),xs)
+
+)

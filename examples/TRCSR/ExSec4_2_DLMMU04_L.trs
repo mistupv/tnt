@@ -1,0 +1,14 @@
+(VAR N XS YS X ZS)
+(RULES 
+natsFrom(N) -> cons(N)
+fst(pair(XS,YS)) -> XS
+snd(pair(XS,YS)) -> YS
+splitAt(0,XS) -> pair(nil,XS)
+splitAt(s(N),cons(X)) -> u(splitAt(N,XS))
+u(pair(YS,ZS)) -> pair(cons(X),ZS)
+head(cons(N)) -> N
+tail(cons(N)) -> XS
+sel(N,XS) -> head(afterNth(N,XS))
+take(N,XS) -> fst(splitAt(N,XS))
+afterNth(N,XS) -> snd(splitAt(N,XS))
+)

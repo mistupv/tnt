@@ -1,0 +1,14 @@
+(from
+O. Fissore. Terminaison de la reecriture sous strategies.
+PhD Thesis, Universite Henri Poincare - Nancy I, 2003.
+)
+
+(VAR x y)
+
+(RULES
+f(g(x),g(y)) -> f(p(f(g(x),s(y))), g(s(p(x))))
+p(0) -> g(0)
+g(s(p(x))) -> p(x)
+)
+
+(STRATEGY INNERMOST)

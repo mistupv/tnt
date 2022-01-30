@@ -1,0 +1,6 @@
+(VAR X Y Z)
+(RULES 
+from(X) -> cons(X)
+sel(0,cons(X)) -> X
+sel(s(X),cons(Y)) -> sel(X,Z)
+)

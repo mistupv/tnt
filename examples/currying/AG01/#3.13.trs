@@ -1,0 +1,25 @@
+(VAR x y h i u v f xs)
+(RULES
+  app(app(eq, 0), 0) -> true
+  app(app(eq, 0), app(s, x)) -> false
+  app(app(eq, app(s, x)), 0) -> false
+  app(app(eq, app(s, x)), app(s, y)) -> app(app(eq, x), y)
+  app(app(or, true), y) -> true
+  app(app(or, false), y) -> y
+  app(app(union, empty), h) -> h
+  app(app(union, app(app(app(edge, x), y), i)), h) -> app(app(app(edge, x), y), app(app(union, i), h))
+  app(app(app(app(reach, x), y), empty), h) -> false
+  app(app(app(app(reach, x), y), app(app(app(edge, u), v), i)), h) -> app(app(app(app(app(if_reach_1, app(app(eq, x), u)), x), y), app(app(app(edge, u), v), i)), h)
+  app(app(app(app(app(if_reach_1, true), x), y), app(app(app(edge, u), v), i)), h) -> app(app(app(app(app(if_reach_2, app(app(eq, y), v)), x), y), app(app(app(edge, u), v), i)), h)
+  app(app(app(app(app(if_reach_1, false), x), y), app(app(app(edge, u), v), i)), h) -> app(app(app(app(reach, x), y), i), app(app(app(edge, u), v), h))
+  app(app(app(app(app(if_reach_2, true), x), y), app(app(app(edge, u), v), i)), h) -> true
+  app(app(app(app(app(if_reach_2, false), x), y), app(app(app(edge, u), v), i)), h) -> app(app(or, app(app(app(app(reach, x), y), i), h)), app(app(app(app(reach, v), y), app(app(union, i), h)), empty))
+
+  app(app(map,f),nil) -> nil
+  app(app(map,f),app(app(cons,x),xs)) -> app(app(cons,app(f,x)),app(app(map,f),xs))
+
+  app(app(filter,f),nil) -> nil
+  app(app(filter,f),app(app(cons,x),xs)) -> app(app(app(app(filter2,app(f, x)),f),x),xs)
+  app(app(app(app(filter2,true),f),x),xs) -> app(app(cons,x),app(app(filter,f),xs))
+  app(app(app(app(filter2,false),f),x),xs) -> app(app(filter,f),xs)
+)

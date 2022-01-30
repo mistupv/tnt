@@ -1,0 +1,15 @@
+(VAR x y z)
+(RULES 
+bsort(nil) -> nil
+bsort(.(x,y)) -> last(.(bubble(.(x,y)),bsort(butlast(bubble(.(x,y))))))
+bubble(nil) -> nil
+bubble(.(x,nil)) -> .(x,nil)
+bubble(.(x,.(y,z))) -> if(<=(x,y),.(y,bubble(.(x,z))),.(x,bubble(.(y,z))))
+last(nil) -> 0
+last(.(x,nil)) -> x
+last(.(x,.(y,z))) -> last(.(y,z))
+butlast(nil) -> nil
+butlast(.(x,nil)) -> nil
+butlast(.(x,.(y,z))) -> .(x,butlast(.(y,z)))
+)
+(COMMENT Example 4.61 (Bubble-Sort) in \cite{SK90})

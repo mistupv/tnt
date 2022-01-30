@@ -1,0 +1,7 @@
+(VAR X Y Z X1 X2 X3 X4)
+(RULES
+
+plus(s(X),plus(Y,Z)) -> plus(X,plus(s(s(Y)),Z))
+plus(s(X1),plus(X2,plus(X3,X4))) -> plus(X1,plus(X3,plus(X2,X4)))
+
+)

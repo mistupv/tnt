@@ -1,0 +1,19 @@
+(VAR x y)
+(THEORY (AC plus times))
+(RULES
+  s(p(x)) -> x
+  p(s(x)) -> x
+  plus(0, y) -> y
+  plus(s(x), y) -> s(plus(x, y))
+  plus(p(x), y) -> p(plus(x, y))
+  plus(i(x), x) -> 0
+  plus(x, plus(i(x), y)) -> y
+  i(0) -> 0
+  i(s(x)) -> p(i(x))
+  i(p(x)) -> s(i(x))
+  i(i(x)) -> x
+  i(plus(x, y)) -> plus(i(y), i(x))
+  times(0, y) -> 0
+  times(s(x), y) -> plus(times(x, y), y)
+  times(p(x), y) -> plus(times(x, y), i(y))
+)

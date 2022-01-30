@@ -1,0 +1,6 @@
+(VAR x)
+(RULES
+f(x,x) -> f(a,b)
+b -> c
+)
+(COMMENT Example 4.55 in \cite{SK90})

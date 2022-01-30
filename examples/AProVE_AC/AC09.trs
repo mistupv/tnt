@@ -1,0 +1,13 @@
+(VAR x y z)
+(THEORY (AC plus times))
+(RULES
+  plus(x, 0) -> x
+  plus(x, i(x)) -> 0
+  i(0) -> 0
+  i(i(x)) -> x
+  i(plus(x, y)) -> plus(i(x), i(y))
+  times(x, 1) -> x
+  times(x, 0) -> 0
+  times(x, i(y)) -> i(times(x, y))
+  times(x, plus(y, z)) -> plus(times(x, y), times(x, z))
+)

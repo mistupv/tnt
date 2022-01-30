@@ -1,0 +1,8 @@
+(VAR x)
+(RULES
++(1, x) -> +(+(0, 1), x)
++(0, x) -> x
+)
+(COMMENT Hirokawa and Middeldorp)
+
+

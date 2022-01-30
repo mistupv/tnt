@@ -1,0 +1,8 @@
+(VAR x y)
+(RULES
+ l(m(x)) -> m(l(x))
+ m(r(x)) -> r(m(x))
+ f(m(x), y) -> f(x, m(y))
+ b ->= l(b)
+ f(x, y) ->= f(x, r(y))
+)

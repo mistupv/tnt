@@ -1,0 +1,7 @@
+(THEORY (AC f))
+(RULES
+  f(g(f(h(a), a)), a) -> f(h(a), f(a, a))
+  f(h(a), g(a)) -> f(g(h(a)), a)
+  f(g(h(a)), f(b, f(b, b))) -> f(g(f(h(a), a)), a)
+  f(h(a), a) -> f(h(a), b)
+)

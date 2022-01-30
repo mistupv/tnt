@@ -1,0 +1,16 @@
+(VAR f x y xs ys)
+(RULES
+ap(ap(map,f),xs) -> ap(ap(ap(if,ap(isEmpty,xs)),f),xs)
+ap(ap(ap(if,true),f),xs) -> nil
+ap(ap(ap(if,false),f),xs) -> ap(ap(cons,ap(f,ap(last,xs))),ap(ap(map,f),ap(dropLast,xs)))
+
+ap(isEmpty,nil) -> true
+ap(isEmpty,ap(ap(cons,x),xs)) -> false
+
+ap(last,ap(ap(cons,x),nil)) -> x
+ap(last,ap(ap(cons,x),ap(ap(cons,y),ys))) -> ap(last,ap(ap(cons,y),ys))
+
+ap(dropLast,nil) -> nil
+ap(dropLast,ap(ap(cons,x),nil)) -> nil
+ap(dropLast,ap(ap(cons,x),ap(ap(cons,y),ys))) -> ap(ap(cons,x),ap(dropLast,ap(ap(cons,y),ys)))
+)

@@ -1,0 +1,9 @@
+(from AG01 4.21)
+(VAR x)
+(RULES
+f(1) -> f(g(1))
+f(f(x)) -> f(x)
+g(0) -> g(f(0))
+g(g(x)) -> g(x)
+)
+

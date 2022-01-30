@@ -1,0 +1,13 @@
+(VAR X Y)
+(STRATEGY CONTEXTSENSITIVE 
+  (f 1)
+  (if 1 2)
+  (c)
+  (true)
+  (false)
+)
+(RULES 
+f(X) -> if(X,c,f(true))
+if(true,X,Y) -> X
+if(false,X,Y) -> Y
+)

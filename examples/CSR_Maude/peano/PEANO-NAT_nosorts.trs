@@ -1,0 +1,71 @@
+(COMMENT generated from Maude module 'PEANO-NAT' by 'nosorts' transformation)
+(VAR M' M N' N X Z Y)
+(THEORY (C gcd)
+(C d)
+(C _+_)
+(C _*_))
+(RULES
+1 -> s_(0)
+
+2 -> s_(s_(0))
+
+3 -> s_(s_(s_(0)))
+
+4 -> s_(s_(s_(s_(0))))
+
+5 -> s_(s_(s_(s_(s_(0)))))
+
+6 -> s_(s_(s_(s_(s_(s_(0))))))
+
+7 -> s_(s_(s_(s_(s_(s_(s_(0)))))))
+
+U11(tt,M',N') -> U12(equal(_>_(N',M'),true),M',N')
+
+U12(tt,M',N') -> gcd(d(N',M'),M')
+
+U21(tt,M',N) -> U22(equal(_>_(M',N),true))
+
+U22(tt) -> 0
+
+U31(tt,M',N) -> U32(equal(_>_(N,M'),true),M',N)
+
+U32(tt,M',N) -> s_(quot(d(N,M'),M'))
+
+_*_(N,0) -> 0
+
+_*_(s_(N),s_(M)) -> s_(_+_(N,_+_(M,_*_(N,M))))
+
+_+_(N,0) -> N
+
+_+_(s_(N),s_(M)) -> s_(s_(_+_(N,M)))
+
+_<_(N,M) -> _>_(M,N)
+
+_>_(0,M) -> false
+
+_>_(N',0) -> true
+
+_>_(s_(N),s_(M)) -> _>_(N,M)
+
+and(tt,X) -> X
+
+d(0,N) -> N
+
+d(s_(N),s_(M)) -> d(N,M)
+
+equal(X,X) -> tt
+
+gcd(0,N) -> 0
+
+gcd(N',M') -> U11(tt,M',N')
+
+gcd(N',N') -> N'
+
+p_(s_(N)) -> N
+
+quot(M',M') -> s_(0)
+
+quot(N,M') -> U21(tt,M',N)
+
+quot(N,M') -> U31(tt,M',N)
+)

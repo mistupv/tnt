@@ -1,0 +1,12 @@
+(VAR x y z)
+(RULES
+rev(nil) -> nil
+rev(rev(x)) -> x
+rev(++(x,y)) -> ++(rev(y),rev(x))
+++(nil,y) -> y
+++(x,nil) -> x
+++(.(x,y),z) -> .(x,++(y,z))
+++(x,++(y,z)) -> ++(++(x,y),z)
+make(x) -> .(x,nil)
+)
+(COMMENT Example 4.26 in \cite{SK90})

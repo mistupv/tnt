@@ -1,0 +1,1 @@
+(VAR X)(STRATEGY CONTEXTSENSITIVE   (f 1)  (0)  (cons 1)  (s 1)  (p 1))(RULES f(0) -> cons(0,f(s(0)))f(s(0)) -> f(p(s(0)))p(s(X)) -> X)

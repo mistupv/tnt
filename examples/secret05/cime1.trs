@@ -1,0 +1,34 @@
+(VAR a s t u)
+(RULES
+
+sortSu(circ(sortSu(cons(te(a),sortSu(s))),sortSu(t))) -> 
+sortSu(cons(te(msubst(te(a),sortSu(t))),sortSu(circ(sortSu(s),sortSu(t)))))
+
+sortSu(circ(sortSu(cons(sop(lift),sortSu(s))),sortSu(cons(te(a),sortSu(t)))))
+-> sortSu(cons(te(a),sortSu(circ(sortSu(s),sortSu(t)))))
+
+sortSu(circ(sortSu(cons(sop(lift),sortSu(s))),sortSu(cons(sop(lift),sortSu(t)))))
+-> sortSu(cons(sop(lift),sortSu(circ(sortSu(s),sortSu(t)))))
+
+sortSu(circ(sortSu(circ(sortSu(s),sortSu(t))),sortSu(u))) ->
+sortSu(circ(sortSu(s),sortSu(circ(sortSu(t),sortSu(u)))))
+
+sortSu(circ(sortSu(s),sortSu(id))) -> sortSu(s)
+
+sortSu(circ(sortSu(id),sortSu(s))) -> sortSu(s)
+
+sortSu(circ(sortSu(cons(sop(lift),sortSu(s))),sortSu(circ(sortSu(cons(sop(lift),sortSu(t))),sortSu(u)))))
+->
+sortSu(circ(sortSu(cons(sop(lift),sortSu(circ(sortSu(s),sortSu(t))))),sortSu(u)))
+
+te(subst(te(a),sortSu(id))) -> te(a)
+
+te(msubst(te(a),sortSu(id))) -> te(a)
+
+te(msubst(te(msubst(te(a),sortSu(s))),sortSu(t))) -> 
+te(msubst(te(a),sortSu(circ(sortSu(s),sortSu(t))))))
+
+
+(COMMENT Contribution by Eduardo Bonelli)
+
+

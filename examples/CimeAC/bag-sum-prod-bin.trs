@@ -1,0 +1,32 @@
+(COMMENT 
+
+  Claude Marché
+
+  Sum and product of a bag of integers
+
+  Binary notation
+
+)
+
+(VAR b  y  x)
+(THEORY (AC U * +))
+
+(RULES
+
+0(#) -> # 
++(#,x) -> x 
++(0(x),0(y)) -> 0(+(x,y)) 
++(0(x),1(y)) -> 1(+(x,y)) 
++(1(x),1(y)) -> 0(+(1(#),+(x,y))) 
+*(#,x) -> # 
+*(0(x),y) -> 0(*(x,y)) 
+*(1(x),y) -> +(0(*(x,y)),y) 
+U(empty,b) -> b 
+sum(empty) -> 0(#) 
+sum(singl(x)) -> x 
+sum(U(x,y)) -> +(sum(x),sum(y)) 
+prod(empty) -> 1(#) 
+prod(singl(x)) -> x 
+prod(U(x,y)) -> *(prod(x),prod(y)) 
+
+)

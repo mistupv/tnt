@@ -1,0 +1,7 @@
+(RULES
+f(a) -> f(a)
+)
+
+(COMMENT
+Non-terminating.
+)

@@ -1,0 +1,5 @@
+(RULES 
+f(a,b) -> f(a,c)
+f(c,d) -> f(b,d)
+)
+(COMMENT Example 4.56 in \cite{SK90})

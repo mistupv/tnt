@@ -1,0 +1,13 @@
+(VAR x y z)
+(RULES
+not(x) -> xor(x,true)
+or(x,y) -> xor(and(x,y),xor(x,y))
+implies(x,y) -> xor(and(x,y),xor(x,true))
+and(x,true) -> x
+and(x,false) -> false
+and(x,x) -> x
+xor(x,false) -> x
+xor(x,x) -> false
+and(xor(x,y),z) -> xor(and(x,z),and(y,z))
+)
+(COMMENT Example 4.20 (Boolean Ring) in \cite{SK90})

@@ -1,0 +1,5 @@
+(VAR x y z u)
+(RULES
+:(:(:(:(C,x),y),z),u) -> :(:(x,z),:(:(:(x,y),z),u))
+)
+(COMMENT Example 30 in \cite{D33})

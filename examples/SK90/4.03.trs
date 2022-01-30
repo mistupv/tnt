@@ -1,0 +1,13 @@
+(VAR x y z)
+(RULES
++(x,0) -> x
++(minus(x),x) -> 0
+minus(0) -> 0
+minus(minus(x)) -> x
+minus(+(x,y)) -> +(minus(y),minus(x))
+*(x,1) -> x
+*(x,0) -> 0
+*(x,+(y,z)) -> +(*(x,y),*(x,z))
+*(x,minus(y)) -> minus(*(x,y))
+)
+(COMMENT Example 4.3 in \cite{SK90})

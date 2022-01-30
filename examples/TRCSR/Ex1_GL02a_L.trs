@@ -1,0 +1,11 @@
+(VAR X)
+(RULES 
+eq -> true
+eq -> eq
+eq -> false
+inf(X) -> cons
+take(0,X) -> nil
+take(s,cons) -> cons
+length(nil) -> 0
+length(cons) -> s
+)

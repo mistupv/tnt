@@ -1,0 +1,7 @@
+(VAR g h x xs)
+(RULES
+  ap(ap(f,x),x) -> ap(ap(x,ap(f,x)),ap(ap(cons,x),nil))
+
+  ap(ap(ap(foldr, g), h), nil) -> h
+  ap(ap(ap(foldr, g), h), ap(ap(cons, x),xs)) -> ap(ap(g,x), ap(ap(ap(foldr, g), h), xs))  
+)

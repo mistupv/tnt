@@ -1,0 +1,7 @@
+(VAR x y z)
+(RULES
+gcd(x,0) -> x
+gcd(0,y) -> y
+gcd(s(x),s(y)) -> if(<(x,y),gcd(s(x),-(y,x)),gcd(-(x,y),s(y)))
+)
+(COMMENT Example 4.18 (Greatest Common Divisor) in \cite{SK90})

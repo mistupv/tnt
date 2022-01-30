@@ -1,0 +1,10 @@
+(VAR x y z)
+(RULES
+and(x,false) -> false
+and(x,not(false)) -> x
+not(not(x)) -> x
+implies(false,y) -> not(false)
+implies(x,false) -> not(x)
+implies(not(x),not(y)) -> implies(y,and(x,y))
+)
+(COMMENT Example 2.35 (Implication) in \cite{SK90})

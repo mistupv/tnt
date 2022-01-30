@@ -1,0 +1,6 @@
+(VAR X Y Z)
+(RULES
+
+plus(plus(X,Y),Z) -> plus(X,plus(Y,Z))
+times(X,s(Y)) -> plus(X,times(Y,X))
+)

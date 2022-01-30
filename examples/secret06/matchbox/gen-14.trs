@@ -1,0 +1,5 @@
+(VAR x y
+     z)
+(RULES b (f (b (x, z)), y) -> f (f (f (b (z, b (y, z)))))
+       c (f (f (c (x, a, z))), a, y) -> b (y, f (b (a, z)))
+       b (b (c (b (a, a), a, z), f (a)), y) -> z)

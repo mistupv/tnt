@@ -1,0 +1,5 @@
+(VAR k l x a b c)
+(RULES
+f(empty, l) -> l
+f(cons(x,k), l) -> g(k, l, cons(x, k))
+g(a,b,c) -> f(a, cons(b, c)))

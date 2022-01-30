@@ -1,0 +1,6 @@
+(VAR x y f g)
+(RULES
+  app(app(const, x), y) -> x
+  app(app(app(subst, f), g), x) -> app(app(f, x), app(g, x))
+  app(app(fix, f), x) -> app(app(f, app(fix, f)), x)
+)

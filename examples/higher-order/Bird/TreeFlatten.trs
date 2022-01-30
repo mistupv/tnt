@@ -1,0 +1,10 @@
+(VAR f x xs ys)
+(RULES
+  app(app(map, f), nil) -> nil
+  app(app(map, f), app(app(cons, x), xs)) -> app(app(cons, app(f, x)), app(app(map, f), xs))
+  app(flatten, app(app(node, x), xs)) -> app(app(cons, x), app(concat, app(app(map, flatten), xs)))
+  app(concat, nil) -> nil
+  app(concat, app(app(cons, x), xs)) -> app(app(append, x), app(concat, xs))
+  app(app(append, nil), xs) -> xs
+  app(app(append, app(app(cons, x), xs)), ys) -> app(app(cons, x), app(app(append, xs), ys))
+)

@@ -1,0 +1,9 @@
+(VAR x y)
+(RULES
+ D(t) -> 1
+ D(constant) -> 0
+ D(+(x,y)) -> +(D(x),D(y))
+ D(*(x,y)) -> +(*(y,D(x)),*(x,D(y)))
+ D(-(x,y)) -> -(D(x),D(y))
+)
+(COMMENT Example 8 in \cite{D33})

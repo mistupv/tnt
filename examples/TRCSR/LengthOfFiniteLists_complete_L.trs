@@ -1,0 +1,34 @@
+(VAR L X N)
+(RULES 
+zeros -> cons(0)
+U11(tt) -> U12(isNatList)
+U12(tt) -> tt
+U21(tt) -> U22(isNat)
+U22(tt) -> tt
+U31(tt) -> U32(isNatList)
+U32(tt) -> tt
+U41(tt) -> U42(isNat)
+U42(tt) -> U43(isNatIList)
+U43(tt) -> tt
+U51(tt) -> U52(isNat)
+U52(tt) -> U53(isNatList)
+U53(tt) -> tt
+U61(tt) -> s(length(L))
+and(tt) -> X
+isNat -> tt
+isNat -> U11(isNatIListKind)
+isNat -> U21(isNatKind)
+isNatIList -> U31(isNatIListKind)
+isNatIList -> tt
+isNatIList -> U41(and(isNatKind))
+isNatIListKind -> tt
+isNatIListKind -> tt
+isNatIListKind -> and(isNatKind)
+isNatKind -> tt
+isNatKind -> isNatIListKind
+isNatKind -> isNatKind
+isNatList -> tt
+isNatList -> U51(and(isNatKind))
+length(nil) -> 0
+length(cons(N)) -> U61(and(and(isNatList)))
+)

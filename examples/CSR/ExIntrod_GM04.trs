@@ -1,0 +1,20 @@
+(VAR X Y)
+(STRATEGY CONTEXTSENSITIVE 
+  (nats)
+  (adx 1)
+  (zeros)
+  (cons)
+  (0)
+  (incr 1)
+  (s)
+  (hd 1)
+  (tl 1)
+)
+(RULES 
+nats -> adx(zeros)
+zeros -> cons(0,zeros)
+incr(cons(X,Y)) -> cons(s(X),incr(Y))
+adx(cons(X,Y)) -> incr(cons(X,adx(Y)))
+hd(cons(X,Y)) -> X
+tl(cons(X,Y)) -> Y
+)

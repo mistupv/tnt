@@ -1,0 +1,7 @@
+(VAR f x h t l)
+(RULES
+  app(app(app(fold, f), nil), x) -> x
+  app(app(app(fold, f), app(app(cons, h), t)), x) -> app(app(app(fold, f), t), app(app(f, x), h))
+  app(sum, l) -> app(app(app(fold, add), l), 0)
+  app(app(app(fold, mul), l), 1) -> app(prod, l)
+)

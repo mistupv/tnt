@@ -1,0 +1,9 @@
+(VAR X x y Y Z)
+(THEORY (AC union))
+(RULES
+  union(empty, X) -> X
+  max(singl(x)) -> x
+  max(union(singl(x), singl(0))) -> x
+  max(union(singl(s(x)), singl(s(y)))) -> s(max(union(singl(x), singl(y))))
+  max(union(singl(x), union(Y, Z))) -> max(union(singl(x), singl(max(union(Y, Z)))))
+)

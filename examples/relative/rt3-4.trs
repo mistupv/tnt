@@ -1,0 +1,7 @@
+(VAR y z)
+(RULES
+ f(a, g(y), z) -> f(b, g(y), g(y))
+ f(b, g(y), z) -> f(a, y, z)
+ f(x, y, z) ->= f(x, y, g(z))
+ a -> b
+)

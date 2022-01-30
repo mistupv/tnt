@@ -1,0 +1,250 @@
+(COMMENT generated from Maude module 'RENAMED-BOOL' by 'complete-noand' transformation)
+(VAR A B C U' U V1 V2 X Z Y)
+(THEORY (AC _xor_)
+(AC _or_)
+(AC _and_))
+(RULES
+U101(tt,A,B) -> U102(isBoolKind(A),A,B)
+
+U102(tt,A,B) -> U103(isBool(B),A,B)
+
+U103(tt,A,B) -> U104(isBoolKind(B),A,B)
+
+U104(tt,A,B) -> _xor_(_and_(A,B),_xor_(A,B))
+
+U11(tt,A) -> U12(isBoolKind(A),A)
+
+U111(tt,A) -> U112(isBoolKind(A))
+
+U112(tt) -> false
+
+U12(tt,A) -> A
+
+U121(tt,A) -> U122(isBoolKind(A),A)
+
+U122(tt,A) -> A
+
+U131(tt,B,U',U) -> U132(isBoolKind(B),B,U',U)
+
+U132(tt,B,U',U) -> U133(isS(U'),B,U',U)
+
+U133(tt,B,U',U) -> U134(isSKind(U'),B,U',U)
+
+U134(tt,B,U',U) -> U135(isS(U),B,U',U)
+
+U135(tt,B,U',U) -> U136(isSKind(U),B,U')
+
+U136(tt,B,U') -> U137(equal(_isNotEqualTo_(B,true),true),U')
+
+U137(tt,U') -> U'
+
+U141(tt,U',U) -> U142(isSKind(U'),U)
+
+U142(tt,U) -> U143(isS(U),U)
+
+U143(tt,U) -> U144(isSKind(U),U)
+
+U144(tt,U) -> U
+
+U151(tt,V1,V2) -> U152(isBoolKind(V1),V1,V2)
+
+U152(tt,V1,V2) -> U153(isBoolKind(V2),V1,V2)
+
+U153(tt,V1,V2) -> U154(isBoolKind(V2),V1,V2)
+
+U154(tt,V1,V2) -> U155(isBool(V1),V2)
+
+U155(tt,V2) -> U156(isBool(V2))
+
+U156(tt) -> tt
+
+U161(tt,V1,V2) -> U162(isBoolKind(V1),V1,V2)
+
+U162(tt,V1,V2) -> U163(isBoolKind(V2),V1,V2)
+
+U163(tt,V1,V2) -> U164(isBoolKind(V2),V1,V2)
+
+U164(tt,V1,V2) -> U165(isBool(V1),V2)
+
+U165(tt,V2) -> U166(isBool(V2))
+
+U166(tt) -> tt
+
+U171(tt,V1,V2) -> U172(isBoolKind(V1),V1,V2)
+
+U172(tt,V1,V2) -> U173(isBoolKind(V2),V1,V2)
+
+U173(tt,V1,V2) -> U174(isBoolKind(V2),V1,V2)
+
+U174(tt,V1,V2) -> U175(isBool(V1),V2)
+
+U175(tt,V2) -> U176(isBool(V2))
+
+U176(tt) -> tt
+
+U181(tt,V1,V2) -> U182(isBoolKind(V1),V1,V2)
+
+U182(tt,V1,V2) -> U183(isBoolKind(V2),V1,V2)
+
+U183(tt,V1,V2) -> U184(isBoolKind(V2),V1,V2)
+
+U184(tt,V1,V2) -> U185(isBool(V1),V2)
+
+U185(tt,V2) -> U186(isBool(V2))
+
+U186(tt) -> tt
+
+U191(tt,V1) -> U192(isBoolKind(V1),V1)
+
+U192(tt,V1) -> U193(isBool(V1))
+
+U193(tt) -> tt
+
+U201(tt,V2) -> U202(isBoolKind(V2))
+
+U202(tt) -> tt
+
+U21(tt,A,B,C) -> U22(isBoolKind(A),A,B,C)
+
+U211(tt,V2) -> U212(isBoolKind(V2))
+
+U212(tt) -> tt
+
+U22(tt,A,B,C) -> U23(isBool(B),A,B,C)
+
+U221(tt,V2) -> U222(isBoolKind(V2))
+
+U222(tt) -> tt
+
+U23(tt,A,B,C) -> U24(isBoolKind(B),A,B,C)
+
+U231(tt,V2) -> U232(isBoolKind(V2))
+
+U232(tt) -> tt
+
+U24(tt,A,B,C) -> U25(isBool(C),A,B,C)
+
+U241(tt) -> tt
+
+U25(tt,A,B,C) -> U26(isBoolKind(C),A,B,C)
+
+U251(tt,A) -> U252(isBoolKind(A),A)
+
+U252(tt,A) -> _xor_(A,true)
+
+U26(tt,A,B,C) -> _xor_(_and_(A,B),_and_(A,C))
+
+U31(tt,A) -> U32(isBoolKind(A))
+
+U32(tt) -> false
+
+U41(tt,A) -> U42(isBoolKind(A),A)
+
+U42(tt,A) -> A
+
+U51(tt,A,B) -> U52(isBoolKind(A),A,B)
+
+U52(tt,A,B) -> U53(isBool(B),A,B)
+
+U53(tt,A,B) -> U54(isBoolKind(B),A,B)
+
+U54(tt,A,B) -> not_(_xor_(A,_and_(A,B)))
+
+U61(tt,U',U) -> U62(isSKind(U'),U',U)
+
+U62(tt,U',U) -> U63(isS(U),U',U)
+
+U63(tt,U',U) -> U64(isSKind(U),U',U)
+
+U64(tt,U',U) -> U65(equal(_isNotEqualTo_(U,U'),true))
+
+U65(tt) -> false
+
+U71(tt,U) -> U72(isSKind(U))
+
+U72(tt) -> true
+
+U81(tt,U',U) -> U82(isSKind(U'),U',U)
+
+U82(tt,U',U) -> U83(isS(U),U',U)
+
+U83(tt,U',U) -> U84(isSKind(U),U',U)
+
+U84(tt,U',U) -> if_then_else_fi(_isEqualTo_(U,U'),false,true)
+
+U91(tt,U) -> U92(isSKind(U))
+
+U92(tt) -> false
+
+_and_(A,A) -> U11(isBool(A),A)
+
+_and_(A,_xor_(B,C)) -> U21(isBool(A),A,B,C)
+
+_and_(false,A) -> U31(isBool(A),A)
+
+_and_(true,A) -> U41(isBool(A),A)
+
+_implies_(A,B) -> U51(isBool(A),A,B)
+
+_isEqualTo_(U,U') -> U61(isS(U'),U',U)
+
+_isEqualTo_(U,U) -> U71(isS(U),U)
+
+_isNotEqualTo_(U,U') -> U81(isS(U'),U',U)
+
+_isNotEqualTo_(U,U) -> U91(isS(U),U)
+
+_or_(A,B) -> U101(isBool(A),A,B)
+
+_xor_(A,A) -> U111(isBool(A),A)
+
+_xor_(false,A) -> U121(isBool(A),A)
+
+equal(X,X) -> tt
+
+if_then_else_fi(B,U,U') -> U131(isBool(B),B,U',U)
+
+if_then_else_fi(true,U,U') -> U141(isS(U'),U',U)
+
+isBool(false) -> tt
+
+isBool(true) -> tt
+
+isBool(_and_(V1,V2)) -> U151(isBoolKind(V1),V1,V2)
+
+isBool(_implies_(V1,V2)) -> U161(isBoolKind(V1),V1,V2)
+
+isBool(_isEqualTo_(V1,V2)) -> tt
+
+isBool(_isNotEqualTo_(V1,V2)) -> tt
+
+isBool(_or_(V1,V2)) -> U171(isBoolKind(V1),V1,V2)
+
+isBool(_xor_(V1,V2)) -> U181(isBoolKind(V1),V1,V2)
+
+isBool(not_(V1)) -> U191(isBoolKind(V1),V1)
+
+isBoolKind(false) -> tt
+
+isBoolKind(true) -> tt
+
+isBoolKind(_and_(V1,V2)) -> U201(isBoolKind(V1),V2)
+
+isBoolKind(_implies_(V1,V2)) -> U211(isBoolKind(V1),V2)
+
+isBoolKind(_isEqualTo_(V1,V2)) -> tt
+
+isBoolKind(_isNotEqualTo_(V1,V2)) -> tt
+
+isBoolKind(_or_(V1,V2)) -> U221(isBoolKind(V1),V2)
+
+isBoolKind(_xor_(V1,V2)) -> U231(isBoolKind(V1),V2)
+
+isBoolKind(not_(V1)) -> U241(isBoolKind(V1))
+
+not_(A) -> U251(isBool(A),A)
+
+not_(false) -> true
+
+not_(true) -> false
+)

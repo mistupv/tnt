@@ -1,0 +1,138 @@
+(COMMENT generated from Maude module 'RENAMED-BOOL' by 'nokinds-noand' transformation)
+(VAR A B C U' U V1 V2 X Z Y)
+(THEORY (AC _xor_)
+(AC _or_)
+(AC _and_))
+(RULES
+U101(tt,A,B) -> U102(isBool(B),A,B)
+
+U102(tt,A,B) -> _xor_(_and_(A,B),_xor_(A,B))
+
+U11(tt,A) -> A
+
+U111(tt) -> false
+
+U121(tt,A) -> A
+
+U131(tt,B,U',U) -> U132(isS(U'),B,U',U)
+
+U132(tt,B,U',U) -> U133(isS(U),B,U')
+
+U133(tt,B,U') -> U134(equal(_isNotEqualTo_(B,true),true),U')
+
+U134(tt,U') -> U'
+
+U141(tt,U) -> U142(isS(U),U)
+
+U142(tt,U) -> U
+
+U151(tt,V2) -> U152(isBool(V2))
+
+U152(tt) -> tt
+
+U161(tt,V2) -> U162(isBool(V2))
+
+U162(tt) -> tt
+
+U171(tt,V2) -> U172(isUniversal(V2))
+
+U172(tt) -> tt
+
+U181(tt,V2) -> U182(isUniversal(V2))
+
+U182(tt) -> tt
+
+U191(tt,V2) -> U192(isBool(V2))
+
+U192(tt) -> tt
+
+U201(tt,V2) -> U202(isBool(V2))
+
+U202(tt) -> tt
+
+U21(tt,A,B,C) -> U22(isBool(B),A,B,C)
+
+U211(tt) -> tt
+
+U22(tt,A,B,C) -> U23(isBool(C),A,B,C)
+
+U221(tt,A) -> _xor_(A,true)
+
+U23(tt,A,B,C) -> _xor_(_and_(A,B),_and_(A,C))
+
+U31(tt) -> false
+
+U41(tt,A) -> A
+
+U51(tt,A,B) -> U52(isBool(B),A,B)
+
+U52(tt,A,B) -> not_(_xor_(A,_and_(A,B)))
+
+U61(tt,U',U) -> U62(isS(U),U',U)
+
+U62(tt,U',U) -> U63(equal(_isNotEqualTo_(U,U'),true))
+
+U63(tt) -> false
+
+U71(tt) -> true
+
+U81(tt,U',U) -> U82(isS(U),U',U)
+
+U82(tt,U',U) -> if_then_else_fi(_isEqualTo_(U,U'),false,true)
+
+U91(tt) -> false
+
+_and_(A,A) -> U11(isBool(A),A)
+
+_and_(A,_xor_(B,C)) -> U21(isBool(A),A,B,C)
+
+_and_(false,A) -> U31(isBool(A))
+
+_and_(true,A) -> U41(isBool(A),A)
+
+_implies_(A,B) -> U51(isBool(A),A,B)
+
+_isEqualTo_(U,U') -> U61(isS(U'),U',U)
+
+_isEqualTo_(U,U) -> U71(isS(U))
+
+_isNotEqualTo_(U,U') -> U81(isS(U'),U',U)
+
+_isNotEqualTo_(U,U) -> U91(isS(U))
+
+_or_(A,B) -> U101(isBool(A),A,B)
+
+_xor_(A,A) -> U111(isBool(A))
+
+_xor_(false,A) -> U121(isBool(A),A)
+
+equal(X,X) -> tt
+
+if_then_else_fi(B,U,U') -> U131(isBool(B),B,U',U)
+
+if_then_else_fi(true,U,U') -> U141(isS(U'),U)
+
+isBool(false) -> tt
+
+isBool(true) -> tt
+
+isBool(_and_(V1,V2)) -> U151(isBool(V1),V2)
+
+isBool(_implies_(V1,V2)) -> U161(isBool(V1),V2)
+
+isBool(_isEqualTo_(V1,V2)) -> U171(isUniversal(V1),V2)
+
+isBool(_isNotEqualTo_(V1,V2)) -> U181(isUniversal(V1),V2)
+
+isBool(_or_(V1,V2)) -> U191(isBool(V1),V2)
+
+isBool(_xor_(V1,V2)) -> U201(isBool(V1),V2)
+
+isBool(not_(V1)) -> U211(isBool(V1))
+
+not_(A) -> U221(isBool(A),A)
+
+not_(false) -> true
+
+not_(true) -> false
+)

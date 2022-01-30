@@ -1,0 +1,7 @@
+(VAR X)
+(RULES 
+f(X) -> g(n__h(f(X)))
+h(X) -> n__h(X)
+activate(n__h(X)) -> h(X)
+activate(X) -> X
+)

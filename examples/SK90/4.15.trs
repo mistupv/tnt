@@ -1,0 +1,6 @@
+(VAR x y z)
+(RULES
++(-(x,y),z) -> -(+(x,z),y)
+-(+(x,y),y) -> x
+)
+(COMMENT Example 4.15 (Addition and Substraction) in \cite{SK90})

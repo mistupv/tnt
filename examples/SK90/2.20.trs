@@ -1,0 +1,8 @@
+(VAR x y z)
+(RULES
+sum(0) -> 0
+sum(s(x)) -> +(sqr(s(x)),sum(x))
+sqr(x) -> *(x,x)
+sum(s(x)) -> +(*(s(x),s(x)),sum(x))
+)
+(COMMENT Example 2.20 (Sum of Square Numbers) in \cite{SK90})

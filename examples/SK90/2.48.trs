@@ -1,0 +1,9 @@
+(VAR x y z)
+(RULES
+d(x) -> e(u(x))
+d(u(x)) -> c(x)
+c(u(x)) -> b(x)
+v(e(x)) -> x
+b(u(x)) -> a(e(x))
+)
+(COMMENT Example 2.48 in \cite{SK90})

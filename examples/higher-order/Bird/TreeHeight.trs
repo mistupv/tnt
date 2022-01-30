@@ -1,0 +1,11 @@
+(VAR f x xs y ys)
+(RULES
+  app(app(map, f), nil) -> nil
+  app(app(map, f), app(app(cons, x), xs)) -> app(app(cons, app(f, x)), app(app(map, f), xs))
+  app(app(le, 0), y) -> true
+  app(app(le, app(s, x)), 0) -> false
+  app(app(le, app(s, x)), app(s, y)) -> app(app(le, x), y)
+  app(app(maxlist, x), app(app(cons, y), ys)) -> app(app(if, app(app(le, x), y)), app(app(maxlist, y), ys))
+  app(app(maxlist, x), nil) -> x
+  app(height, app(app(node, x), xs)) -> app(s, app(app(maxlist, 0), app(app(map, height), xs)))
+)

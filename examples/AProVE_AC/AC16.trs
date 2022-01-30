@@ -1,0 +1,12 @@
+(VAR x y)
+(THEORY (AC plus))
+(RULES
+  plus(x, 0) -> x
+  plus(x, x) -> x
+  plus(T(x), x) -> T(x)
+  plus(T(plus(x, y)), x) -> T(plus(x, y))
+  L(T(x)) -> L(x)
+  L(plus(T(y), x)) -> plus(L(plus(x, y)), L(y))
+  T(T(x)) -> T(x)
+  T(plus(T(y), x)) -> plus(T(plus(x, y)), T(y))
+)

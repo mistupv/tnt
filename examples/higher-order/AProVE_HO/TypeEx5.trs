@@ -1,0 +1,10 @@
+(COMMENT
+  This example does not terminate with polymorphic types,
+  but every (finite) monomorphic instance does. There is
+  no complete (finite) monomorphic instance, though.
+)
+(VAR x y)
+(RULES
+  ap(ap(g,x),y) -> y
+  ap(f,x) -> ap(f,app(g,x))
+)

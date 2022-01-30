@@ -1,0 +1,5 @@
+(VAR x)
+(RULES
+ B1 ->= R(T, B1)
+ R(x, B2) -> B2
+)

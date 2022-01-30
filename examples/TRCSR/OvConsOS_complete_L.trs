@@ -1,0 +1,43 @@
+(VAR L N X IL M)
+(RULES 
+zeros -> cons(0)
+U11(tt) -> U12(isNatList)
+U12(tt) -> tt
+U21(tt) -> U22(isNat)
+U22(tt) -> tt
+U31(tt) -> U32(isNatList)
+U32(tt) -> tt
+U41(tt) -> U42(isNat)
+U42(tt) -> U43(isNatIList)
+U43(tt) -> tt
+U51(tt) -> U52(isNat)
+U52(tt) -> U53(isNatList)
+U53(tt) -> tt
+U61(tt) -> U62(isNat)
+U62(tt) -> U63(isNatIList)
+U63(tt) -> tt
+U71(tt) -> s(length(L))
+U81(tt) -> nil
+U91(tt) -> cons(N)
+and(tt) -> X
+isNat -> tt
+isNat -> U11(isNatIListKind)
+isNat -> U21(isNatKind)
+isNatIList -> U31(isNatIListKind)
+isNatIList -> tt
+isNatIList -> U41(and(isNatKind))
+isNatIListKind -> tt
+isNatIListKind -> tt
+isNatIListKind -> and(isNatKind)
+isNatIListKind -> and(isNatKind)
+isNatKind -> tt
+isNatKind -> isNatIListKind
+isNatKind -> isNatKind
+isNatList -> tt
+isNatList -> U51(and(isNatKind))
+isNatList -> U61(and(isNatKind))
+length(nil) -> 0
+length(cons(N)) -> U71(and(and(isNatList)))
+take(0,IL) -> U81(and(isNatIList))
+take(s(M),cons(N)) -> U91(and(and(isNatIList)))
+)

@@ -1,0 +1,7 @@
+(VAR x y)
+(RULES
+f(x,y) -> h(x,y)
+f(x,y) -> h(y,x)
+h(x,x) -> x
+)
+(COMMENT Example 4 (variant of TRS $\RR_2$) in \cite{O95})

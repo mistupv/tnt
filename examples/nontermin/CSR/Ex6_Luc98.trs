@@ -1,0 +1,7 @@
+(VAR X Y Z)
+
+(RULES 
+first(0,X) -> nil
+first(s(X),cons(Y,Z)) -> cons(Y,first(X,Z))
+from(X) -> cons(X,from(s(X)))
+)

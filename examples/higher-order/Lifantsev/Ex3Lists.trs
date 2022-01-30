@@ -1,0 +1,9 @@
+(VAR l h t f l1 l2 l3)
+(RULES
+  app(app(append, nil), l) -> l
+  app(app(append, app(app(cons, h), t)), l) -> app(app(cons, h), app(app(append, t), l))
+  app(app(map, f), nil) -> nil
+  app(app(map, f), app(app(cons, h), t)) -> app(app(cons, app(f, h)), app(app(map, f), t))
+  app(app(append, app(app(append, l1), l2)), l3) -> app(app(append, l1), app(app(append, l2), l3))
+  app(app(map, f), app(app(append, l1), l2)) -> app(app(append, app(app(map, f), l1)), app(app(map, f), l2))
+)

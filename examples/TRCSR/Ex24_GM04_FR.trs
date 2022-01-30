@@ -1,0 +1,9 @@
+(VAR X Y)
+(RULES 
+f(X,n__g(X),Y) -> f(activate(Y),activate(Y),activate(Y))
+g(b) -> c
+b -> c
+g(X) -> n__g(X)
+activate(n__g(X)) -> g(activate(X))
+activate(X) -> X
+)

@@ -1,0 +1,14 @@
+(VAR x y n m)
+(THEORY (C eq))
+(RULES
+  eq(0, 0) -> true
+  eq(0, s(x)) -> false
+  eq(s(x), 0) -> false
+  eq(s(x), s(y)) -> eq(x, y)
+  rm(n, nil) -> nil
+  rm(n, add(m, x)) -> if_rm(eq(n, m), n, add(m, x))
+  if_rm(true, n, add(m, x)) -> rm(n, x)
+  if_rm(false, n, add(m, x)) -> add(m, rm(n, x))
+  purge(nil) -> nil
+  purge(add(n, x)) -> add(n, purge(rm(n, x)))
+)

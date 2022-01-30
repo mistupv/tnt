@@ -1,0 +1,19 @@
+(VAR N M X)
+(RULES 
+U11(tt) -> U12(isNat)
+U12(tt) -> U13(isNat)
+U13(tt) -> tt
+U21(tt) -> U22(isNat)
+U22(tt) -> tt
+U31(tt) -> N
+U41(tt) -> s(plus(N,M))
+and(tt) -> X
+isNat -> tt
+isNat -> U11(and(isNatKind))
+isNat -> U21(isNatKind)
+isNatKind -> tt
+isNatKind -> and(isNatKind)
+isNatKind -> isNatKind
+plus(N,0) -> U31(and(isNat))
+plus(N,s(M)) -> U41(and(and(isNat)))
+)

@@ -1,0 +1,12 @@
+(VAR y x f ys)
+(RULES
+  app(app(neq, 0), 0) -> false
+  app(app(neq, 0), app(s, y)) -> true
+  app(app(neq, app(s, x)), 0) -> true
+  app(app(neq, app(s, x)), app(s, y)) -> app(app(neq, x), y)
+  app(app(filter, f), nil) -> nil
+  app(app(filter, f), app(app(cons, y), ys)) -> app(app(app(filtersub, app(f, y)), f), app(app(cons, y), ys))
+  app(app(app(filtersub, true), f), app(app(cons, y), ys)) -> app(app(cons, y), app(app(filter, f), ys))
+  app(app(app(filtersub, false), f), app(app(cons, y), ys)) -> app(app(filter, f), ys)
+  nonzero -> app(filter, app(neq, 0))
+)

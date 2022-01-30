@@ -1,0 +1,40 @@
+(COMMENT generated from Maude module 'BAG' by 'nosorts' transformation)
+(VAR A B X Y Z)
+(THEORY (AC union)
+(AC plus)
+(AC mult))
+(RULES
+union(X,empty) -> X
+
+union(empty,X) -> X
+
+0(z) -> z
+
+and(tt,X) -> X
+
+mult(z,X) -> z
+
+mult(0(X),Y) -> 0(mult(X,Y))
+
+mult(1(X),Y) -> plus(0(mult(X,Y)),Y)
+
+plus(z,X) -> X
+
+plus(0(X),0(Y)) -> 0(plus(X,Y))
+
+plus(0(X),1(Y)) -> 1(plus(X,Y))
+
+plus(1(X),1(Y)) -> 0(plus(plus(X,Y),1(z)))
+
+prod(empty) -> 1(z)
+
+prod(singl(X)) -> X
+
+prod(union(A,B)) -> mult(prod(A),prod(B))
+
+sum(empty) -> 0(z)
+
+sum(singl(X)) -> X
+
+sum(union(A,B)) -> plus(sum(A),sum(B))
+)

@@ -1,0 +1,13 @@
+(VAR x y)
+(RULES
+f(x,y) -> g1(x,x,y)
+f(x,y) -> g1(y,x,x)
+f(x,y) -> g2(x,y,y)
+f(x,y) -> g2(y,y,x)
+g1(x,x,y) -> h(x,y)
+g1(y,x,x) -> h(x,y)
+g2(x,y,y) -> h(x,y)
+g2(y,y,x) -> h(x,y)
+h(x,x) -> x
+)
+(COMMENT Example 4 (TRS $\RR_2$) in \cite{O95})

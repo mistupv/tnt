@@ -1,0 +1,36 @@
+(VAR x y n m xs f)
+(RULES
+  app'(app'(eq, 0), 0) -> true
+  app'(app'(eq, 0), app'(s, x)) -> false
+  app'(app'(eq, app'(s, x)), 0) -> false
+  app'(app'(eq, app'(s, x)), app'(s, y)) -> app'(app'(eq, x), y)
+  app'(app'(le, 0), y) -> true
+  app'(app'(le, app'(s, x)), 0) -> false
+  app'(app'(le, app'(s, x)), app'(s, y)) -> app'(app'(le, x), y)
+  app'(app'(app, nil), y) -> y
+  app'(app'(app, app'(app'(add, n), x)), y) -> app'(app'(add, n), app'(app'(app, x), y))
+  app'(min, app'(app'(add, n), nil)) -> n
+  app'(min, app'(app'(add, n), app'(app'(add, m), x))) -> app'(app'(if_min, app'(app'(le, n), m)), app'(app'(add, n), app'(app'(add, m), x)))
+  app'(app'(if_min, true), app'(app'(add, n), app'(app'(add, m), x))) -> app'(min, app'(app'(add, n), x))
+  app'(app'(if_min, false), app'(app'(add, n), app'(app'(add, m), x))) -> app'(min, app'(app'(add, m), x))
+  app'(app'(rm, n), nil) -> nil
+  app'(app'(rm, n), app'(app'(add, m), x)) -> app'(app'(app'(if_rm, app'(app'(eq, n), m)), n), app'(app'(add, m), x))
+  app'(app'(app'(if_rm, true), n), app'(app'(add, m), x)) -> app'(app'(rm, n), x)
+  app'(app'(app'(if_rm, false), n), app'(app'(add, m), x)) -> app'(app'(add, m), app'(app'(rm, n), x))
+  app'(app'(minsort, nil), nil) -> nil
+  app'(app'(minsort, app'(app'(add, n), x)), y) -> app'(app'(app'(if_minsort, app'(app'(eq, n), app'(min, app'(app'(add, n), x)))), app'(app'(add, n), x)), y)
+  app'(app'(app'(if_minsort, true), app'(app'(add, n), x)), y) -> app'(app'(add, n), app'(app'(minsort, app'(app'(app, app'(app'(rm, n), x)), y)), nil))
+  app'(app'(app'(if_minsort, false), app'(app'(add, n), x)), y) -> app'(app'(minsort, x), app'(app'(add, n), y))
+
+
+
+  app'(app'(map,f),nil) -> nil
+  app'(app'(map,f),app'(app'(add,x),xs)) -> app'(app'(add,app'(f,x)),app'(app'(map,f),xs))
+
+  app'(app'(filter,f),nil) -> nil
+  app'(app'(filter,f),app'(app'(add,x),xs)) -> app'(app'(app'(app'(filter2,app'(f, x)),f),x),xs)
+  app'(app'(app'(app'(filter2,true),f),x),xs) -> app'(app'(add,x),app'(app'(filter,f),xs))
+  app'(app'(app'(app'(filter2,false),f),x),xs) -> app'(app'(filter,f),xs)
+
+
+)

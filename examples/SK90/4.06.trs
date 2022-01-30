@@ -1,0 +1,8 @@
+(VAR x y z)
+(RULES
+*(*(x,y),z) -> *(x,*(y,z))
+*(+(x,y),z) -> +(*(x,z),*(y,z))
+*(x,+(y,f(z))) -> *(g(x,z),+(y,y))
+)
+
+(COMMENT Example 4.6 (Associativity and Distributivity) in \cite{SK90})

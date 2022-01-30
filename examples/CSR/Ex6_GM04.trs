@@ -1,0 +1,10 @@
+(VAR X)
+(STRATEGY CONTEXTSENSITIVE 
+  (c)
+  (f)
+  (g)
+)
+(RULES 
+c -> f(g(c))
+f(g(X)) -> g(X)
+)

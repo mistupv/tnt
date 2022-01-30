@@ -1,0 +1,19 @@
+(VAR x y z)
+(RULES
+cond(true,x,y,z) -> cond(and(gr(x,z),gr(y,z)),p(x),p(y),z)
+and(true,true) -> true
+and(x,false) -> false
+and(false,x) -> false
+gr(0,0) -> false
+gr(0,x) -> false
+gr(s(x),0) -> true
+gr(s(x),s(y)) -> gr(x,y)
+p(0) -> 0
+p(s(x)) -> x
+)
+(COMMENT
+while and(gr(x,z),gr(y,z))
+do
+  x,y:=p(x),p(y)
+od
+)

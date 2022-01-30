@@ -1,0 +1,8 @@
+(VAR x y z)
+(RULES
+ f(el(x), y) -> f(x, el(y))
+ f(x, y) ->= f(l(x), y)
+ f(x, y) ->= f(x, r(y))
+ l(el(x)) ->= el(l(x))
+ el(r(x)) ->= r(el(x))
+)

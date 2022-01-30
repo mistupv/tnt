@@ -1,0 +1,10 @@
+(VAR x y z)
+(RULES
+rev(nil) -> nil
+rev(++(x,y)) -> ++(rev1(x,y),rev2(x,y))
+rev1(x,nil) -> x
+rev1(x,++(y,z)) -> rev1(y,z)
+rev2(x,nil) -> nil
+rev2(x,++(y,z)) -> rev(++(x,rev(rev2(y,z))))
+)
+(COMMENT Example 4.24 (Reverse) in \cite{SK90})

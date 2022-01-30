@@ -1,0 +1,24 @@
+(VAR xs ys x y f)
+(RULES
+  app(app(app(if, true), xs), ys) -> xs
+  app(app(app(if, false), xs), ys) -> ys
+  app(app(lt, app(s, x)), app(s, y)) -> app(app(lt, x), y)
+  app(app(lt, 0), app(s, y)) -> true
+  app(app(lt, y), 0) -> false
+  app(app(eq, x), x) -> true
+  app(app(eq, app(s, x)), 0) -> false
+  app(app(eq, 0), app(s, x)) -> false
+  app(app(merge, xs), nil) -> xs
+  app(app(merge, nil), ys) -> ys
+  app(app(merge, app(app(cons, x), xs)), app(app(cons, y), ys)) -> app(app(app(if, app(app(lt, x), y)), app(app(cons, x), app(app(merge, xs), app(app(cons, y), ys)))), app(app(app(if, app(app(eq, x), y)), app(app(cons, x), app(app(merge, xs), ys))), app(app(cons, y), app(app(merge, app(app(cons, x), xs)), ys))))
+  app(app(map, f), nil) -> nil
+  app(app(map, f), app(app(cons, x), xs)) -> app(app(cons, app(f, x)), app(app(map, f), xs))
+  app(app(mult, 0), x) -> 0
+  app(app(mult, app(s, x)), y) -> app(app(plus, y), app(app(mult, x), y))
+  app(app(plus, 0), x) -> 0
+  app(app(plus, app(s, x)), y) -> app(s, app(app(plus, x), y))
+  list1 -> app(app(map, app(mult, app(s, app(s, 0)))), hamming)
+  list2 -> app(app(map, app(mult, app(s, app(s, app(s, 0))))), hamming)
+  list3 -> app(app(map, app(mult, app(s, app(s, app(s, app(s, app(s, 0))))))), hamming)
+  hamming -> app(app(cons, app(s, 0)), app(app(merge, list1), app(app(merge, list2), list3)))
+)

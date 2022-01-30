@@ -1,0 +1,11 @@
+(VAR x y z)
+(RULES
+or(true,y) -> true
+or(x,true) -> true
+or(false,false) -> false
+mem(x,nil) -> false
+mem(x,set(y)) -> =(x,y)
+mem(x,union(y,z)) -> or(mem(x,y),mem(x,z))
+)
+
+(COMMENT Example 2.40 (Member) in \cite{SK90})

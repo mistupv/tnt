@@ -1,0 +1,7 @@
+(VAR x y z)
+(RULES
+f(a,y) -> f(y,g(y))
+g(a) -> b
+g(b) -> b
+)
+(COMMENT Example 4.41 (Forward Chains) in \cite{SK90})

@@ -1,0 +1,8 @@
+(VAR x y z)
+(RULES
+*(x,+(y,z)) -> +(*(x,y),*(x,z))
+*(+(y,z),x) -> +(*(x,y),*(x,z))
+*(*(x,y),z) -> *(x,*(y,z))
++(+(x,y),z) -> +(x,+(y,z))
+)
+(COMMENT Example 13 in \cite{D33})

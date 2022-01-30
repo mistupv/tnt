@@ -1,0 +1,7 @@
+(VAR x y z)
+(RULES
++(0,y) -> y
++(s(x),y) -> s(+(x,y))
++(s(x),y) -> +(x,s(y))
+)
+(COMMENT Example 2.9 in \cite{SK90})

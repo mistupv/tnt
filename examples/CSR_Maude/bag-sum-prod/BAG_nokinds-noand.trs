@@ -1,0 +1,116 @@
+(COMMENT generated from Maude module 'BAG' by 'nokinds-noand' transformation)
+(VAR A B V1 V2 X Y Z)
+(THEORY (AC union)
+(AC plus)
+(AC mult))
+(RULES
+union(X,empty) -> X
+
+union(empty,X) -> X
+
+0(z) -> z
+
+U101(tt,X,Y) -> U102(isBin(Y),X,Y)
+
+U102(tt,X,Y) -> 0(mult(X,Y))
+
+U11(tt) -> tt
+
+U111(tt,X,Y) -> U112(isBin(Y),X,Y)
+
+U112(tt,X,Y) -> plus(0(mult(X,Y)),Y)
+
+U121(tt,X) -> X
+
+U131(tt,X,Y) -> U132(isBin(Y),X,Y)
+
+U132(tt,X,Y) -> 0(plus(X,Y))
+
+U141(tt,X,Y) -> U142(isBin(Y),X,Y)
+
+U142(tt,X,Y) -> 1(plus(X,Y))
+
+U151(tt,X,Y) -> U152(isBin(Y),X,Y)
+
+U152(tt,X,Y) -> 0(plus(plus(X,Y),1(z)))
+
+U161(tt,X) -> X
+
+U171(tt,A,B) -> U172(isBag(B),A,B)
+
+U172(tt,A,B) -> mult(prod(A),prod(B))
+
+U181(tt,X) -> X
+
+U191(tt,A,B) -> U192(isBag(B),A,B)
+
+U192(tt,A,B) -> plus(sum(A),sum(B))
+
+U21(tt,V2) -> U22(isBag(V2))
+
+U22(tt) -> tt
+
+U31(tt) -> tt
+
+U41(tt) -> tt
+
+U51(tt,V2) -> U52(isBin(V2))
+
+U52(tt) -> tt
+
+U61(tt,V2) -> U62(isBin(V2))
+
+U62(tt) -> tt
+
+U71(tt) -> tt
+
+U81(tt) -> tt
+
+U91(tt) -> z
+
+isBag(empty) -> tt
+
+isBag(singl(V1)) -> U11(isBin(V1))
+
+isBag(union(V1,V2)) -> U21(isBag(V1),V2)
+
+isBin(z) -> tt
+
+isBin(0(V1)) -> U31(isBin(V1))
+
+isBin(1(V1)) -> U41(isBin(V1))
+
+isBin(mult(V1,V2)) -> U51(isBin(V1),V2)
+
+isBin(plus(V1,V2)) -> U61(isBin(V1),V2)
+
+isBin(prod(V1)) -> U71(isBag(V1))
+
+isBin(sum(V1)) -> U81(isBag(V1))
+
+mult(z,X) -> U91(isBin(X))
+
+mult(0(X),Y) -> U101(isBin(X),X,Y)
+
+mult(1(X),Y) -> U111(isBin(X),X,Y)
+
+plus(z,X) -> U121(isBin(X),X)
+
+plus(0(X),0(Y)) -> U131(isBin(X),X,Y)
+
+plus(0(X),1(Y)) -> U141(isBin(X),X,Y)
+
+plus(1(X),1(Y)) -> U151(isBin(X),X,Y)
+
+prod(empty) -> 1(z)
+
+prod(singl(X)) -> U161(isBin(X),X)
+
+prod(union(A,B)) -> U171(isBag(A),A,B)
+
+sum(empty) -> 0(z)
+
+sum(singl(X)) -> U181(isBin(X),X)
+
+sum(union(A,B)) -> U191(isBag(A),A,B)
+)

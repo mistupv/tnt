@@ -1,0 +1,24 @@
+(VAR N X Y Z)
+(STRATEGY CONTEXTSENSITIVE 
+  (terms 1)
+  (cons 1)
+  (recip 1)
+  (sqr 1)
+  (s 1)
+  (0)
+  (add 1 2)
+  (dbl 1)
+  (first 1 2)
+  (nil)
+)
+(RULES 
+terms(N) -> cons(recip(sqr(N)),terms(s(N)))
+sqr(0) -> 0
+sqr(s(X)) -> s(add(sqr(X),dbl(X)))
+dbl(0) -> 0
+dbl(s(X)) -> s(s(dbl(X)))
+add(0,X) -> X
+add(s(X),Y) -> s(add(X,Y))
+first(0,X) -> nil
+first(s(X),cons(Y,Z)) -> cons(Y,first(X,Z))
+)

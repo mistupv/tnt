@@ -1,0 +1,5 @@
+(VAR x y z)
+(RULES
+-(-(neg(x),neg(x)),-(neg(y),neg(y))) -> -(-(x,y),-(x,y))
+)
+(COMMENT Example 4.19 in \cite{SK90})

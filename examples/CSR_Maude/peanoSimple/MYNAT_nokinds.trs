@@ -1,0 +1,28 @@
+(COMMENT generated from Maude module 'MYNAT' by 'nokinds' transformation)
+(VAR M N V1 V2 X Z Y)
+(STRATEGY CONTEXTSENSITIVE
+
+(U11 1)
+(U21 1)
+(and 1)
+(isNat )
+
+
+)
+(RULES
+U11(tt,N) -> N
+
+U21(tt,M,N) -> s(plus(N,M))
+
+and(tt,X) -> X
+
+isNat(0) -> tt
+
+isNat(plus(V1,V2)) -> and(isNat(V1),isNat(V2))
+
+isNat(s(V1)) -> isNat(V1)
+
+plus(N,0) -> U11(isNat(N),N)
+
+plus(N,s(M)) -> U21(and(isNat(M),isNat(N)),M,N)
+)

@@ -1,0 +1,9 @@
+(VAR X Y)
+(RULES 
+nats -> adx(zeros)
+zeros -> cons
+incr(cons) -> cons
+adx(cons) -> incr(cons)
+hd(cons) -> X
+tl(cons) -> Y
+)

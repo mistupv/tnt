@@ -1,0 +1,8 @@
+(VAR x y)
+(RULES
+f(x,y) -> f(x,x)
+f(s(x),y) -> f(y,x)
+)
+(COMMENT
+Non-terminating.
+)

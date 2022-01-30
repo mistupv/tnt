@@ -1,0 +1,7 @@
+(VAR x y z u)
+(RULES
++(x,+(y,z)) -> +(+(x,y),z)
+*(x,+(y,z)) -> +(*(x,y),*(x,z))
++(+(x,*(y,z)),*(y,u)) -> +(x,*(y,+(z,u)))
+)
+(COMMENT Example 2.5 (Associativity and Distributivity) in \cite{SK90})

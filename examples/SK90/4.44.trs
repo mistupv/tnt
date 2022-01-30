@@ -1,0 +1,8 @@
+(VAR x)
+(RULES
+f(h(x)) -> f(i(x))
+g(i(x)) -> g(h(x))
+h(a) -> b
+i(a) -> b
+)
+(COMMENT Example 4.44 in \cite{SK90})

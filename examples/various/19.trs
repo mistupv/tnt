@@ -1,0 +1,16 @@
+(VAR x y z)
+(RULES
+:(x,x) -> e()
+:(x,e()) -> x
+i(:(x,y)) -> :(y,x)
+:(:(x,y),z) -> :(x,:(z,i(y)))
+:(e(),x) -> i(x)
+i(i(x)) -> x
+i(e()) -> e()
+:(x,:(y,i(x))) -> i(y)
+:(x,:(y,:(i(x),z))) -> :(i(z),y)
+:(i(x),:(y,x)) -> i(y)
+:(i(x),:(y,:(x,z))) -> :(i(z),y)
+)
+(COMMENT Example 1 in Section 8 of \cite{DKM90} 
+	(attributed to Pierre Lescanne))

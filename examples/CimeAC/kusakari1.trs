@@ -1,0 +1,16 @@
+(COMMENT 
+
+  Claude Marché
+
+  Example given by Kusakari Keiichirou. See also ternary.cim2
+
+)
+
+(VAR x y)
+(THEORY (AC +))
+
+(RULES
+
++(g(x),g(y)) -> g(+(g(a),+(x,y))) 
+
+)

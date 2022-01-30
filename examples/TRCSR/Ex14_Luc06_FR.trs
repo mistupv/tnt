@@ -1,0 +1,8 @@
+(VAR X)
+(RULES 
+h(X) -> g(X,X)
+g(a,X) -> f(b,activate(X))
+f(X,X) -> h(a)
+a -> b
+activate(X) -> X
+)

@@ -1,0 +1,14 @@
+(VAR N M)
+(RULES 
+U11(tt) -> U12(isNat)
+U12(tt) -> tt
+U21(tt) -> tt
+U31(tt) -> N
+U41(tt) -> U42(isNat)
+U42(tt) -> s(plus(N,M))
+isNat -> tt
+isNat -> U11(isNat)
+isNat -> U21(isNat)
+plus(N,0) -> U31(isNat)
+plus(N,s(M)) -> U41(isNat)
+)

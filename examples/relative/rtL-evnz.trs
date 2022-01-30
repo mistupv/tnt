@@ -1,0 +1,69 @@
+(COMMENT
+ Liveness problem: elevator
+ New transformation
+)
+(VAR x y z)
+(MODEL
+
+ top(U(x, y)) -> top(D(x, y))
+ D(x, B) -> U(x, B)
+ 
+ F(x, U(O(y), z)) -> U(x, F(y, z))
+ F(x, U(N(y), z)) -> U(x, F(y, z))
+ 
+ D(O(x), F(y, z)) -> F(x, D(y, z))
+ D(N(x), F(y, z)) -> F(x, D(y, z))
+ 
+ F(x, U(E, y)) -> U(x, F(E, y))
+ D(E, F(x, y)) -> F(E, D(x, y))
+ 
+ U(O(x), y) ->= U(x, y)
+ U(N(x), y) ->= U(x, y)
+ 
+ D(O(x), y) ->= D(x, y)
+ D(N(x), y) ->= D(x, y)
+
+ E ->= N(E)
+)
+
+(RULES
+ top(ok(U(x, y))) -> top(check(D(x,y)))
+ D(x, B) -> U(x, B)
+
+ F(x, U(O(y), z)) -> U(x, F(y, z))
+ F(x, U(N(y), z)) -> U(x, F(y, z))
+
+ D(O(x), F(y, z)) -> F(x, D(y, z))
+ D(N(x), F(y, z)) -> F(x, D(y, z))
+
+ F(x, U(E, y)) -> U(x, F(E, y))
+ D(E, F(x, y)) -> F(E, D(x, y))
+
+ U(O(x), y) ->= U(x, y)
+ U(N(x), y) ->= U(x, y)
+  
+ D(O(x), y) ->= D(x, y)
+ D(N(x), y) ->= D(x, y)
+
+ E ->= N(E)
+
+ check(O(x)) ->= ok(O(x))
+
+ check(U(x, y)) ->= U(check(x), y)
+ check(U(x, y)) ->= U(x, check(y))
+ check(D(x, y)) ->= D(check(x), y)
+ check(D(x, y)) ->= D(x, check(y))
+ check(F(x, y)) ->= F(check(x), y)
+ check(F(x, y)) ->= F(x, check(y))
+ check(O(x)) ->= O(check(x))
+ check(N(x)) ->= N(check(x))
+
+ U(ok(x), y) ->= ok(U(x, y))
+ U(x, ok(y)) ->= ok(U(x, y))
+ D(ok(x), y) ->= ok(D(x, y))
+ D(x, ok(y)) ->= ok(D(x, y))
+ F(ok(x), y) ->= ok(F(x, y))
+ F(x, ok(y)) ->= ok(F(x, y))
+ O(ok(x)) ->= ok(O(x))
+ N(ok(x)) ->= ok(N(x))
+)

@@ -1,0 +1,7 @@
+(from AG01 4.37)
+(VAR x y)
+(RULES
+f(c(s(x),y)) -> f(c(x,s(y)))
+g(c(x,s(y))) -> g(c(s(x),y))
+)
+(STRATEGY INNERMOST)

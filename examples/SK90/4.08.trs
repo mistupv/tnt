@@ -1,0 +1,6 @@
+(VAR x y z)
+(RULES
+*(x,*(y,z)) -> *(*(x,y),z)
+*(x,x) -> x
+)
+(COMMENT Example 4.8 (Idempotent Semigroup) in \cite{SK90})

@@ -1,0 +1,9 @@
+(VAR x y p xs)
+(RULES
+  app(app(app(if, true), x), y) -> x
+  app(app(app(if, true), x), y) -> y
+  app(app(takeWhile, p), nil) -> nil
+  app(app(takeWhile, p), app(app(cons, x), xs)) -> app(app(app(if, app(p, x)), app(app(cons, x), app(app(takeWhile, p), xs))), nil)
+  app(app(dropWhile, p), nil) -> nil
+  app(app(dropWhile, p), app(app(cons, x), xs)) -> app(app(app(if, app(p, x)), app(app(dropWhile, p), xs)), app(app(cons, x), xs))
+)

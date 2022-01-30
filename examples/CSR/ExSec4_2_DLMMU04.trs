@@ -1,0 +1,31 @@
+(VAR N X XS YS ZS)
+(STRATEGY CONTEXTSENSITIVE 
+  (0)
+  (s 1)
+  (nil)
+  (cons 1)
+  (pair 1 2)
+  (natsFrom 1)
+  (fst 1)
+  (snd 1)
+  (splitAt 1 2)
+  (head 1)
+  (tail 1)
+  (sel 1 2)
+  (take 1 2)
+  (afterNth 1 2)
+  (u 1)
+)
+(RULES 
+natsFrom(N) -> cons(N,natsFrom(s(N)))
+fst(pair(XS,YS)) -> XS
+snd(pair(XS,YS)) -> YS
+splitAt(0,XS) -> pair(nil,XS)
+splitAt(s(N),cons(X,XS)) -> u(splitAt(N,XS),N,X,XS)
+u(pair(YS,ZS),N,X,XS) -> pair(cons(X,YS),ZS)
+head(cons(N,XS)) -> N
+tail(cons(N,XS)) -> XS
+sel(N,XS) -> head(afterNth(N,XS))
+take(N,XS) -> fst(splitAt(N,XS))
+afterNth(N,XS) -> snd(splitAt(N,XS))
+)

@@ -1,0 +1,247 @@
+(COMMENT generated from Maude module 'PEANO-NAT' by 'complete' transformation)
+(VAR M' M N' N V1 V2 V X Z Y)
+(THEORY (C gcd)
+(C d)
+(C _+_)
+(C _*_))
+(RULES
+1 -> s_(0)
+
+2 -> s_(s_(0))
+
+3 -> s_(s_(s_(0)))
+
+4 -> s_(s_(s_(s_(0))))
+
+5 -> s_(s_(s_(s_(s_(0)))))
+
+6 -> s_(s_(s_(s_(s_(s_(0))))))
+
+7 -> s_(s_(s_(s_(s_(s_(s_(0)))))))
+
+U101(tt,M,N) -> d(N,M)
+
+U11(tt) -> 0
+
+U111(tt) -> 0
+
+U121(tt,M',N') -> U122(equal(_>_(N',M'),true),M',N')
+
+U122(tt,M',N') -> gcd(d(N',M'),M')
+
+U131(tt,N') -> N'
+
+U141(tt,V1,V2) -> U142(isNat(V1),V2)
+
+U142(tt,V2) -> U143(isNat(V2))
+
+U143(tt) -> tt
+
+U151(tt,V1,V2) -> U152(isNat(V1),V2)
+
+U152(tt,V2) -> U153(isNat(V2))
+
+U153(tt) -> tt
+
+U161(tt,V) -> U162(isNzNat(V))
+
+U162(tt) -> tt
+
+U171(tt,V1,V2) -> U172(isNat(V1),V2)
+
+U172(tt,V2) -> U173(isNat(V2))
+
+U173(tt) -> tt
+
+U181(tt,V1,V2) -> U182(isNat(V1),V2)
+
+U182(tt,V2) -> U183(isNat(V2))
+
+U183(tt) -> tt
+
+U191(tt,V1,V2) -> U192(isNat(V1),V2)
+
+U192(tt,V2) -> U193(isNat(V2))
+
+U193(tt) -> tt
+
+U201(tt,V1,V2) -> U202(isNat(V1),V2)
+
+U202(tt,V2) -> U203(isNat(V2))
+
+U203(tt) -> tt
+
+U21(tt,M,N) -> s_(_+_(N,_+_(M,_*_(N,M))))
+
+U211(tt,V1) -> U212(isNzNat(V1))
+
+U212(tt) -> tt
+
+U221(tt,V1,V2) -> U222(isNat(V1),V2)
+
+U222(tt,V2) -> U223(isNzNat(V2))
+
+U223(tt) -> tt
+
+U231(tt,V1,V2) -> U232(isNzNat(V1),V2)
+
+U232(tt,V2) -> U233(isNzNat(V2))
+
+U233(tt) -> tt
+
+U241(tt,V1,V2) -> U242(isNzNat(V1),V2)
+
+U242(tt,V2) -> U243(isNzNat(V2))
+
+U243(tt) -> tt
+
+U251(tt,V1) -> U252(isNat(V1))
+
+U252(tt) -> tt
+
+U261(tt,N) -> N
+
+U271(tt) -> s_(0)
+
+U281(tt,M',N) -> U282(equal(_>_(M',N),true))
+
+U282(tt) -> 0
+
+U291(tt,M',N) -> U292(equal(_>_(N,M'),true),M',N)
+
+U292(tt,M',N) -> s_(quot(d(N,M'),M'))
+
+U31(tt,N) -> N
+
+U41(tt,M,N) -> s_(s_(_+_(N,M)))
+
+U51(tt,M,N) -> _>_(M,N)
+
+U61(tt) -> false
+
+U71(tt) -> true
+
+U81(tt,M,N) -> _>_(N,M)
+
+U91(tt,N) -> N
+
+_*_(N,0) -> U11(and(isNat(N),isNatKind(N)))
+
+_*_(s_(N),s_(M)) -> U21(and(and(isNat(M),isNatKind(M)),and(isNat(N),isNatKind(N))),M,N)
+
+_+_(N,0) -> U31(and(isNat(N),isNatKind(N)),N)
+
+_+_(s_(N),s_(M)) -> U41(and(and(isNat(M),isNatKind(M)),and(isNat(N),isNatKind(N))),M,N)
+
+_<_(N,M) -> U51(and(and(isNat(M),isNatKind(M)),and(isNat(N),isNatKind(N))),M,N)
+
+_>_(0,M) -> U61(and(isNat(M),isNatKind(M)))
+
+_>_(N',0) -> U71(and(isNzNat(N'),isNatKind(N')))
+
+_>_(s_(N),s_(M)) -> U81(and(and(isNat(M),isNatKind(M)),and(isNat(N),isNatKind(N))),M,N)
+
+and(tt,X) -> X
+
+d(0,N) -> U91(and(isNat(N),isNatKind(N)),N)
+
+d(s_(N),s_(M)) -> U101(and(and(isNat(M),isNatKind(M)),and(isNat(N),isNatKind(N))),M,N)
+
+equal(X,X) -> tt
+
+gcd(0,N) -> U111(and(isNat(N),isNatKind(N)))
+
+gcd(N',M') -> U121(and(and(isNzNat(M'),isNatKind(M')),and(isNzNat(N'),isNatKind(N'))),M',N')
+
+gcd(N',N') -> U131(and(isNzNat(N'),isNatKind(N')),N')
+
+isBoolean(false) -> tt
+
+isBoolean(true) -> tt
+
+isBoolean(_<_(V1,V2)) -> U141(and(isNatKind(V1),isNatKind(V2)),V1,V2)
+
+isBoolean(_>_(V1,V2)) -> U151(and(isNatKind(V1),isNatKind(V2)),V1,V2)
+
+isBooleanKind(false) -> tt
+
+isBooleanKind(true) -> tt
+
+isBooleanKind(_<_(V1,V2)) -> and(isNatKind(V1),isNatKind(V2))
+
+isBooleanKind(_>_(V1,V2)) -> and(isNatKind(V1),isNatKind(V2))
+
+isNat(0) -> tt
+
+isNat(V) -> U161(isNatKind(V),V)
+
+isNat(_*_(V1,V2)) -> U171(and(isNatKind(V1),isNatKind(V2)),V1,V2)
+
+isNat(_+_(V1,V2)) -> U181(and(isNatKind(V1),isNatKind(V2)),V1,V2)
+
+isNat(d(V1,V2)) -> U191(and(isNatKind(V1),isNatKind(V2)),V1,V2)
+
+isNat(gcd(V1,V2)) -> U201(and(isNatKind(V1),isNatKind(V2)),V1,V2)
+
+isNat(p_(V1)) -> U211(isNatKind(V1),V1)
+
+isNat(quot(V1,V2)) -> U221(and(isNatKind(V1),isNatKind(V2)),V1,V2)
+
+isNatKind(0) -> tt
+
+isNatKind(1) -> tt
+
+isNatKind(2) -> tt
+
+isNatKind(3) -> tt
+
+isNatKind(4) -> tt
+
+isNatKind(5) -> tt
+
+isNatKind(6) -> tt
+
+isNatKind(7) -> tt
+
+isNatKind(_*_(V1,V2)) -> and(isNatKind(V1),isNatKind(V2))
+
+isNatKind(_+_(V1,V2)) -> and(isNatKind(V1),isNatKind(V2))
+
+isNatKind(d(V1,V2)) -> and(isNatKind(V1),isNatKind(V2))
+
+isNatKind(gcd(V1,V2)) -> and(isNatKind(V1),isNatKind(V2))
+
+isNatKind(p_(V1)) -> isNatKind(V1)
+
+isNatKind(quot(V1,V2)) -> and(isNatKind(V1),isNatKind(V2))
+
+isNatKind(s_(V1)) -> isNatKind(V1)
+
+isNzNat(1) -> tt
+
+isNzNat(2) -> tt
+
+isNzNat(3) -> tt
+
+isNzNat(4) -> tt
+
+isNzNat(5) -> tt
+
+isNzNat(6) -> tt
+
+isNzNat(7) -> tt
+
+isNzNat(_*_(V1,V2)) -> U231(and(isNatKind(V1),isNatKind(V2)),V1,V2)
+
+isNzNat(gcd(V1,V2)) -> U241(and(isNatKind(V1),isNatKind(V2)),V1,V2)
+
+isNzNat(s_(V1)) -> U251(isNatKind(V1),V1)
+
+p_(s_(N)) -> U261(and(isNat(N),isNatKind(N)),N)
+
+quot(M',M') -> U271(and(isNzNat(M'),isNatKind(M')))
+
+quot(N,M') -> U281(and(and(isNzNat(M'),isNatKind(M')),and(isNat(N),isNatKind(N))),M',N)
+
+quot(N,M') -> U291(and(and(isNzNat(M'),isNatKind(M')),and(isNat(N),isNatKind(N))),M',N)
+)

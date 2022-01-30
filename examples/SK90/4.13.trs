@@ -1,0 +1,9 @@
+(VAR x y z)
+(RULES
+-(0,y) -> 0
+-(x,0) -> x
+-(x,s(y)) -> if(greater(x,s(y)),s(-(x,p(s(y)))),0)
+p(0) -> 0
+p(s(x)) -> x
+)
+(COMMENT Example 4.13 (Difference) in \cite{SK90})

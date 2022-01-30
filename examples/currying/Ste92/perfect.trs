@@ -1,0 +1,18 @@
+(VAR x y u z xs fun)
+(RULES
+  app(perfectp, 0) -> false
+  app(perfectp, app(s, x)) -> app(app(app(app(f, x), app(s, 0)), app(s, x)), app(s, x))
+  app(app(app(app(f, 0), y), 0), u) -> true
+  app(app(app(app(f, 0), y), app(s, z)), u) -> false
+  app(app(app(app(f, app(s, x)), 0), z), u) -> app(app(app(app(f, x), u), app(app(minus, z), app(s, x))), u)
+  app(app(app(app(f, app(s, x)), app(s, y)), z), u) -> app(app(app(if, app(app(le, x), y)), app(app(app(app(f, app(s, x)), app(app(minus, y), x)), z), u)), app(app(app(app(f, x), u), z), u))
+
+  app(app(map,fun),nil) -> nil
+  app(app(map,fun),app(app(cons,x),xs)) -> app(app(cons,app(fun,x)),app(app(map,fun),xs))
+
+  app(app(filter,fun),nil) -> nil
+  app(app(filter,fun),app(app(cons,x),xs)) -> app(app(app(app(filter2,app(fun, x)),fun),x),xs)
+  app(app(app(app(filter2,true),fun),x),xs) -> app(app(cons,x),app(app(filter,fun),xs))
+  app(app(app(app(filter2,false),fun),x),xs) -> app(app(filter,fun),xs)
+
+)

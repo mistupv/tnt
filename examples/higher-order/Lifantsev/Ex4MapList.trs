@@ -1,0 +1,5 @@
+(VAR x f t)
+(RULES
+  app(app(fmap, fnil), x) -> nil
+  app(app(fmap, app(app(fcons, f), t)), x) -> app(app(cons, app(f, x)), app(app(fmap, t), x))
+)

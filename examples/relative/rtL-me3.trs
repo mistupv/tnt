@@ -1,0 +1,29 @@
+(COMMENT
+ Liveness problem: mutual exclusion
+)
+(VAR i x y)
+(RULES
+topB(i, N1(x), y) -> topA(1, T1(x), y)	
+topA(i, N1(x), y) ->= topA(1, T1(x), y)
+topA(i, x, N2(y)) -> topB(0, x, T2(y))	
+topB(i, x, N2(y)) ->= topB(0, x, T2(y))
+
+topB(i, S1(x), y) -> topA(i, N1(x), y)	
+topA(i, S1(x), y) ->= topA(i, N1(x), y)
+topA(i, x, S2(y)) -> topB(i, x, N2(y))	
+topB(i, x, S2(y)) ->= topB(i, x, N2(y))
+
+topA(i, N1(x), T2(y)) -> topB(i, N1(x), S2(y))	
+topB(i, N1(x), T2(y)) ->= topB(i, N1(x), S2(y))
+
+topA(1, T1(x), T2(y)) -> topB(1, T1(x), S2(y))	
+topB(1, T1(x), T2(y)) ->= topB(1, T1(x), S2(y))
+
+topA(i, N1(x), y) ->= topA(i, N1(C(x)), y)
+topB(i, x, N2(y)) ->= topB(i, x, N2(C(y)))	
+
+topA(i, T1(x), y) ->= topA(i, T1(x), y)	
+topB(i, x, T2(y)) ->= topB(i, x, T2(y))	
+
+topB(i, x, S2(y)) ->= topB(i, x, S2(D(y)))
+)

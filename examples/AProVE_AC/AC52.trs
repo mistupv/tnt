@@ -1,0 +1,6 @@
+(VAR x y z)
+(THEORY (AC plus times))
+(RULES
+  times(plus(x, y), z) -> plus(times(x, z), times(y, z))
+  times(z, plus(x, f(y))) -> times(g(z, y), plus(x, a))
+)

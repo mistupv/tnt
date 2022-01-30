@@ -1,0 +1,6 @@
+(VAR x y z)
+(RULES
+f(f(a,a),x) -> f(a,f(b,f(a,x)))
+f(x,f(y,z)) -> f(f(x,y),z)
+)
+(COMMENT TRS variant of aa -> aba )

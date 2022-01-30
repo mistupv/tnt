@@ -1,0 +1,7 @@
+(VAR x y z)
+(RULES
+g(a) -> g(b)
+b -> f(a,a)
+f(a,a) -> g(d)
+)
+(COMMENT Example 5.3.21 in \cite{K00})

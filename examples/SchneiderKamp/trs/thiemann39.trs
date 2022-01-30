@@ -1,0 +1,21 @@
+(COMMENT
+ sieve of Erathosthenes using filter
+)
+(VAR x y z xs f)
+(RULES
+a(a(divides,0),a(s,y)) -> true
+a(a(divides,a(s,x)),a(s,y)) -> a(a(a(div2,x),a(s,y)),y)
+a(a(a(div2,x),y),0) -> a(a(divides,x),y)
+a(a(a(div2,0),y),a(s,z)) -> false
+a(a(a(div2,a(s,x)),y),a(s,z)) -> a(a(a(div2,x),y),z)
+
+a(a(filter,f),nil) -> nil
+a(a(filter,f),a(a(cons,x),xs)) -> a(a(a(if,a(f,x)),x),a(a(filter,f),xs))
+a(a(a(if,true),x),xs) -> a(a(cons,x),xs)
+a(a(a(if,false),x),xs) -> xs
+a(a(not,f),x) -> a(not2,a(f,x))
+a(not2,true) -> false
+a(not2,false) -> true
+a(sieve,nil) -> nil
+a(sieve,a(a(cons,x),xs)) -> a(a(cons,x),a(sieve,a(a(filter,a(not,a(divides,x))),xs)))
+) 

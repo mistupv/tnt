@@ -1,0 +1,7 @@
+(VAR X Y X1 X2)
+(RULES 
+f(g(X),Y) -> f(X,n__f(g(X),activate(Y)))
+f(X1,X2) -> n__f(X1,X2)
+activate(n__f(X1,X2)) -> f(X1,X2)
+activate(X) -> X
+)

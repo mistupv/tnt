@@ -1,0 +1,8 @@
+(VAR x y z u v)
+(RULES
+admit(x,nil) -> nil
+admit(x,.(u,.(v,.(w,z)))) ->
+  cond(=(sum(x,u,v),w),.(u,.(v,.(w,admit(carry(x,u,v),z)))))
+cond(true,y) -> y
+)
+(COMMENT Example 2.45 in \cite{SK90})

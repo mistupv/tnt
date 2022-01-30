@@ -1,0 +1,21 @@
+(VAR x y)
+(RULES
+cond1(true,x,y) -> cond2(gr(y,0),x,y)
+cond2(true,x,y) -> cond2(gr(y,0),x,p(y))
+cond2(false,x,y) -> cond1(gr(x,0),p(x),y)
+gr(0,x) -> false
+gr(s(x),0) -> true
+gr(s(x),s(y)) -> gr(x,y)
+p(0) -> 0
+p(s(x)) -> x
+)
+(COMMENT
+while gr(x,0)
+do
+  while gr(y,0)
+  do
+    y:=p(y)
+  od;
+  x:=p(x)
+od
+)

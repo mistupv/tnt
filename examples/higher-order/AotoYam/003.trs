@@ -1,0 +1,6 @@
+(VAR x y p f)
+(RULES
+  app(app(app(if, true), x), y) -> x
+  app(app(app(if, false), x), y) -> y
+  app(app(app(until, p), f), x) -> app(app(app(if, app(p, x)), x), app(app(app(until, p), f), app(f, x)))
+)

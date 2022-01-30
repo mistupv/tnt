@@ -1,0 +1,7 @@
+(VAR y x f)
+(RULES
+  app(app(plus, 0), y) -> y
+  app(app(plus, app(s, x)), y) -> app(s, app(app(plus, x), y))
+  app(app(app(curry, f), x), y) -> app(app(f, x), y)
+  add -> app(curry, plus)
+)

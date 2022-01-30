@@ -1,0 +1,12 @@
+(VAR x y z)
+(RULES
+  ap(f,x) -> x
+  ap(ap(ap(g,x),y),ap(s,z)) -> ap(ap(ap(g,x),y),ap(ap(x,y),0))
+)
+(COMMENT
+ using the types below, this TRS is terminating, but it is non-terminating without types
+ f :: N -> N
+ g :: (N -> N -> N) -> N -> N -> N
+ s :: N -> N
+ 0 :: N
+)

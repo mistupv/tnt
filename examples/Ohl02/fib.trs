@@ -1,0 +1,7 @@
+(VAR x  y  x'  y'  z)
+(RULES
+plus(x, y) -> y' | x -> 0 , y -> y' 
+plus(x, y) -> s(plus(x', y')) | x -> s(x'), y -> y' 
+fib(0) -> pair(0, s(0))
+fib(s(x)) -> pair(z, plus(y, z)) | fib(x) -> pair(y, z) 
+)

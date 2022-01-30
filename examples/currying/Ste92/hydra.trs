@@ -1,0 +1,16 @@
+(VAR y z x xs fun)
+(RULES
+  app(f, app(app(cons, nil), y)) -> y
+  app(f, app(app(cons, app(f, app(app(cons, nil), y))), z)) -> app(app(app(copy, n), y), z)
+  app(app(app(copy, 0), y), z) -> app(f, z)
+  app(app(app(copy, app(s, x)), y), z) -> app(app(app(copy, x), y), app(app(cons, app(f, y)), z))
+
+  app(app(map,fun),nil) -> nil
+  app(app(map,fun),app(app(cons,x),xs)) -> app(app(cons,app(fun,x)),app(app(map,fun),xs))
+
+  app(app(filter,fun),nil) -> nil
+  app(app(filter,fun),app(app(cons,x),xs)) -> app(app(app(app(filter2,app(fun, x)),fun),x),xs)
+  app(app(app(app(filter2,true),fun),x),xs) -> app(app(cons,x),app(app(filter,fun),xs))
+  app(app(app(app(filter2,false),fun),x),xs) -> app(app(filter,fun),xs)
+
+)

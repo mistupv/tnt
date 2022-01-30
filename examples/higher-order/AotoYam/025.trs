@@ -1,0 +1,4 @@
+(VAR f x)
+(RULES
+  app(app(apply, f), x) -> app(f, x)
+)

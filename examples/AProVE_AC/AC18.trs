@@ -1,0 +1,21 @@
+(VAR x y)
+(THEORY (AC plus times))
+(RULES
+  0(S) -> S
+  plus(S, x) -> x
+  plus(0(x), 0(y)) -> 0(plus(x, y))
+  plus(0(x), 1(y)) -> 1(plus(x, y))
+  plus(0(x), j(y)) -> j(plus(x, y))
+  plus(1(x), 1(y)) -> j(plus(1(S), plus(x, y)))
+  plus(j(x), j(y)) -> 1(plus(j(S), plus(x, y)))
+  plus(1(x), j(y)) -> 0(plus(x, y))
+  opp(S) -> S
+  opp(0(x)) -> 0(opp(x))
+  opp(1(x)) -> j(opp(x))
+  opp(j(x)) -> 1(opp(x))
+  minus(x, y) -> plus(opp(y), x)
+  times(S, x) -> S
+  times(0(x), y) -> 0(times(x, y))
+  times(1(x), y) -> plus(0(times(x, y)), y)
+  times(j(x), y) -> minus(0(times(x, y)), y)
+)

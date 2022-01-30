@@ -1,0 +1,8 @@
+(VAR f x h t)
+(RULES
+  app(app(twice, f), x) -> app(f, app(f, x))
+  app(app(map, f), nil) -> nil
+  app(app(map, f), app(app(cons, h), t)) -> app(app(cons, app(f, h)), app(app(map, f), t))
+  app(app(fmap, nil), x) -> nil
+  app(app(fmap, app(app(cons, f), t_f)), x) -> app(app(cons, app(f, x)), app(app(fmap, t_f), x))
+)

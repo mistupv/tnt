@@ -1,0 +1,11 @@
+(VAR x y)
+(RULES
+p(s(x)) -> x
+fact(0) -> s(0)
+fact(s(x)) -> *(s(x),fact(p(s(x))))
+*(0,y) -> 0
+*(s(x),y) -> +(*(x,y),y)
++(x,0) -> x
++(x,s(y)) -> s(+(x,y))
+)
+(COMMENT Example 21 in \cite{D33})

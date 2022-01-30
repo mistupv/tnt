@@ -1,0 +1,8 @@
+(VAR X Y Z I P)
+(RULES 
+__(__(X,Y),Z) -> __(X,__(Y,Z))
+__(X,nil) -> X
+__(nil,X) -> X
+and(tt) -> X
+isNePal(__(I,__(P,I))) -> tt
+)

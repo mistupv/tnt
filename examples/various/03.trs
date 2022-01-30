@@ -1,0 +1,8 @@
+(VAR x y z)
+(RULES
+f(g(x),h(x),y,x) -> f(y,y,y,x)
+f(x,y,z,0) -> 2
+g(0) -> 2
+h(0) -> 2
+)
+(COMMENT Example 3 (TRS $\RR_1$) in \cite{O95})

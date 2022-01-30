@@ -1,0 +1,9 @@
+(from AG01 4.15)
+(VAR x y z)
+(RULES
+f(0,1,g(x,y),z) -> f(g(x,y),g(x,y),g(x,y),h(x))
+g(0,1) -> 0
+g(0,1) -> 1
+h(g(x,y)) -> h(x)
+)
+

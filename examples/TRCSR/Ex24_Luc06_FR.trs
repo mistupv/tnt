@@ -1,0 +1,10 @@
+(VAR X)
+(RULES 
+f(n__b,X,n__c) -> f(X,c,X)
+c -> b
+b -> n__b
+c -> n__c
+activate(n__b) -> b
+activate(n__c) -> c
+activate(X) -> X
+)

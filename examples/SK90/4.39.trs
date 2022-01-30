@@ -1,0 +1,6 @@
+(VAR x y z)
+(RULES
+*(x,*(minus(y),y)) -> *(minus(*(y,y)),x)
+)
+
+(COMMENT Example 4.39 in \cite{SK90})

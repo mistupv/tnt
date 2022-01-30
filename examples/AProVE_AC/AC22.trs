@@ -1,0 +1,25 @@
+(VAR x y z)
+(THEORY (AC plus times))
+(RULES
+  zero(0) -> 0
+  plus(x, 0) -> x
+  plus(zero(x), zero(y)) -> zero(plus(x, y))
+  plus(zero(x), un(y)) -> un(plus(x, y))
+  plus(zero(x), j(y)) -> j(plus(x, y))
+  plus(un(x), j(y)) -> zero(plus(x, y))
+  plus(un(x), un(y)) -> j(plus(x, plus(y, un(0))))
+  plus(j(x), j(y)) -> un(plus(x, plus(y, j(0))))
+  minus(x, y) -> plus(x, neg(y))
+  neg(0) -> 0
+  neg(zero(x)) -> zero(neg(x))
+  neg(un(x)) -> j(neg(x))
+  neg(j(x)) -> un(neg(x))
+  times(x, 0) -> 0
+  times(x, times(0, z)) -> times(0, z)
+  times(x, zero(y)) -> zero(times(x, y))
+  times(x, times(zero(y), z)) -> times(zero(times(x, y)), z)
+  times(x, un(y)) -> plus(x, zero(times(x, y)))
+  times(x, times(un(y), z)) -> times(plus(x, zero(times(x, y))), z)
+  times(x, j(y)) -> plus(zero(times(x, y)), neg(x))
+  times(x, times(j(y), z)) -> times(plus(zero(times(x, y)), neg(x)), z)
+)

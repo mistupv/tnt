@@ -1,0 +1,8 @@
+(VAR x)
+(RULES
+half(0) -> 0
+half(s(0)) -> 0
+half(s(s(x))) -> s(half(x))
+s(log(0)) -> s(0)
+log(s(x)) -> s(log(half(s(x))))
+)

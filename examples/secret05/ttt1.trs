@@ -1,0 +1,11 @@
+(VAR x y z)
+(RULES
+f(s(a),s(b),x) -> f(x,x,x)
+g(f(s(x),s(y),z)) -> g(f(x,y,z))
+cons(x,y) -> x
+cons(x,y) -> y
+)
+(COMMENT
+Example 33 from Hirokawa and Middeldorp, RTA'04
+)
+

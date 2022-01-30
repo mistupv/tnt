@@ -1,0 +1,30 @@
+(from AG01 4.29)
+(VAR x y)
+(RULES
+even(0) -> true
+even(s(0)) -> false
+even(s(s(x))) -> even(x)
+half(0) -> 0
+half(s(s(x))) -> s(half(x))
+
+plus(s(x), s(y)) -> s(s(plus(if(gt(x,y),x,y), if(not(gt(x,y)),id(x),id(y)))))
+plus(s(x), x) -> plus(if(gt(x,x), id(x), id(x)), s(x))
+plus(zero, y) -> y
+plus(id(x), s(y)) -> s(plus(x,if(gt(s(y),y), y, s(y))))
+
+id(x) -> x
+
+if(true, x, y) -> x
+if(false, x, y) -> y
+
+not(x) -> if(x, false, true)
+
+gt(s(x), zero) -> true
+gt(zero, y) -> false
+gt(s(x), s(y)) -> gt(x, y)
+times(0,y) -> 0
+times(s(x),y) -> if_times(even(s(x)),s(x),y)
+if_times(true,s(x),y) -> plus(times(half(s(x)),y),times(half(s(x)),y))
+if_times(false,s(x),y) -> plus(y,times(x,y))
+)
+(STRATEGY INNERMOST)

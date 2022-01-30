@@ -1,0 +1,22 @@
+(VAR xs ys zs x y)
+(RULES
+isEmpty(nil) -> true
+isEmpty(cons(x,xs)) -> false
+last(cons(x,nil)) -> x
+last(cons(x,cons(y,ys))) -> last(cons(y,ys))
+dropLast(nil) -> nil
+dropLast(cons(x,nil)) -> nil
+dropLast(cons(x,cons(y,ys))) -> cons(x,dropLast(cons(y,ys)))
+append(nil,ys) -> ys
+append(cons(x,xs),ys) -> cons(x,append(xs,ys))
+
+reverse(xs) -> rev(xs,nil)
+rev(xs, ys) -> if(isEmpty(xs), dropLast(xs), append(ys, last(xs)), ys)
+if(true, xs, ys, zs) -> zs
+if(false, xs, ys, zs) -> rev(xs, ys)
+)
+
+(COMMENT
+reversing a list by taking the elements from the back 
+of the list and appending them to the accumulated result
+)

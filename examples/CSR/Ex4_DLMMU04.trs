@@ -1,0 +1,37 @@
+(VAR T M N IL L)
+(STRATEGY CONTEXTSENSITIVE 
+  (isNat)
+  (isNatIList)
+  (isNatList)
+  (tt)
+  (and 1 2)
+  (0)
+  (s 1)
+  (zeros)
+  (nil)
+  (cons 1)
+  (take 1 2)
+  (length 1)
+  (uTake1 1)
+  (uTake2 1)
+  (uLength 1)
+)
+(RULES 
+and(tt,T) -> T
+isNatIList(IL) -> isNatList(IL)
+isNat(0) -> tt
+isNat(s(N)) -> isNat(N)
+isNat(length(L)) -> isNatList(L)
+isNatIList(zeros) -> tt
+isNatIList(cons(N,IL)) -> and(isNat(N),isNatIList(IL))
+isNatList(nil) -> tt
+isNatList(cons(N,L)) -> and(isNat(N),isNatList(L))
+isNatList(take(N,IL)) -> and(isNat(N),isNatIList(IL))
+zeros -> cons(0,zeros)
+take(0,IL) -> uTake1(isNatIList(IL))
+uTake1(tt) -> nil
+take(s(M),cons(N,IL)) -> uTake2(and(isNat(M),and(isNat(N),isNatIList(IL))),M,N,IL)
+uTake2(tt,M,N,IL) -> cons(N,take(M,IL))
+length(cons(N,L)) -> uLength(and(isNat(N),isNatList(L)),L)
+uLength(tt,L) -> s(length(L))
+)

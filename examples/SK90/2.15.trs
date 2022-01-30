@@ -1,0 +1,8 @@
+(VAR x)
+(RULES
+f(0) -> 1
+f(s(x)) -> g(f(x))
+g(x) -> +(x,s(x))
+f(s(x)) -> +(f(x),s(f(x)))
+)
+(COMMENT Example 2.15 in \cite{SK90})

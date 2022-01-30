@@ -1,0 +1,7 @@
+(COMMENT
+   This is an example of a terminating function which is not type correct.
+)
+(VAR x)
+(RULES
+  ap(ap(ff, x),x) -> ap( ap(x, ap(ff,x)), ap(ap(cons, x),nil))
+) 

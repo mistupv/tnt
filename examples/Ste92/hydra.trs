@@ -1,0 +1,8 @@
+(from Ste92 example 1)
+(VAR x  y  z)
+(RULES
+f(cons(nil,y)) -> y
+f(cons(f(cons(nil,y)), z)) -> copy(n, y, z)
+copy(0, y, z) -> f(z)
+copy(s(x), y, z) -> copy(x, y, cons(f(y), z))
+)

@@ -1,0 +1,27 @@
+(VAR y x z xs f)
+(RULES
+  app(app(le, 0), y) -> true
+  app(app(le, app(s, x)), 0) -> false
+  app(app(le, app(s, x)), app(s, y)) -> app(app(le, x), y)
+  app(app(eq, 0), 0) -> true
+  app(app(eq, 0), app(s, y)) -> false
+  app(app(eq, app(s, x)), 0) -> false
+  app(app(eq, app(s, x)), app(s, y)) -> app(app(eq, x), y)
+  app(app(app(if, true), x), y) -> x
+  app(app(app(if, false), x), y) -> y
+  app(minsort, nil) -> nil
+  app(minsort, app(app(cons, x), y)) -> app(app(cons, app(app(min, x), y)), app(minsort, app(app(del, app(app(min, x), y)), app(app(cons, x), y))))
+  app(app(min, x), nil) -> x
+  app(app(min, x), app(app(cons, y), z)) -> app(app(app(if, app(app(le, x), y)), app(app(min, x), z)), app(app(min, y), z))
+  app(app(del, x), nil) -> nil
+  app(app(del, x), app(app(cons, y), z)) -> app(app(app(if, app(app(eq, x), y)), z), app(app(cons, y), app(app(del, x), z)))
+
+  app(app(map,f),nil) -> nil
+  app(app(map,f),app(app(cons,x),xs)) -> app(app(cons,app(f,x)),app(app(map,f),xs))
+
+  app(app(filter,f),nil) -> nil
+  app(app(filter,f),app(app(cons,x),xs)) -> app(app(app(app(filter2,app(f, x)),f),x),xs)
+  app(app(app(app(filter2,true),f),x),xs) -> app(app(cons,x),app(app(filter,f),xs))
+  app(app(app(app(filter2,false),f),x),xs) -> app(app(filter,f),xs)
+
+)

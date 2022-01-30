@@ -1,0 +1,10 @@
+(VAR x y z)
+(RULES
++(a,b) -> +(b,a)
++(a,+(b,z)) -> +(b,+(a,z))
++(+(x,y),z) -> +(x,+(y,z))
+f(a,y) -> a
+f(b,y) -> b
+f(+(x,y),z) -> +(f(x,z),f(y,z))
+)
+(COMMENT Example 2.8 in \cite{SK90})

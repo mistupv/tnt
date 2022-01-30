@@ -1,0 +1,8 @@
+(VAR x y)
+(RULES
+f(g(x,y), f(y,y)) -> f(g(y,x), y)
+)
+
+(COMMENT
+Example 1 in \cite{G96}.
+)

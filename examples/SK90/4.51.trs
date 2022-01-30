@@ -1,0 +1,8 @@
+(VAR x y)
+(RULES
+f(a) -> g(h(a))
+h(g(x)) -> g(h(f(x)))
+k(x,h(x),a) -> h(x)
+k(f(x),y,x) -> f(x)
+)
+(COMMENT Example 4.51 in \cite{SK90})

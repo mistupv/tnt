@@ -1,0 +1,7 @@
+(from AG01 4.25)
+(VAR x)
+(RULES
+f(x,x) -> f(g(x),x)
+g(x) -> s(x)
+)
+

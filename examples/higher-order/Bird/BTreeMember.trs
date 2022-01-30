@@ -1,0 +1,11 @@
+(VAR x y w z)
+(RULES
+  app(app(lt, app(s, x)), app(s, y)) -> app(app(lt, x), y)
+  app(app(lt, 0), app(s, y)) -> true
+  app(app(lt, y), 0) -> false
+  app(app(eq, x), x) -> true
+  app(app(eq, app(s, x)), 0) -> false
+  app(app(eq, 0), app(s, x)) -> false
+  app(app(member, w), null) -> false
+  app(app(member, w), app(app(app(fork, x), y), z)) -> app(app(app(if, app(app(lt, w), y)), app(app(member, w), x)), app(app(app(if, app(app(eq, w), y)), true), app(app(member, w), z)))
+)

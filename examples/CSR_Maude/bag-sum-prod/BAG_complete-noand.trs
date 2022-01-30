@@ -1,0 +1,238 @@
+(COMMENT generated from Maude module 'BAG' by 'complete-noand' transformation)
+(VAR A B V1 V2 X Y Z)
+(THEORY (AC union)
+(AC plus)
+(AC mult))
+(RULES
+union(X,empty) -> X
+
+union(empty,X) -> X
+
+0(z) -> z
+
+U101(tt,V1) -> U102(isBagKind(V1),V1)
+
+U102(tt,V1) -> U103(isBag(V1))
+
+U103(tt) -> tt
+
+U11(tt,V1) -> U12(isBinKind(V1),V1)
+
+U111(tt) -> tt
+
+U12(tt,V1) -> U13(isBin(V1))
+
+U121(tt) -> tt
+
+U13(tt) -> tt
+
+U131(tt,V2) -> U132(isBinKind(V2))
+
+U132(tt) -> tt
+
+U141(tt,V2) -> U142(isBinKind(V2))
+
+U142(tt) -> tt
+
+U151(tt) -> tt
+
+U161(tt) -> tt
+
+U171(tt,X) -> U172(isBinKind(X))
+
+U172(tt) -> z
+
+U181(tt,X,Y) -> U182(isBinKind(X),X,Y)
+
+U182(tt,X,Y) -> U183(isBin(Y),X,Y)
+
+U183(tt,X,Y) -> U184(isBinKind(Y),X,Y)
+
+U184(tt,X,Y) -> 0(mult(X,Y))
+
+U191(tt,X,Y) -> U192(isBinKind(X),X,Y)
+
+U192(tt,X,Y) -> U193(isBin(Y),X,Y)
+
+U193(tt,X,Y) -> U194(isBinKind(Y),X,Y)
+
+U194(tt,X,Y) -> plus(0(mult(X,Y)),Y)
+
+U201(tt,X) -> U202(isBinKind(X),X)
+
+U202(tt,X) -> X
+
+U21(tt,V1,V2) -> U22(isBagKind(V1),V1,V2)
+
+U211(tt,X,Y) -> U212(isBinKind(X),X,Y)
+
+U212(tt,X,Y) -> U213(isBin(Y),X,Y)
+
+U213(tt,X,Y) -> U214(isBinKind(Y),X,Y)
+
+U214(tt,X,Y) -> 0(plus(X,Y))
+
+U22(tt,V1,V2) -> U23(isBagKind(V2),V1,V2)
+
+U221(tt,X,Y) -> U222(isBinKind(X),X,Y)
+
+U222(tt,X,Y) -> U223(isBin(Y),X,Y)
+
+U223(tt,X,Y) -> U224(isBinKind(Y),X,Y)
+
+U224(tt,X,Y) -> 1(plus(X,Y))
+
+U23(tt,V1,V2) -> U24(isBagKind(V2),V1,V2)
+
+U231(tt,X,Y) -> U232(isBinKind(X),X,Y)
+
+U232(tt,X,Y) -> U233(isBin(Y),X,Y)
+
+U233(tt,X,Y) -> U234(isBinKind(Y),X,Y)
+
+U234(tt,X,Y) -> 0(plus(plus(X,Y),1(z)))
+
+U24(tt,V1,V2) -> U25(isBag(V1),V2)
+
+U241(tt,X) -> U242(isBinKind(X),X)
+
+U242(tt,X) -> X
+
+U25(tt,V2) -> U26(isBag(V2))
+
+U251(tt,A,B) -> U252(isBagKind(A),A,B)
+
+U252(tt,A,B) -> U253(isBag(B),A,B)
+
+U253(tt,A,B) -> U254(isBagKind(B),A,B)
+
+U254(tt,A,B) -> mult(prod(A),prod(B))
+
+U26(tt) -> tt
+
+U261(tt,X) -> U262(isBinKind(X),X)
+
+U262(tt,X) -> X
+
+U271(tt,A,B) -> U272(isBagKind(A),A,B)
+
+U272(tt,A,B) -> U273(isBag(B),A,B)
+
+U273(tt,A,B) -> U274(isBagKind(B),A,B)
+
+U274(tt,A,B) -> plus(sum(A),sum(B))
+
+U31(tt) -> tt
+
+U41(tt,V2) -> U42(isBagKind(V2))
+
+U42(tt) -> tt
+
+U51(tt,V1) -> U52(isBinKind(V1),V1)
+
+U52(tt,V1) -> U53(isBin(V1))
+
+U53(tt) -> tt
+
+U61(tt,V1) -> U62(isBinKind(V1),V1)
+
+U62(tt,V1) -> U63(isBin(V1))
+
+U63(tt) -> tt
+
+U71(tt,V1,V2) -> U72(isBinKind(V1),V1,V2)
+
+U72(tt,V1,V2) -> U73(isBinKind(V2),V1,V2)
+
+U73(tt,V1,V2) -> U74(isBinKind(V2),V1,V2)
+
+U74(tt,V1,V2) -> U75(isBin(V1),V2)
+
+U75(tt,V2) -> U76(isBin(V2))
+
+U76(tt) -> tt
+
+U81(tt,V1,V2) -> U82(isBinKind(V1),V1,V2)
+
+U82(tt,V1,V2) -> U83(isBinKind(V2),V1,V2)
+
+U83(tt,V1,V2) -> U84(isBinKind(V2),V1,V2)
+
+U84(tt,V1,V2) -> U85(isBin(V1),V2)
+
+U85(tt,V2) -> U86(isBin(V2))
+
+U86(tt) -> tt
+
+U91(tt,V1) -> U92(isBagKind(V1),V1)
+
+U92(tt,V1) -> U93(isBag(V1))
+
+U93(tt) -> tt
+
+isBag(empty) -> tt
+
+isBag(singl(V1)) -> U11(isBinKind(V1),V1)
+
+isBag(union(V1,V2)) -> U21(isBagKind(V1),V1,V2)
+
+isBagKind(empty) -> tt
+
+isBagKind(singl(V1)) -> U31(isBinKind(V1))
+
+isBagKind(union(V1,V2)) -> U41(isBagKind(V1),V2)
+
+isBin(z) -> tt
+
+isBin(0(V1)) -> U51(isBinKind(V1),V1)
+
+isBin(1(V1)) -> U61(isBinKind(V1),V1)
+
+isBin(mult(V1,V2)) -> U71(isBinKind(V1),V1,V2)
+
+isBin(plus(V1,V2)) -> U81(isBinKind(V1),V1,V2)
+
+isBin(prod(V1)) -> U91(isBagKind(V1),V1)
+
+isBin(sum(V1)) -> U101(isBagKind(V1),V1)
+
+isBinKind(z) -> tt
+
+isBinKind(0(V1)) -> U111(isBinKind(V1))
+
+isBinKind(1(V1)) -> U121(isBinKind(V1))
+
+isBinKind(mult(V1,V2)) -> U131(isBinKind(V1),V2)
+
+isBinKind(plus(V1,V2)) -> U141(isBinKind(V1),V2)
+
+isBinKind(prod(V1)) -> U151(isBagKind(V1))
+
+isBinKind(sum(V1)) -> U161(isBagKind(V1))
+
+mult(z,X) -> U171(isBin(X),X)
+
+mult(0(X),Y) -> U181(isBin(X),X,Y)
+
+mult(1(X),Y) -> U191(isBin(X),X,Y)
+
+plus(z,X) -> U201(isBin(X),X)
+
+plus(0(X),0(Y)) -> U211(isBin(X),X,Y)
+
+plus(0(X),1(Y)) -> U221(isBin(X),X,Y)
+
+plus(1(X),1(Y)) -> U231(isBin(X),X,Y)
+
+prod(empty) -> 1(z)
+
+prod(singl(X)) -> U241(isBin(X),X)
+
+prod(union(A,B)) -> U251(isBag(A),A,B)
+
+sum(empty) -> 0(z)
+
+sum(singl(X)) -> U261(isBin(X),X)
+
+sum(union(A,B)) -> U271(isBag(A),A,B)
+)

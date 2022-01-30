@@ -1,0 +1,6 @@
+(VAR X Y Z)
+
+(RULES 
+2nd(cons(X,cons(Y,Z))) -> Y
+from(X) -> cons(X,from(s(X)))
+)

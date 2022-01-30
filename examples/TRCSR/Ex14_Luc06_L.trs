@@ -1,0 +1,7 @@
+(VAR X)
+(RULES 
+h(X) -> g(X)
+g(a) -> f(b)
+f(X) -> h(a)
+a -> b
+)

@@ -1,0 +1,12 @@
+(VAR X)
+(RULES 
+active(c) -> mark(f(g(c)))
+active(f(g(X))) -> mark(g(X))
+mark(c) -> active(c)
+mark(f(X)) -> active(f(X))
+mark(g(X)) -> active(g(X))
+f(mark(X)) -> f(X)
+f(active(X)) -> f(X)
+g(mark(X)) -> g(X)
+g(active(X)) -> g(X)
+)

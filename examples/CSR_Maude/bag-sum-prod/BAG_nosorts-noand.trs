@@ -1,0 +1,66 @@
+(COMMENT generated from Maude module 'BAG' by 'nosorts-noand' transformation)
+(VAR A B X Y Z)
+(THEORY (AC union)
+(AC plus)
+(AC mult))
+(RULES
+union(X,empty) -> X
+
+union(empty,X) -> X
+
+0(z) -> z
+
+U11(tt,X,Y) -> U12(tt,X,Y)
+
+U12(tt,X,Y) -> 0(mult(X,Y))
+
+U21(tt,X,Y) -> U22(tt,X,Y)
+
+U22(tt,X,Y) -> plus(0(mult(X,Y)),Y)
+
+U31(tt,X,Y) -> U32(tt,X,Y)
+
+U32(tt,X,Y) -> 0(plus(X,Y))
+
+U41(tt,X,Y) -> U42(tt,X,Y)
+
+U42(tt,X,Y) -> 1(plus(X,Y))
+
+U51(tt,X,Y) -> U52(tt,X,Y)
+
+U52(tt,X,Y) -> 0(plus(plus(X,Y),1(z)))
+
+U61(tt,A,B) -> U62(tt,A,B)
+
+U62(tt,A,B) -> mult(prod(A),prod(B))
+
+U71(tt,A,B) -> U72(tt,A,B)
+
+U72(tt,A,B) -> plus(sum(A),sum(B))
+
+mult(z,X) -> z
+
+mult(0(X),Y) -> U11(tt,X,Y)
+
+mult(1(X),Y) -> U21(tt,X,Y)
+
+plus(z,X) -> X
+
+plus(0(X),0(Y)) -> U31(tt,X,Y)
+
+plus(0(X),1(Y)) -> U41(tt,X,Y)
+
+plus(1(X),1(Y)) -> U51(tt,X,Y)
+
+prod(empty) -> 1(z)
+
+prod(singl(X)) -> X
+
+prod(union(A,B)) -> U61(tt,A,B)
+
+sum(empty) -> 0(z)
+
+sum(singl(X)) -> X
+
+sum(union(A,B)) -> U71(tt,A,B)
+)

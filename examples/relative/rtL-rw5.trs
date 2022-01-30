@@ -1,0 +1,40 @@
+(COMMENT
+ Liveness problem: readers-writers
+ Model goal: smallest coding
+)
+(VAR r1 r2 w1 t p x y z)
+(RULES
+ RB ->= R(New, RB)
+ WB ->= W(New, WB)
+ R(x, RT) -> RT
+ W(x, WT) -> WT
+
+ top(ok(sys(read(r1, R(t, r2)), write(WT, WB),        p))) ->= top(check(sys(read(R(t, r1), r2), write(WT,       WB), p)))
+ top(ok(sys(read(RT, RB),       write(WT, W(t, w1)),  p))) ->= top(check(sys(read(RT,       RB), write(W(t, WT), w1), p)))
+ top(ok(sys(read(r1, R(t, r2)), write(WT, w1),       PR))) ->= top(check(sys(read(R(t, r1), r2), write(WT,       w1), PW)))
+ top(ok(sys(read(RT, r2),       write(WT, W(t, w1)), PW))) ->= top(check(sys(read(RT,       r2), write(W(t, WT), w1), PR)))
+
+ check(Old) ->= ok(Old)
+ check(R(x, y)) ->= R(check(x), y)
+ check(R(x, y)) ->= R(x, check(y))
+ check(W(x, y)) ->= W(check(x), y)
+ check(W(x, y)) ->= W(x, check(y))
+ check(read(x, y)) ->= read(check(x), y)
+ check(read(x, y)) ->= read(x, check(y))
+ check(write(x, y)) ->= write(check(x), y)
+ check(write(x, y)) ->= write(x, check(y))
+ check(sys(x, y, z)) ->= sys(check(x), y, z)
+ check(sys(x, y, z)) ->= sys(x, check(y), z)
+ check(sys(x, y, z)) ->= sys(x, y, check(z))
+ R(ok(x), y) ->= ok(R(x, y))
+ R(x, ok(y)) ->= ok(R(x, y))
+ W(ok(x), y) ->= ok(W(x, y))
+ W(x, ok(y)) ->= ok(W(x, y))
+ read(ok(x), y) ->= ok(read(x, y))
+ read(x, ok(y)) ->= ok(read(x, y))
+ write(ok(x), y) ->= ok(write(x, y))
+ write(x, ok(y)) ->= ok(write(x, y))
+ sys(ok(x), y, z) ->= ok(sys(x, y, z))
+ sys(x, ok(y), z) ->= ok(sys(x, y, z))
+ sys(x, y, ok(z)) ->= ok(sys(x, y, z))
+)

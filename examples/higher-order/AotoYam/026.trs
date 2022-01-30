@@ -1,0 +1,7 @@
+(VAR f x xs g)
+(RULES
+  app(app(map, f), nil) -> nil
+  app(app(map, f), app(app(cons, x), xs)) -> app(app(cons, app(f, x)), app(app(map, f), xs))
+  app(app(app(comp, f), g), x) -> app(f, app(g, x))
+  app(twice, f) -> app(app(comp, f), f)
+)

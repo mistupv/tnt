@@ -1,0 +1,31 @@
+(VAR m n x k f xs)
+(RULES
+  app(app(eq, 0), 0) -> true
+  app(app(eq, 0), app(s, m)) -> false
+  app(app(eq, app(s, n)), 0) -> false
+  app(app(eq, app(s, n)), app(s, m)) -> app(app(eq, n), m)
+  app(app(le, 0), m) -> true
+  app(app(le, app(s, n)), 0) -> false
+  app(app(le, app(s, n)), app(s, m)) -> app(app(le, n), m)
+  app(min, app(app(cons, 0), nil)) -> 0
+  app(min, app(app(cons, app(s, n)), nil)) -> app(s, n)
+  app(min, app(app(cons, n), app(app(cons, m), x))) -> app(app(if_min, app(app(le, n), m)), app(app(cons, n), app(app(cons, m), x)))
+  app(app(if_min, true), app(app(cons, n), app(app(cons, m), x))) -> app(min, app(app(cons, n), x))
+  app(app(if_min, false), app(app(cons, n), app(app(cons, m), x))) -> app(min, app(app(cons, m), x))
+  app(app(app(replace, n), m), nil) -> nil
+  app(app(app(replace, n), m), app(app(cons, k), x)) -> app(app(app(app(if_replace, app(app(eq, n), k)), n), m), app(app(cons, k), x))
+  app(app(app(app(if_replace, true), n), m), app(app(cons, k), x)) -> app(app(cons, m), x)
+  app(app(app(app(if_replace, false), n), m), app(app(cons, k), x)) -> app(app(cons, k), app(app(app(replace, n), m), x))
+  app(sort, nil) -> nil
+  app(sort, app(app(cons, n), x)) -> app(app(cons, app(min, app(app(cons, n), x))), app(sort, app(app(app(replace, app(min, app(app(cons, n), x))), n), x)))
+
+  app(app(map,f),nil) -> nil
+  app(app(map,f),app(app(cons,x),xs)) -> app(app(cons,app(f,x)),app(app(map,f),xs))
+
+  app(app(filter,f),nil) -> nil
+  app(app(filter,f),app(app(cons,x),xs)) -> app(app(app(app(filter2,app(f, x)),f),x),xs)
+  app(app(app(app(filter2,true),f),x),xs) -> app(app(cons,x),app(app(filter,f),xs))
+  app(app(app(app(filter2,false),f),x),xs) -> app(app(filter,f),xs)
+
+)
+(STRATEGY INNERMOST)

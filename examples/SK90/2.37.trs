@@ -1,0 +1,6 @@
+(VAR x y z)
+(RULES
+and(not(not(x)),y,not(z)) -> and(y,band(x,z),x)
+)
+
+(COMMENT Example 2.37 (Ternary And-Operator) in \cite{SK90})

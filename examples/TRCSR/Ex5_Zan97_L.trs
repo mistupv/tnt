@@ -1,0 +1,6 @@
+(VAR X Y)
+(RULES 
+f(X) -> if(X,c)
+if(true,X) -> X
+if(false,X) -> Y
+)

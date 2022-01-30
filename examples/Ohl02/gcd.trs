@@ -1,0 +1,21 @@
+(VAR x  y)
+(RULES
+
+less(x, 0) -> false
+less(0, s(x)) -> true
+less(s(x), s(y)) -> less(x, y)
+
+minus(0, s(y)) -> 0
+minus(x, 0) -> x
+minus(s(x), s(y)) -> minus(x, y)
+
+gcd(x, x) -> x
+gcd(s(x), 0) -> s(x)
+gcd(0, s(y)) -> s(y)
+
+gcd(s(x), s(y)) -> gcd(minus(x, y), s(y)) | less(y, x) -> true
+
+
+gcd(s(x), s(y)) -> gcd(s(x), minus(y, x)) | less(x, y) -> true
+
+)

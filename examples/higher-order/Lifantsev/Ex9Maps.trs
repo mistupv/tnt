@@ -1,0 +1,12 @@
+(VAR f h t c g_1 l g_2 y g_3 g_4)
+(RULES
+  app(app(map_1, f), app(app(cons, h), t)) -> app(app(cons, app(f, h)), app(app(map_1, f), t))
+  app(app(app(map_2, f), c), app(app(cons, h), t)) -> app(app(cons, app(app(f, h), c)), app(app(app(map_2, f), c), t))
+  app(app(app(app(map_3, f), g), c), app(app(cons, h), t)) -> app(app(cons, app(app(app(f, g), h), c)), app(app(app(app(map_3, f), g), c), t))
+)
+(COMMENT removed rules
+
+  t_1' -> app(app(map_1, g_1), l)
+  t_2' -> app(app(app(map_2, g_2), y), l)
+  t_3' -> app(app(app(app(map_3, g_3), g_4), y), l)
+)

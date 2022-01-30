@@ -1,0 +1,23 @@
+(COMMENT generated from Maude module 'PALINDROME' by 'nosorts' transformation)
+(VAR I P X Z Y)
+(STRATEGY CONTEXTSENSITIVE
+
+
+(and 1)
+
+
+
+
+
+)
+(RULES
+__(__(X,Y),Z) -> __(X,__(Y,Z))
+
+__(X,nil) -> X
+
+__(nil,X) -> X
+
+and(tt,X) -> X
+
+isNePal(__(I,__(P,I))) -> tt
+)

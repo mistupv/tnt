@@ -1,0 +1,15 @@
+(VAR f g x y z)
+(RULES
+  app(app(app(sort, f), g), nil) -> nil
+  app(app(app(sort, f), g), app(app(cons, x), y)) -> app(app(app(app(insert, f), g), app(app(app(sort, f), g), y)), x)
+  app(app(app(app(insert, f), g), nil), y) -> app(app(cons, y), nil)
+  app(app(app(app(insert, f), g), app(app(cons, x), z)), y) -> app(app(cons, app(app(f, x), y)), app(app(app(app(insert, f), g), z), app(app(g, x), y)))
+  app(app(max, 0), y) -> y
+  app(app(max, x), 0) -> x
+  app(app(max, app(s, x)), app(s, y)) -> app(app(max, x), y)
+  app(app(min, 0), y) -> 0
+  app(app(min, x), 0) -> 0
+  app(app(min, app(s, x)), app(s, y)) -> app(app(min, x), y)
+  app(asort, z) -> app(app(app(sort, min), max), z)
+  app(dsort, z) -> app(app(app(sort, max), min), z)
+)

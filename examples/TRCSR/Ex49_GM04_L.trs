@@ -1,0 +1,12 @@
+(VAR X Y)
+(RULES 
+minus -> 0
+minus -> minus
+geq -> true
+geq -> false
+geq -> geq
+div(0) -> 0
+div(s(X)) -> if(geq)
+if(true) -> X
+if(false) -> Y
+)

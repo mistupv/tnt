@@ -1,0 +1,14 @@
+(VAR f x xs ys yss xss)
+(RULES
+  app(app(map, f), nil) -> nil
+  app(app(map, f), app(app(cons, x), xs)) -> app(app(cons, app(f, x)), app(app(map, f), xs))
+  app(app(append, xs), nil) -> xs
+  app(app(append, nil), ys) -> ys
+  app(app(append, app(app(cons, x), xs)), ys) -> app(app(cons, x), app(app(append, xs), ys))
+  app(app(zip, nil), yss) -> yss
+  app(app(zip, xss), nil) -> xss
+  app(app(zip, app(app(cons, xs), xss)), app(app(cons, ys), yss)) -> app(app(cons, app(app(append, xs), ys)), app(app(zip, xss), yss))
+  app(app(combine, xs), nil) -> xs
+  app(app(combine, xs), app(app(cons, ys), yss)) -> app(app(combine, app(app(zip, xs), ys)), yss)
+  app(levels, app(app(node, x), xs)) -> app(app(cons, app(app(cons, x), nil)), app(app(combine, nil), app(app(map, levels), xs)))
+)

@@ -1,0 +1,7 @@
+(VAR x y z)
+(RULES
+:(:(x,y),z) -> :(x,:(y,z))
+:(+(x,y),z) -> +(:(x,z),:(y,z))
+:(z,+(x,f(y))) -> :(g(z,y),+(x,a))
+)
+(COMMENT Example 31 in \cite{D33})

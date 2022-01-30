@@ -1,0 +1,14 @@
+(VAR x y z)
+(RULES 
+i(0) -> 0
++(0,y) -> y
++(x,0) -> x
+i(i(x)) -> x
++(i(x),x) -> 0
++(x,i(x)) -> 0
+i(+(x,y)) -> +(i(x),i(y))
++(x,+(y,z)) -> +(+(x,y),z)
++(+(x,i(y)),y) -> x
++(+(x,y),i(y)) -> x
+)
+(COMMENT Example 2.1 (Group Theory) in \cite{S90})

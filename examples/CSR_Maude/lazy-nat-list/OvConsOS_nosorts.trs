@@ -1,0 +1,25 @@
+(COMMENT generated from Maude module 'OvConsOS' by 'nosorts' transformation)
+(VAR IL L M N X Z Y)
+(STRATEGY CONTEXTSENSITIVE
+
+(and 1)
+(cons 1)
+
+
+
+
+
+)
+(RULES
+zeros -> cons(0,zeros)
+
+and(tt,X) -> X
+
+length(nil) -> 0
+
+length(cons(N,L)) -> s(length(L))
+
+take(0,IL) -> nil
+
+take(s(M),cons(N,IL)) -> cons(N,take(M,IL))
+)

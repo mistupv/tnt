@@ -1,0 +1,18 @@
+(COMMENT generated from Maude module 'MYNAT' by 'nosorts-noand' transformation)
+(VAR M N Z Y X)
+(STRATEGY CONTEXTSENSITIVE
+
+(U11 1)
+(U12 1)
+
+
+)
+(RULES
+U11(tt,M,N) -> U12(tt,M,N)
+
+U12(tt,M,N) -> s(plus(N,M))
+
+plus(N,0) -> N
+
+plus(N,s(M)) -> U11(tt,M,N)
+)

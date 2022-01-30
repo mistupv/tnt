@@ -1,0 +1,6 @@
+(VAR x y z)
+(RULES
+ .(.(x,y),z) -> .(x,.(y,z))
+)
+
+(COMMENT Example 9 in \cite{D33})

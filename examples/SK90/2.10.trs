@@ -1,0 +1,12 @@
+(VAR x y z)
+(RULES
+minus(0) -> 0
++(x,0) -> x
++(0,y) -> y
++(minus(1),1) -> 0
+minus(minus(x)) -> x
++(x,minus(y)) -> minus(+(minus(x),y))
++(x,+(y,z)) -> +(+(x,y),z)
++(minus(+(x,1)),1) -> minus(x)
+)
+(COMMENT Example 2.10 (Unary Integer Addition) in \cite{SK90})

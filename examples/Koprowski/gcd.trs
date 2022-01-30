@@ -1,0 +1,16 @@
+(VAR x y)
+(RULES
+ min(x, 0) -> 0
+ min(0, y) -> 0
+ min(s(x), s(y)) -> s(min(x, y))
+ max(x, 0) -> x
+ max(0, y) -> y
+ max(s(x), s(y)) -> s(max(x, y)) 
+ -(x, 0) -> x
+ -(s(x), s(y)) -> -(x, y) 
+ gcd(s(x), s(y)) -> gcd(-(max(x, y), min(x, y)), s(min(x, y)))
+ gcd(s(x), 0) -> s(x)
+ gcd(0, s(y)) -> s(y)
+ min(x, y) ->= min(y, x)
+ max(x, y) ->= max(y, x)
+)

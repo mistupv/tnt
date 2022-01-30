@@ -1,0 +1,25 @@
+(VAR x y z k l f xs)
+(RULES
+  app'(app'(minus, x), 0) -> x
+  app'(app'(minus, app'(s, x)), app'(s, y)) -> app'(app'(minus, x), y)
+  app'(app'(minus, app'(app'(minus, x), y)), z) -> app'(app'(minus, x), app'(app'(plus, y), z))
+  app'(app'(quot, 0), app'(s, y)) -> 0
+  app'(app'(quot, app'(s, x)), app'(s, y)) -> app'(s, app'(app'(quot, app'(app'(minus, x), y)), app'(s, y)))
+  app'(app'(plus, 0), y) -> y
+  app'(app'(plus, app'(s, x)), y) -> app'(s, app'(app'(plus, x), y))
+  app'(app'(app, nil), k) -> k
+  app'(app'(app, l), nil) -> l
+  app'(app'(app, app'(app'(cons, x), l)), k) -> app'(app'(cons, x), app'(app'(app, l), k))
+  app'(sum, app'(app'(cons, x), nil)) -> app'(app'(cons, x), nil)
+  app'(sum, app'(app'(cons, x), app'(app'(cons, y), l))) -> app'(sum, app'(app'(cons, app'(app'(plus, x), y)), l))
+  app'(sum, app'(app'(app, l), app'(app'(cons, x), app'(app'(cons, y), k)))) -> app'(sum, app'(app'(app, l), app'(sum, app'(app'(cons, x), app'(app'(cons, y), k)))))
+
+  app'(app'(map,f),nil) -> nil
+  app'(app'(map,f),app'(app'(cons,x),xs)) -> app'(app'(cons,app'(f,x)),app'(app'(map,f),xs))
+
+  app'(app'(filter,f),nil) -> nil
+  app'(app'(filter,f),app'(app'(cons,x),xs)) -> app'(app'(app'(app'(filter2,app'(f, x)),f),x),xs)
+  app'(app'(app'(app'(filter2,true),f),x),xs) -> app'(app'(cons,x),app'(app'(filter,f),xs))
+  app'(app'(app'(app'(filter2,false),f),x),xs) -> app'(app'(filter,f),xs)
+
+)

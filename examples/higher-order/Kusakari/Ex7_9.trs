@@ -1,0 +1,16 @@
+(VAR xs ys x y p)
+(RULES
+  app(app(app(if, true), xs), ys) -> xs
+  app(app(app(if, false), xs), ys) -> ys
+  app(app(sub, x), 0) -> x
+  app(app(sub, app(s, x)), app(s, y)) -> app(app(sub, x), y)
+  app(app(gtr, 0), y) -> false
+  app(app(gtr, app(s, x)), 0) -> true
+  app(app(gtr, app(s, x)), app(s, y)) -> app(app(gtr, x), y)
+  app(app(d, x), 0) -> true
+  app(app(d, app(s, x)), app(s, y)) -> app(app(app(if, app(app(gtr, x), y)), false), app(app(d, app(s, x)), app(app(sub, y), x)))
+  app(len, nil) -> 0
+  app(len, app(app(cons, x), xs)) -> app(s, app(len, xs))
+  app(app(filter, p), nil) -> nil
+  app(app(filter, p), app(app(cons, x), xs)) -> app(app(app(if, app(p, x)), app(app(cons, x), app(app(filter, p), xs))), app(app(filter, p), xs))
+)

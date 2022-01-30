@@ -1,0 +1,10 @@
+(VAR X Y M N)
+
+(RULES 
+filter(cons(X,Y),0,M) -> cons(0,filter(Y,M,M))
+filter(cons(X,Y),s(N),M) -> cons(X,filter(Y,N,M))
+sieve(cons(0,Y)) -> cons(0,sieve(Y))
+sieve(cons(s(N),Y)) -> cons(s(N),sieve(filter(Y,N,N)))
+nats(N) -> cons(N,nats(s(N)))
+zprimes -> sieve(nats(s(s(0))))
+)

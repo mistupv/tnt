@@ -1,0 +1,20 @@
+(COMMENT 
+ quicksort using filter
+)
+(VAR x y xs ys f b)
+(RULES
+a(a(append,nil),ys) -> ys 
+a(a(append,a(a(cons,x),xs)),ys) -> a(a(cons,x),a(a(append,xs),ys))
+a(a(filter,f),nil) -> nil
+a(a(filter,f),a(a(cons,x),xs)) -> a(a(a(if,a(f,x)),x),a(a(filter,f),xs))
+a(a(le,0),y) -> true
+a(a(le,a(s,x)),0) -> false
+a(a(le,a(s,x)),a(s,y)) -> a(a(le,x),y)
+a(a(a(if,true),x),xs) -> a(a(cons,x),xs)
+a(a(a(if,false),x),xs) -> xs
+a(a(not,f),b) -> a(not2,a(f,b))
+a(not2,true) -> false
+a(not2,false) -> true
+a(qs,nil) -> nil
+a(qs,a(a(cons,x),xs)) -> a(a(append,a(qs,a(a(filter,a(le,x)),xs))),a(a(cons,x),a(qs,a(a(filter,a(not,a(le,x))),xs))))
+)

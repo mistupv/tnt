@@ -1,0 +1,7 @@
+(VAR x y z)
+(RULES
+bin(x,0) -> s(0)
+bin(0,s(y)) -> 0
+bin(s(x),s(y)) -> +(bin(x,s(y)),bin(x,y))
+)
+(COMMENT Example 2.21 (Binomial Coefficients) in \cite{SK90})

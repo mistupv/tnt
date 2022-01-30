@@ -1,0 +1,16 @@
+(VAR x y z)
+(RULES
+  top(left(car(x, y), car(old,z))) -> top(right(y, car(old,z)))
+  top(left(car(x, car(old,y)), z)) -> top(right(car(old,y), z))
+
+  top(right(x, car(y, car(old,z)))) -> top( left(x, car(old,z)))
+  top(right(car(old,x), car(y, z))) -> top( left(car(old,x), z))
+
+  top(left (bot, car(old,x))) -> top(right(bot, car(old, x)))
+  top(right(car(old,x), bot)) -> top(left (car(old,x), bot))
+
+  top(left (car(x, y), z)) ->= top(left (y, z))
+  top(right(x, car(y, z))) ->= top(right(x, z))
+  bot ->= car(new, bot)
+)
+

@@ -1,0 +1,143 @@
+(COMMENT generated from Maude module 'PEANO-NAT' by 'nokinds' transformation)
+(VAR M' M N' N V1 V2 V X Z Y)
+(THEORY (C gcd)
+(C d)
+(C _+_)
+(C _*_))
+(RULES
+1 -> s_(0)
+
+2 -> s_(s_(0))
+
+3 -> s_(s_(s_(0)))
+
+4 -> s_(s_(s_(s_(0))))
+
+5 -> s_(s_(s_(s_(s_(0)))))
+
+6 -> s_(s_(s_(s_(s_(s_(0))))))
+
+7 -> s_(s_(s_(s_(s_(s_(s_(0)))))))
+
+U101(tt,M,N) -> d(N,M)
+
+U11(tt) -> 0
+
+U111(tt) -> 0
+
+U121(tt,M',N') -> U122(equal(_>_(N',M'),true),M',N')
+
+U122(tt,M',N') -> gcd(d(N',M'),M')
+
+U131(tt,N') -> N'
+
+U141(tt,N) -> N
+
+U151(tt) -> s_(0)
+
+U161(tt,M',N) -> U162(equal(_>_(M',N),true))
+
+U162(tt) -> 0
+
+U171(tt,M',N) -> U172(equal(_>_(N,M'),true),M',N)
+
+U172(tt,M',N) -> s_(quot(d(N,M'),M'))
+
+U21(tt,M,N) -> s_(_+_(N,_+_(M,_*_(N,M))))
+
+U31(tt,N) -> N
+
+U41(tt,M,N) -> s_(s_(_+_(N,M)))
+
+U51(tt,M,N) -> _>_(M,N)
+
+U61(tt) -> false
+
+U71(tt) -> true
+
+U81(tt,M,N) -> _>_(N,M)
+
+U91(tt,N) -> N
+
+_*_(N,0) -> U11(isNat(N))
+
+_*_(s_(N),s_(M)) -> U21(and(isNat(M),isNat(N)),M,N)
+
+_+_(N,0) -> U31(isNat(N),N)
+
+_+_(s_(N),s_(M)) -> U41(and(isNat(M),isNat(N)),M,N)
+
+_<_(N,M) -> U51(and(isNat(M),isNat(N)),M,N)
+
+_>_(0,M) -> U61(isNat(M))
+
+_>_(N',0) -> U71(isNzNat(N'))
+
+_>_(s_(N),s_(M)) -> U81(and(isNat(M),isNat(N)),M,N)
+
+and(tt,X) -> X
+
+d(0,N) -> U91(isNat(N),N)
+
+d(s_(N),s_(M)) -> U101(and(isNat(M),isNat(N)),M,N)
+
+equal(X,X) -> tt
+
+gcd(0,N) -> U111(isNat(N))
+
+gcd(N',M') -> U121(and(isNzNat(M'),isNzNat(N')),M',N')
+
+gcd(N',N') -> U131(isNzNat(N'),N')
+
+isBoolean(false) -> tt
+
+isBoolean(true) -> tt
+
+isBoolean(_<_(V1,V2)) -> and(isNat(V1),isNat(V2))
+
+isBoolean(_>_(V1,V2)) -> and(isNat(V1),isNat(V2))
+
+isNat(0) -> tt
+
+isNat(V) -> isNzNat(V)
+
+isNat(_*_(V1,V2)) -> and(isNat(V1),isNat(V2))
+
+isNat(_+_(V1,V2)) -> and(isNat(V1),isNat(V2))
+
+isNat(d(V1,V2)) -> and(isNat(V1),isNat(V2))
+
+isNat(gcd(V1,V2)) -> and(isNat(V1),isNat(V2))
+
+isNat(p_(V1)) -> isNzNat(V1)
+
+isNat(quot(V1,V2)) -> and(isNat(V1),isNzNat(V2))
+
+isNzNat(1) -> tt
+
+isNzNat(2) -> tt
+
+isNzNat(3) -> tt
+
+isNzNat(4) -> tt
+
+isNzNat(5) -> tt
+
+isNzNat(6) -> tt
+
+isNzNat(7) -> tt
+
+isNzNat(_*_(V1,V2)) -> and(isNzNat(V1),isNzNat(V2))
+
+isNzNat(gcd(V1,V2)) -> and(isNzNat(V1),isNzNat(V2))
+
+isNzNat(s_(V1)) -> isNat(V1)
+
+p_(s_(N)) -> U141(isNat(N),N)
+
+quot(M',M') -> U151(isNzNat(M'))
+
+quot(N,M') -> U161(and(isNzNat(M'),isNat(N)),M',N)
+
+quot(N,M') -> U171(and(isNzNat(M'),isNat(N)),M',N)
+)

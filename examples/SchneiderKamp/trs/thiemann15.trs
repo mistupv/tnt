@@ -1,0 +1,17 @@
+(COMMENT harder variant of AG01 4.28)
+(VAR x y)
+(RULES
+half(0) -> 0
+half(s(0)) -> 0
+half(s(s(x))) -> s(half(x))
+inc(0) -> 0
+inc(s(x)) -> s(inc(x))
+zero(0) -> true
+zero(s(x)) -> false
+p(0) -> 0
+p(s(x)) -> x
+bits(x) -> bitIter(x,0)
+bitIter(x,y) -> if(zero(x),x,inc(y))
+if(true,x,y) -> p(y)
+if(false,x,y) -> bitIter(half(x),y)
+)

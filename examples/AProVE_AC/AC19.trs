@@ -1,0 +1,9 @@
+(VAR x y)
+(THEORY (AC f))
+(RULES
+  f(g(f(h(a), a)), a) -> f(h(a), f(a, a))
+  f(h(a), g(a)) -> f(g(h(a)), a)
+  f(g(h(a)), f(f(a, a), a)) -> f(g(f(h(a), a)), a)
+  f(h(a), a) -> f(h(a), b)
+  f(i(x, y), f(a, y)) -> f(g(i(x, y)), y)
+)

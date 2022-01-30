@@ -1,0 +1,9 @@
+(VAR x)
+(RULES
+a(f,0) -> a(s,0)
+a(d,0) -> 0
+a(d,a(s,x)) -> a(s,a(s,a(d,a(p,a(s,x)))))
+a(f,a(s,x)) -> a(d,a(f,a(p,a(s,x))))
+a(p,a(s,x)) -> x
+)
+(COMMENT curried version of computing f(x) = 2^^x )

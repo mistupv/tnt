@@ -1,0 +1,13 @@
+(VAR x y z w)
+(RULES
+f(x,y,w,w,a()) -> g1(x,x,y,w)
+f(x,y,w,a(),a()) -> g1(y,x,x,w)
+f(x,y,a(),a(),w) -> g2(x,y,y,w)
+f(x,y,a(),w,w) -> g2(y,y,x,w)
+g1(x,x,y,a()) -> h(x,y)
+g1(y,x,x,a()) -> h(x,y)
+g2(x,y,y,a()) -> h(x,y)
+g2(y,y,x,a()) -> h(x,y)
+h(x,x) -> x
+)
+(COMMENT Example 7 (TRS $\RR_2$) in \cite{O95})

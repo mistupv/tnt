@@ -1,0 +1,16 @@
+(VAR N M X)
+(RULES 
+U11(tt) -> N
+U21(tt) -> s(plus(N,M))
+U31(tt) -> 0
+U41(tt) -> plus(x(N,M),N)
+and(tt) -> X
+isNat -> tt
+isNat -> and(isNat)
+isNat -> isNat
+isNat -> and(isNat)
+plus(N,0) -> U11(isNat)
+plus(N,s(M)) -> U21(and(isNat))
+x(N,0) -> U31(isNat)
+x(N,s(M)) -> U41(and(isNat))
+)

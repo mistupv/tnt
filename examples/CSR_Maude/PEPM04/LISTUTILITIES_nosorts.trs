@@ -1,0 +1,48 @@
+(COMMENT generated from Maude module 'LISTUTILITIES' by 'nosorts' transformation)
+(VAR N X XS Y YS ZS Z)
+(STRATEGY CONTEXTSENSITIVE
+
+(U11 1)
+(U12 1)
+
+(and 1)
+(cons 1)
+
+
+
+
+
+
+
+
+
+
+
+)
+(RULES
+U11(tt,N,X,XS) -> U12(splitAt(N,XS),X)
+
+U12(pair(YS,ZS),X) -> pair(cons(X,YS),ZS)
+
+afterNth(N,XS) -> snd(splitAt(N,XS))
+
+and(tt,X) -> X
+
+fst(pair(X,Y)) -> X
+
+head(cons(N,XS)) -> N
+
+natsFrom(N) -> cons(N,natsFrom(s(N)))
+
+sel(N,XS) -> head(afterNth(N,XS))
+
+snd(pair(X,Y)) -> Y
+
+splitAt(0,XS) -> pair(nil,XS)
+
+splitAt(s(N),cons(X,XS)) -> U11(tt,N,X,XS)
+
+tail(cons(N,XS)) -> XS
+
+take(N,XS) -> fst(splitAt(N,XS))
+)

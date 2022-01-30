@@ -1,0 +1,11 @@
+(VAR y x f xs)
+(RULES
+  app(app(plus, 0), y) -> y
+  app(app(plus, app(s, x)), y) -> app(s, app(app(plus, x), y))
+  app(app(times, 0), y) -> 0
+  app(app(times, app(s, x)), y) -> app(app(plus, app(app(times, x), y)), y)
+  app(app(map, f), nil) -> nil
+  app(app(map, f), app(app(cons, x), xs)) -> app(app(cons, app(f, x)), app(app(map, f), xs))
+  inc -> app(map, app(plus, app(s, 0)))
+  double -> app(map, app(times, app(s, app(s, 0))))
+)

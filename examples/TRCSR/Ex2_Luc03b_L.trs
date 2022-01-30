@@ -1,0 +1,10 @@
+(VAR Z Y X)
+(RULES 
+fst(0,Z) -> nil
+fst(s,cons(Y)) -> cons(Y)
+from(X) -> cons(X)
+add(0,X) -> X
+add(s,Y) -> s
+len(nil) -> 0
+len(cons(X)) -> s
+)

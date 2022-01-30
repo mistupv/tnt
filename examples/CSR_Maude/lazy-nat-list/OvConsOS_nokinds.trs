@@ -1,0 +1,55 @@
+(COMMENT generated from Maude module 'OvConsOS' by 'nokinds' transformation)
+(VAR IL L M N V1 V2 V X Z Y)
+(STRATEGY CONTEXTSENSITIVE
+
+(U11 1)
+(U21 1)
+(U31 1)
+(and 1)
+(cons 1)
+(isNat )
+(isNatIList )
+(isNatList )
+
+
+
+
+
+)
+(RULES
+zeros -> cons(0,zeros)
+
+U11(tt,L) -> s(length(L))
+
+U21(tt) -> nil
+
+U31(tt,IL,M,N) -> cons(N,take(M,IL))
+
+and(tt,X) -> X
+
+isNat(0) -> tt
+
+isNat(length(V1)) -> isNatList(V1)
+
+isNat(s(V1)) -> isNat(V1)
+
+isNatIList(V) -> isNatList(V)
+
+isNatIList(zeros) -> tt
+
+isNatIList(cons(V1,V2)) -> and(isNat(V1),isNatIList(V2))
+
+isNatList(nil) -> tt
+
+isNatList(cons(V1,V2)) -> and(isNat(V1),isNatList(V2))
+
+isNatList(take(V1,V2)) -> and(isNat(V1),isNatIList(V2))
+
+length(nil) -> 0
+
+length(cons(N,L)) -> U11(and(isNatList(L),isNat(N)),L)
+
+take(0,IL) -> U21(isNatIList(IL))
+
+take(s(M),cons(N,IL)) -> U31(and(isNatIList(IL),and(isNat(M),isNat(N))),IL,M,N)
+)

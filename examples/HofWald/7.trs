@@ -1,0 +1,5 @@
+( Comment see Dieter Probst, Thomas Studer:
+  http://www.iam.unibe.ch/~tstuder/papers/j.pdf )
+
+( VAR a b c d )
+( RULES f(f(f(f(j,a),b),c),d) -> f(f(a,b),f(f(a,d),c)) )

@@ -1,0 +1,9 @@
+(VAR x y z)
+(RULES
+merge(x,nil) -> x
+merge(nil,y) -> y
+merge(++(x,y),++(u,v)) -> ++(x,merge(y,++(u,v)))
+merge(++(x,y),++(u,v)) -> ++(u,merge(++(x,y),v))
+)
+
+(COMMENT Example 4.29 (Merging) in \cite{SK90})

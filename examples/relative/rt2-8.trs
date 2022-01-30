@@ -1,0 +1,11 @@
+(COMMENT non-terminating!)
+(VAR x y z)
+(RULES
+ f(act, y) -> f(el(nact), y)
+ f(x, nact) -> f(x, act)
+ act -> el(nact)
+ l(el(x)) -> el(l(x))
+ el(r(x)) -> r(el(x))
+ nact ->= l(nact)
+ nact ->= r(nact)
+)

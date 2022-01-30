@@ -1,0 +1,7 @@
+(VAR x y z)
+(RULES
+fac(s(x)) -> *(fac(p(s(x))),s(x))
+p(s(0)) -> 0
+p(s(s(x))) -> s(p(s(x)))
+)
+(COMMENT Example 4.17 (Factorial Function) in \cite{SK90})

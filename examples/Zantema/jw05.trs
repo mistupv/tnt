@@ -1,0 +1,2 @@
+(VAR x )
+(RULES f (f (a, x), a) -> f (f (x, f (a, a)), a))

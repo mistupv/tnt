@@ -1,0 +1,10 @@
+(VAR y x f)
+(RULES
+  app(app(add, 0), y) -> y
+  app(app(add, app(s, x)), y) -> app(s, app(app(add, x), y))
+  app(app(mult, 0), y) -> 0
+  app(app(mult, app(s, x)), y) -> app(app(add, app(app(mult, x), y)), y)
+  app(app(app(rec, f), x), 0) -> x
+  app(app(app(rec, f), x), app(s, y)) -> app(app(f, app(s, y)), app(app(app(rec, f), x), y))
+  fact -> app(app(rec, mult), app(s, 0))
+)

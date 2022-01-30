@@ -1,0 +1,19 @@
+(from 
+O. Fissore, I. Gnaedig, and H. Kirchner. 
+Outermost ground termination. 
+In F. Gadducci and U. Montanari, editors, 
+Proceedings of the 4th International WRLA, 
+volume 71 of Electronic Notes in Theoretical Computer Science, 
+Pisa (Italy), September 2002. 
+Elsevier Science Publishers B. V. (North-Holland).
+)
+
+(VAR x y z)
+
+(RULES
+
+	cons(x,cons(y,z))	-> big
+	inf(x)	-> cons(x, inf(s(x)))
+)
+
+

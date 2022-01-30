@@ -1,0 +1,28 @@
+(COMMENT 
+
+  Claude Marché
+
+  Intersection of bags of integers.
+
+  2 AC symbols, 1 commutative symbol
+
+)
+
+
+(VAR z  y  x)
+(THEORY (AC inter union) (C eq))
+
+(RULES
+
+if(true,x,y) -> x 
+if(false,x,y) -> y 
+eq(0,0) -> true 
+eq(0,s(x)) -> false 
+eq(s(x),s(y)) -> eq(x,y) 
+union(empty,x) -> x 
+inter(empty,x) -> empty 
+inter(union(y,z),x) -> union(inter(x,y),inter(x,z)) 
+inter(singl(x),singl(y)) -> if(eq(x,y),singl(x),empty) 
+
+
+)

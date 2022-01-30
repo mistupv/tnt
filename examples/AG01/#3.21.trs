@@ -1,0 +1,8 @@
+(from AG01 3.21)
+(VAR x y)
+(RULES
+times(x,plus(y,1)) -> plus(times(x,plus(y,times(1,0))),x)
+times(x,1) -> x
+plus(x,0) -> x
+times(x,0) -> 0
+)

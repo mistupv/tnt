@@ -1,0 +1,13 @@
+(VAR X N XS Y)
+(RULES 
+from(X) -> cons(X)
+sel(0,cons(X)) -> X
+sel(s(N),cons(X)) -> sel(N,XS)
+minus(X,0) -> 0
+minus(s(X),s(Y)) -> minus(X,Y)
+quot(0,s(Y)) -> 0
+quot(s(X),s(Y)) -> s(quot(minus(X,Y),s(Y)))
+zWquot(XS,nil) -> nil
+zWquot(nil,XS) -> nil
+zWquot(cons(X),cons(Y)) -> cons(quot(X,Y))
+)

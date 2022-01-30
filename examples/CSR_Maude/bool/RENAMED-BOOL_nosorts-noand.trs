@@ -1,0 +1,78 @@
+(COMMENT generated from Maude module 'RENAMED-BOOL' by 'nosorts-noand' transformation)
+(VAR A B C U' U X Z Y)
+(THEORY (AC _xor_)
+(AC _or_)
+(AC _and_))
+(RULES
+U11(tt,A,B,C) -> U12(tt,A,B,C)
+
+U12(tt,A,B,C) -> U13(tt,A,B,C)
+
+U13(tt,A,B,C) -> _xor_(_and_(A,B),_and_(A,C))
+
+U21(tt,A,B) -> U22(tt,A,B)
+
+U22(tt,A,B) -> not_(_xor_(A,_and_(A,B)))
+
+U31(tt,U',U) -> U32(tt,U',U)
+
+U32(tt,U',U) -> U33(equal(_isNotEqualTo_(U,U'),true))
+
+U33(tt) -> false
+
+U41(tt,U',U) -> U42(tt,U',U)
+
+U42(tt,U',U) -> if_then_else_fi(_isEqualTo_(U,U'),false,true)
+
+U51(tt,A,B) -> U52(tt,A,B)
+
+U52(tt,A,B) -> _xor_(_and_(A,B),_xor_(A,B))
+
+U61(tt,B,U') -> U62(tt,B,U')
+
+U62(tt,B,U') -> U63(tt,B,U')
+
+U63(tt,B,U') -> U64(equal(_isNotEqualTo_(B,true),true),U')
+
+U64(tt,U') -> U'
+
+U71(tt,U) -> U72(tt,U)
+
+U72(tt,U) -> U
+
+_and_(A,A) -> A
+
+_and_(A,_xor_(B,C)) -> U11(tt,A,B,C)
+
+_and_(false,A) -> false
+
+_and_(true,A) -> A
+
+_implies_(A,B) -> U21(tt,A,B)
+
+_isEqualTo_(U,U') -> U31(tt,U',U)
+
+_isEqualTo_(U,U) -> true
+
+_isNotEqualTo_(U,U') -> U41(tt,U',U)
+
+_isNotEqualTo_(U,U) -> false
+
+_or_(A,B) -> U51(tt,A,B)
+
+_xor_(A,A) -> false
+
+_xor_(false,A) -> A
+
+equal(X,X) -> tt
+
+if_then_else_fi(B,U,U') -> U61(tt,B,U')
+
+if_then_else_fi(true,U,U') -> U71(tt,U)
+
+not_(A) -> _xor_(A,true)
+
+not_(false) -> true
+
+not_(true) -> false
+)

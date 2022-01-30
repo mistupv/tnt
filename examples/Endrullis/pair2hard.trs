@@ -1,0 +1,5 @@
+(VAR x0 x1 x2)
+(RULES
+  p(a(x0),p(b(a(x1)),x2)) -> p(x1,p(a(b(a(x1))),x2))
+  a(b(a(x0))) -> b(a(b(x0)))
+)

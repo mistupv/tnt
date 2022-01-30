@@ -1,0 +1,6 @@
+(Comment with f(a,z) = A(z), f(f(a,a),z) = B(z),
+         this is AB(z) -> BAA(z)
+         this is not RFC-match-bounded (but its reverse is)
+)
+(VAR x)
+(RULES f (a, f (f (a, a), x)) -> f (f (a, a), f (a, f (a, x))))

@@ -1,0 +1,14 @@
+(VAR X Y Z)
+(STRATEGY CONTEXTSENSITIVE 
+  (first 1 2)
+  (0)
+  (nil)
+  (s 1)
+  (cons 1)
+  (from 1)
+)
+(RULES 
+first(0,X) -> nil
+first(s(X),cons(Y,Z)) -> cons(Y,first(X,Z))
+from(X) -> cons(X,from(s(X)))
+)

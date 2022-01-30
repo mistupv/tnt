@@ -1,0 +1,14 @@
+(COMMENT
+ Liveness problem: single waiting line
+ Old transformation
+ Non-terminating!!!
+)
+(VAR x)
+(RULES
+ top(old(x)) -> top(check(x))
+ top(new(x)) -> top(check(x))
+ bot ->= new(bot)
+ check(new(x)) ->= new(check(x))
+ check(old(x)) ->= old(check(x))
+ check(old(x)) ->= old(x)
+)

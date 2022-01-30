@@ -1,0 +1,8 @@
+(VAR x y z)
+(RULES
+if(true,x,y) -> x
+if(false,x,y) -> y
+if(x,y,y) -> y
+if(if(x,y,z),u,v) -> if(x,if(y,u,v),if(z,u,v))
+)
+(COMMENT Example 2.34 (If-Then-Else) in \cite{SK90})

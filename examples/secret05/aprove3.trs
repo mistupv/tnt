@@ -1,0 +1,74 @@
+(VAR x y z dummy dummy2 dummy3 dummy4 dummy5 dummy6)
+(RULES
+function(iszero,0,dummy,dummy2) -> true
+function(iszero,s(x),dummy,dummy2) -> false
+
+function(p,0,dummy,dummy2) -> 0
+function(p,s(0),dummy,dummy2) -> 0
+function(p,s(s(x)), dummy, dummy2) -> s(function(p,s(x),x,x))
+
+
+function(plus,dummy,x,y) -> function(if,function(iszero,x,x,x),x,y)
+function(if,true,x,y) -> y
+function(if,false,x,y) ->
+function(plus,function(third,x,y,y),function(p,x,x,y),s(y))
+
+function(third,x,y,z) -> z
+)
+
+(COMMENT
+
+basic system:
+
+iszero(0) -> true
+iszero(s(x)) -> false
+
+p(0) -> 0
+p(s(0)) -> 0
+p(s(s(x))) -> s(p(s(x)))
+
+plus(x,y) -> if(iszero(x),x,y)
+if(true,x,y) -> y
+if(false,x,y) -> plus(p(x),s(y))
+
+third(x,y,z) -> z
+
+
+
+alternative 1: function only for defined symbols
+
+function(iszero,0,dummy,dummy2) -> true
+function(iszero,s(x),dummy,dummy2) -> false
+
+function(p,0,dummy,dummy2) -> 0
+function(p,s(0),dummy,dummy2) -> 0
+function(p,s(s(x)), dummy, dummy2) -> s(function(p,s(x),x,x))
+
+
+function(plus,dummy,x,y) -> function(if,function(iszero,x,x,x),x,y)
+function(if,true,x,y) -> y
+function(if,false,x,y) ->
+function(plus,function(third,x,y,y),function(p,x,x,y),s(y))
+
+function(third,x,y,z) -> z
+
+
+
+
+alternative 2: function also for constructors, easier pred
+
+function(iszero,0,dummy,dummy2) -> true
+function(iszero,function(s,x,dummy3,dummy4),dummy,dummy2) -> false
+
+function(p,0,dummy,dummy2) -> 0
+function(p,function(s,x,dummy3,dummy4),dummy,dummy2) -> x
+
+function(plus,dummy,x,y) -> function(if,function(iszero,x,x,x),x,y)
+function(if,true,x,y) -> y
+function(if,false,x,y) ->
+function(plus,function(third,x,y,y),function(p,x,x,y),function(s,y,x,y))
+
+function(third,x,y,z) -> z
+)
+
+

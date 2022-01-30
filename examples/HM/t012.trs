@@ -1,0 +1,11 @@
+(VAR x y)
+(RULES
+minus(minus(x)) -> x
+minus(+(x, y)) -> *(minus(minus(minus(x))), minus(minus(minus(y))))
+minus(*(x, y)) -> +(minus(minus(minus(x))), minus(minus(minus(y))))
+f(minus(x)) -> minus(minus(minus(f(x))))
+)
+
+(COMMENT
+Example 7 in \cite{G96}.
+)

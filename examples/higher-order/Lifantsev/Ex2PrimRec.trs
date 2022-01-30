@@ -1,0 +1,5 @@
+(VAR h g x)
+(RULES
+  app(app(rec, h), app(g, 0)) -> g
+  app(app(rec, h), app(g, app(s, x))) -> app(app(h, x), app(app(rec, h), app(g, x)))
+)

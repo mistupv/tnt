@@ -1,0 +1,16 @@
+(VAR x y)
+(RULES
+  min(x, 0) -> 0
+  min(0, y) -> 0
+  min(s(x), s(y)) -> s(min(x, y))
+  max(x, 0) -> x
+  max(0, y) -> y
+  max(s(x), s(y)) -> s(max(x, y)) 
+  -(x, 0) -> x
+  -(s(x), s(y)) -> -(x, y) 
+  gcd(nil) -> 0
+  gcd(cons(x, nil)) -> x
+  gcd(cons(0, y)) -> gcd(y)
+  gcd(cons(x, cons(y, z))) ->= gcd(cons(max(x, y), cons(min(x, y), z)))
+  gcd(cons(x, cons(y, z))) -> gcd(cons(-(x, y), cons(y, z)))
+)

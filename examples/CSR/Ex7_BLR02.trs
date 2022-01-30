@@ -1,0 +1,21 @@
+(VAR X XS N)
+(STRATEGY CONTEXTSENSITIVE 
+  (from 1)
+  (cons 1)
+  (s 1)
+  (head 1)
+  (2nd 1)
+  (take 1 2)
+  (0)
+  (nil)
+  (sel 1 2)
+)
+(RULES 
+from(X) -> cons(X,from(s(X)))
+head(cons(X,XS)) -> X
+2nd(cons(X,XS)) -> head(XS)
+take(0,XS) -> nil
+take(s(N),cons(X,XS)) -> cons(X,take(N,XS))
+sel(0,cons(X,XS)) -> X
+sel(s(N),cons(X,XS)) -> sel(N,XS)
+)

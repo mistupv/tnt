@@ -1,0 +1,7 @@
+(VAR f x xs)
+(RULES
+  app(app(mapt, f), app(leaf, x)) -> app(leaf, app(f, x))
+  app(app(mapt, f), app(node, xs)) -> app(node, app(app(maptlist, f), xs))
+  app(app(maptlist, f), nil) -> nil
+  app(app(maptlist, f), app(app(cons, x), xs)) -> app(app(cons, app(app(mapt, f), x)), app(app(maptlist, f), xs))
+)

@@ -1,0 +1,37 @@
+(COMMENTS
+  Liveness problem: cars over the bridge 
+  -/ changed coding of old/new car
+)
+(MODEL
+  top(left (car(x, y), z)) -> top(right(y, z))
+  top(right(x, car(y, z))) -> top( left(x, z))
+  top(left (bot, x)) -> top(right(bot, x))
+  top(right(x, bot)) -> top(left (x, bot))
+  top(left (car(x, y), z)) ->= top(left (y, z))
+  top(right(x, car(y, z))) ->= top(right(x, z))
+  bot ->= car(new, bot)
+)
+(VAR x y z)
+(RULES
+  top(ok(left (car(x, y), z))) -> top(check(right(y, z)))
+  top(ok(right(x, car(y, z)))) -> top(check( left(x, z)))
+  top(ok(left (bot, x))) -> top(check(right(bot, x)))
+  top(ok(right(x, bot))) -> top(check(left (x, bot)))
+  top(ok(left (car(x, y), z))) ->= top(check(left (y, z)))
+  top(ok(right(x, car(y, z)))) ->= top(check(right(x, z)))
+  bot ->= car(new, bot)
+
+  check(old) ->= ok(old)
+  check(car(x, y)) ->= car(check(x), y)
+  check(car(x, y)) ->= car(x, check(y))
+  check(left(x, y)) ->= left(check(x), y)
+  check(left(x, y)) ->= left(x, check(y))
+  check(right(x, y)) ->= right(check(x), y)
+  check(right(x, y)) ->= right(x, check(y))
+  car(ok(x), y) ->= ok(car(x, y))
+  car(x, ok(y)) ->= ok(car(x, y)) 
+  left(ok(x), y) ->= ok(left(x, y))
+  left(x, ok(y)) ->= ok(left(x, y))
+  right(ok(x), y) ->= ok(right(x, y))
+  right(x, ok(y)) ->= ok(right(x, y))
+)

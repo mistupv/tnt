@@ -1,0 +1,11 @@
+(VAR x y z)
+(RULES
+a(lambda(x),y) -> lambda(a(x,1))
+a(lambda(x),y) -> lambda(a(x,a(y,t)))
+a(a(x,y),z) -> a(x,a(y,z))
+lambda(x) -> x
+a(x,y) -> x
+a(x,y) -> y
+)
+(COMMENT simple termination of SUBST after distribution elimination,
+see Zantema, JSC 1994)

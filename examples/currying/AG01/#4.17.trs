@@ -1,0 +1,16 @@
+(VAR x y xs fun)
+(RULES
+  app(app(app(f, app(g, x)), app(s, 0)), y) -> app(app(app(f, app(g, app(s, 0))), y), app(g, x))
+  app(g, app(s, x)) -> app(s, app(g, x))
+  app(g, 0) -> 0
+
+  app(app(map,fun),nil) -> nil
+  app(app(map,fun),app(app(cons,x),xs)) -> app(app(cons,app(fun,x)),app(app(map,fun),xs))
+
+  app(app(filter,fun),nil) -> nil
+  app(app(filter,fun),app(app(cons,x),xs)) -> app(app(app(app(filter2,app(fun, x)),fun),x),xs)
+  app(app(app(app(filter2,true),fun),x),xs) -> app(app(cons,x),app(app(filter,fun),xs))
+  app(app(app(app(filter2,false),fun),x),xs) -> app(app(filter,fun),xs)
+
+)
+(STRATEGY INNERMOST)

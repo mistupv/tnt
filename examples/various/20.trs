@@ -1,0 +1,5 @@
+(VAR x y z)
+(RULES
+s1(s1(s0(s0(x)))) -> s0(s0(s0(s1(s1(s1(x))))))
+)
+(COMMENT Example 17 in \cite{DH95})

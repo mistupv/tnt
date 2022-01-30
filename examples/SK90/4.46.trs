@@ -1,0 +1,5 @@
+(RULES
+f(a) -> f(b)
+g(b) -> g(a)
+)
+(COMMENT Example 4.46 in \cite{SK90})

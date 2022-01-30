@@ -1,0 +1,7 @@
+(VAR N M)
+(RULES 
+U11(tt) -> U12(tt)
+U12(tt) -> s(plus(N,M))
+plus(N,0) -> N
+plus(N,s(M)) -> U11(tt)
+)

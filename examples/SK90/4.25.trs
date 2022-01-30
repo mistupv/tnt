@@ -1,0 +1,8 @@
+(VAR x y z)
+(RULES
+rev(a) -> a
+rev(b) -> b
+rev(++(x,y)) -> ++(rev(y),rev(x))
+rev(++(x,x)) -> rev(x)
+)
+(COMMENT Example 4.25 (Reverse) in \cite{SK90})

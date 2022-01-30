@@ -1,0 +1,7 @@
+(VAR x y z)
+(RULES
+f(s(x)) -> s(s(f(p(s(x)))))
+f(0) -> 0
+p(s(x)) -> x
+)
+(COMMENT Example 10 in \cite{DH95})

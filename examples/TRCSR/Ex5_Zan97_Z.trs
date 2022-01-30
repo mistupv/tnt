@@ -1,0 +1,9 @@
+(VAR X Y)
+(RULES 
+f(X) -> if(X,c,n__f(true))
+if(true,X,Y) -> X
+if(false,X,Y) -> activate(Y)
+f(X) -> n__f(X)
+activate(n__f(X)) -> f(X)
+activate(X) -> X
+)

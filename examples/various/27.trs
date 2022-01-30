@@ -1,0 +1,5 @@
+(VAR x y z)
+(RULES
+g(x,a,b) -> g(b,b,a)
+)
+(COMMENT Example 1 in \cite{KV01})

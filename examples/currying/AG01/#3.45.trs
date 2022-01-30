@@ -1,0 +1,16 @@
+(VAR x y xs fun)
+(RULES
+  app(f, app(s, x)) -> app(f, x)
+  app(g, app(app(cons, 0), y)) -> app(g, y)
+  app(g, app(app(cons, app(s, x)), y)) -> app(s, x)
+  app(h, app(app(cons, x), y)) -> app(h, app(g, app(app(cons, x), y)))
+
+  app(app(map,fun),nil) -> nil
+  app(app(map,fun),app(app(cons,x),xs)) -> app(app(cons,app(fun,x)),app(app(map,fun),xs))
+
+  app(app(filter,fun),nil) -> nil
+  app(app(filter,fun),app(app(cons,x),xs)) -> app(app(app(app(filter2,app(fun, x)),fun),x),xs)
+  app(app(app(app(filter2,true),fun),x),xs) -> app(app(cons,x),app(app(filter,fun),xs))
+  app(app(app(app(filter2,false),fun),x),xs) -> app(app(filter,fun),xs)
+
+)

@@ -1,0 +1,8 @@
+(VAR x)
+(RULES
+f(x) -> f(a)
+)
+
+(COMMENT
+Non-terminating.
+)

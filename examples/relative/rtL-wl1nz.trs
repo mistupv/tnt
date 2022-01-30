@@ -1,0 +1,20 @@
+(COMMENT
+ Liveness problem: single waiting line
+ New transformation
+)
+(VAR x)
+(MODEL
+  top(old(x)) -> top(x)
+  top(new(x)) -> top(x)
+  bot ->= new(bot)
+)
+(RULES
+  top(ok(new(x))) -> top(check(x))
+  top(ok(old(x))) -> top(check(x))
+  bot ->= new(bot)
+  check(new(x)) ->= new(check(x))
+  check(old(x)) ->= old(check(x))
+  check(old(x)) ->= ok(old(x))
+  new(ok(x)) ->= ok(new(x))
+  old(ok(x)) ->= ok(old(x))
+)

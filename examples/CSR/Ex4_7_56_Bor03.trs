@@ -1,0 +1,13 @@
+(VAR X XS N)
+(STRATEGY CONTEXTSENSITIVE 
+  (from 1)
+  (cons 1)
+  (s 1)
+  (after 1 2)
+  (0)
+)
+(RULES 
+from(X) -> cons(X,from(s(X)))
+after(0,XS) -> XS
+after(s(N),cons(X,XS)) -> after(N,XS)
+)

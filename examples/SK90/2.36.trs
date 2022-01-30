@@ -1,0 +1,8 @@
+(VAR x y z)
+(RULES
+implies(not(x),y) -> or(x,y)
+implies(not(x),or(y,z)) -> implies(y,or(x,z))
+implies(x,or(y,z)) -> or(y,implies(x,z))
+)
+
+(COMMENT Example 2.36 (Implication) in \cite{SK90})

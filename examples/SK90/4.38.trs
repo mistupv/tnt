@@ -1,0 +1,8 @@
+(VAR x y z)
+(RULES
+g(f(x,y),z) -> f(x,g(y,z))
+g(h(x,y),z) -> g(x,f(y,z))
+g(x,h(y,z)) -> h(g(x,y),z)
+)
+
+(COMMENT Example 4.38 (Associative Ring) in \cite{SK90})

@@ -1,0 +1,9 @@
+(VAR ys x xs f)
+(RULES
+  app(app(append, nil), ys) -> ys
+  app(app(append, app(app(cons, x), xs)), ys) -> app(app(cons, x), app(app(append, xs), ys))
+  app(app(flatwith, f), app(leaf, x)) -> app(app(cons, app(f, x)), nil)
+  app(app(flatwith, f), app(node, xs)) -> app(app(flatwithsub, f), xs)
+  app(app(flatwithsub, f), nil) -> nil
+  app(app(flatwithsub, f), app(app(cons, x), xs)) -> app(app(append, app(app(flatwith, f), x)), app(app(flatwithsub, f), xs))
+)

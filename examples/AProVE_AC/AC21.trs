@@ -1,0 +1,42 @@
+(VAR x y z u)
+(THEORY (AC plus times))
+(RULES
+  0(S) -> S
+  plus(S, x) -> x
+  plus(0(x), 0(y)) -> 0(plus(x, y))
+  plus(0(x), 1(y)) -> 1(plus(x, y))
+  plus(0(x), j(y)) -> j(plus(x, y))
+  plus(1(x), 1(y)) -> j(plus(1(S), plus(x, y)))
+  plus(j(x), j(y)) -> 1(plus(j(S), plus(x, y)))
+  plus(1(x), j(y)) -> 0(plus(x, y))
+  opp(S) -> S
+  opp(0(x)) -> 0(opp(x))
+  opp(1(x)) -> j(opp(x))
+  opp(j(x)) -> 1(opp(x))
+  minus(x, y) -> plus(opp(y), x)
+  times(S, x) -> S
+  times(0(x), y) -> 0(times(x, y))
+  times(1(x), y) -> plus(0(times(x, y)), y)
+  times(j(x), y) -> minus(0(times(x, y)), y)
+  sign(x) -> if_sign(x, S)
+  if_sign(S, x) -> x
+  if_sign(0(x), y) -> if_sign(x, y)
+  if_sign(1(x), y) -> if_sign(x, 1(S))
+  if_sign(j(x), y) -> if_sign(x, j(S))
+  abs(x) -> if_abs(x, x, S)
+  if_abs(0(x), y, z) -> if_abs(x, y, z)
+  if_abs(1(x), y, z) -> if_abs(x, y, 1(S))
+  if_abs(j(x), y, z) -> if_abs(x, y, j(S))
+  if_abs(S, x, S) -> S
+  if_abs(S, x, 1(S)) -> x
+  if_abs(S, x, j(S)) -> opp(x)
+  min(x, y) -> if_min(minus(abs(y), abs(x)), x, y, S)
+  min'(x, y) -> if_min(minus(abs(1(y)), abs(1(x))), x, y, S)
+  min''(x, y) -> if_min(minus(abs(j(y)), abs(j(x))), x, y, S)
+  if_min(0(x), y, z, u) -> if_min(x, y, z, u)
+  if_min(1(x), y, z, u) -> if_min(x, y, z, 1(S))
+  if_min(j(x), y, z, u) -> if_min(x, y, z, j(S))
+  if_min(S, x, y, S) -> x
+  if_min(S, x, y, 1(S)) -> x
+  if_min(S, x, y, j(S)) -> y
+)

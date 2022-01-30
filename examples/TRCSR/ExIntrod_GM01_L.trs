@@ -1,0 +1,11 @@
+(VAR X L)
+(RULES 
+incr(nil) -> nil
+incr(cons(X)) -> cons(s(X))
+adx(nil) -> nil
+adx(cons(X)) -> incr(cons(X))
+nats -> adx(zeros)
+zeros -> cons(0)
+head(cons(X)) -> X
+tail(cons(X)) -> L
+)

@@ -1,0 +1,11 @@
+(VAR f g x l xs)
+(RULES
+  app(app(app(compose, f), g), x) -> app(g, app(f, x))
+  app(reverse, l) -> app(app(reverse2, l), nil)
+  app(app(reverse2, nil), l) -> l
+  app(app(reverse2, app(app(cons, x), xs)), l) -> app(app(reverse2, xs), app(app(cons, x), l))
+  app(hd, app(app(cons, x), xs)) -> x
+  app(tl, app(app(cons, x), xs)) -> xs
+  last -> app(app(compose, hd), reverse)
+  init -> app(app(compose, reverse), app(app(compose, tl), reverse))
+)

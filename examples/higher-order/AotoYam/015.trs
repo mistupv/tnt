@@ -1,0 +1,7 @@
+(VAR x y f xs)
+(RULES
+  app(app(app(if, true), x), y) -> x
+  app(app(app(if, false), x), y) -> y
+  app(app(filter, f), nil) -> nil
+  app(app(filter, f), app(app(cons, x), xs)) -> app(app(app(if, app(f, x)), app(app(cons, x), app(app(filter, f), xs))), app(app(filter, f), xs))
+)

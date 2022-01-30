@@ -1,0 +1,28 @@
+(VAR X XS N Y YS)
+(STRATEGY CONTEXTSENSITIVE 
+  (pairNs)
+  (cons 1)
+  (0)
+  (incr 1)
+  (oddNs)
+  (s 1)
+  (take 1 2)
+  (nil)
+  (zip 1 2)
+  (pair 1 2)
+  (tail 1)
+  (repItems 1)
+)
+(RULES 
+pairNs -> cons(0,incr(oddNs))
+oddNs -> incr(pairNs)
+incr(cons(X,XS)) -> cons(s(X),incr(XS))
+take(0,XS) -> nil
+take(s(N),cons(X,XS)) -> cons(X,take(N,XS))
+zip(nil,XS) -> nil
+zip(X,nil) -> nil
+zip(cons(X,XS),cons(Y,YS)) -> cons(pair(X,Y),zip(XS,YS))
+tail(cons(X,XS)) -> XS
+repItems(nil) -> nil
+repItems(cons(X,XS)) -> cons(X,cons(X,repItems(XS)))
+)

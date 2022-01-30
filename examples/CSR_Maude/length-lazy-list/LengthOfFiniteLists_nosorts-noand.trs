@@ -1,0 +1,23 @@
+(COMMENT generated from Maude module 'LengthOfFiniteLists' by 'nosorts-noand' transformation)
+(VAR L N Z Y X)
+(STRATEGY CONTEXTSENSITIVE
+
+(U11 1)
+(U12 1)
+(cons 1)
+
+
+
+
+)
+(RULES
+zeros -> cons(0,zeros)
+
+U11(tt,L) -> U12(tt,L)
+
+U12(tt,L) -> s(length(L))
+
+length(nil) -> 0
+
+length(cons(N,L)) -> U11(tt,L)
+)

@@ -1,0 +1,7 @@
+(from Ste92 example 3)
+(VAR x)
+(RULES
+g(h(g(x))) -> g(x)
+g(g(x)) -> g(h(g(x)))
+h(h(x)) -> h(f(h(x),x))
+)

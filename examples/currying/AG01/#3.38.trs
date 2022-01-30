@@ -1,0 +1,18 @@
+(VAR x l y f xs)
+(RULES
+  app(rev, nil) -> nil
+  app(rev, app(app(cons, x), l)) -> app(app(cons, app(app(rev1, x), l)), app(app(rev2, x), l))
+  app(app(rev1, 0), nil) -> 0
+  app(app(rev1, app(s, x)), nil) -> app(s, x)
+  app(app(rev1, x), app(app(cons, y), l)) -> app(app(rev1, y), l)
+  app(app(rev2, x), nil) -> nil
+  app(app(rev2, x), app(app(cons, y), l)) -> app(rev, app(app(cons, x), app(app(rev2, y), l)))
+
+  app(app(map,f),nil) -> nil
+  app(app(map,f),app(app(cons,x),xs)) -> app(app(cons,app(f,x)),app(app(map,f),xs))
+
+  app(app(filter,f),nil) -> nil
+  app(app(filter,f),app(app(cons,x),xs)) -> app(app(app(app(filter2,app(f, x)),f),x),xs)
+  app(app(app(app(filter2,true),f),x),xs) -> app(app(cons,x),app(app(filter,f),xs))
+  app(app(app(app(filter2,false),f),x),xs) -> app(app(filter,f),xs)
+)

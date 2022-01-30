@@ -1,0 +1,9 @@
+(VAR x y)
+(RULES
+ t(f(x), g(y), f(z)) -> t(z, g(x), g(y))
+ t(g(x), g(y), f(z)) -> t(f(y), f(z), x)
+ f(g(x)) ->= g(f(x))
+ g(f(x)) ->= f(g(x))
+ f(f(x)) ->= g(g(x))
+ g(g(x)) ->= f(f(x))
+)

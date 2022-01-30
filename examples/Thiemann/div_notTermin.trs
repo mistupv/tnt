@@ -1,0 +1,48 @@
+(VAR x y z)
+(RULES
+  ge(0,0) -> true
+  ge(s(x),0) -> ge(x,0)
+  ge(0,s(0)) -> false
+  ge(0,s(s(x))) -> ge(0,s(x))
+  ge(s(x),s(y)) -> ge(x,y)
+
+  minus(0,0) -> 0
+  minus(0,s(x)) -> minus(0,x)
+  minus(s(x),0) -> s(minus(x,0))
+  minus(s(x),s(y)) -> minus(x,y)
+
+  plus(0,0) -> 0
+  plus(0,s(x)) -> s(plus(0,x))
+  plus(s(x),y) -> s(plus(x,y))
+
+  div(x,y) -> ify( ge(y,s(0)), x, y)
+  ify( false, x, y) -> divByZeroError
+  ify( true, x, y)  -> if( ge(x,y), x, y)
+  if ( false, x, y) -> 0
+  if ( true,  x, y) -> s(div( minus(x,y), y))
+  div(plus(x, y), z) -> plus(div(x, z), div(y, z))
+)
+
+(COMMENT 
+like div_notCeTerminating + last div(plus(..),z) rule
+
+INFINITE reduction:
+
+  we first define the term 0/1 as
+  div(plus(s(0),s(0)), s(s(0)))
+  It can be reduced to both 0 and s(0):
+  0/1 ->* div(s(s(0)), s(s(0))) ->* s(div(0, s(s(0)))) ->* s(0)
+  0/1 -> plus( div(s(0), s(s(0))),  div(s(0), s(s(0)))) ->* plus( 0, div(s(0), s(s(0)))) ->* plus(0,0) -> 0
+
+  Thus, we can reduce
+  div(0,0/1) -> 
+  ify(ge(0/1,s(0)), 0, 0/1) ->* ify(ge(s(0),s(0)), 0, 0/1) ->* ify(true, 0, 0/1) ->
+  if(ge(0, 0/1), 0, 0/1) ->* if(ge(0,0), 0, 0/1) ->* if(true, 0, 0/1) ->
+  s(div(minus(0,0/1), 0/1)) ->* s(div(minus(0,0), 0/1)) -> s(div(0, 0/1)) ->*
+  s(s(div(0,0/1))) ->+ ...
+
+  of course, if one adds the Ce-rules instead of the div(plus(.),z) -> .. rule then
+  one can build the term 0/1 as c(0,1) which shows that div_notCeTerminating is not
+  Ce-terminating.
+
+)

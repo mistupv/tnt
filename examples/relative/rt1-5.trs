@@ -1,0 +1,10 @@
+(VAR x y z)
+(RULES
+ f(s(x), y) ->= f(x, s(y)) 
+ s(a(x)) -> s(b(x))
+ s(a(x)) ->= a(s(x))
+ s(b(x)) ->= b(s(x))
+ a(s(x)) ->= s(a(x))
+ b(s(x)) ->= s(b(x))
+ b(b(x)) -> a(x)
+)

@@ -1,0 +1,7 @@
+(from AG01 3.41)
+(VAR x)
+(RULES
+p(s(x)) -> x
+fac(0) -> s(0)
+fac(s(x)) -> times(s(x),fac(p(s(x))))
+)

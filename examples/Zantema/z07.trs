@@ -1,0 +1,7 @@
+(VAR x)
+(RULES
+f(a,x) -> f(b,f(c,x))
+f(a,f(b,x)) -> f(b,f(a,x))
+f(d,f(c,x)) -> f(d,f(a,x))
+f(a,f(c,x)) -> f(c,f(a,x))
+)

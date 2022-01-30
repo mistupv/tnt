@@ -1,0 +1,29 @@
+(COMMENT 
+
+  Claude Marché
+
+  Sum and product of a bag of integers
+
+  Peano notation
+
+)
+
+(VAR b  y  x)
+(THEORY (AC U * +))
+
+(RULES
+
++(0,x) -> x 
++(s(x),s(y)) -> s(s(+(x,y))) 
+*(0,x) -> 0 
+*(s(x),s(y)) -> s(+(+(x,y),*(x,y))) 
+U(empty,b) -> b 
+sum(empty) -> 0 
+sum(singl(x)) -> x 
+sum(U(x,y)) -> +(sum(x),sum(y)) 
+prod(empty) -> s(0) 
+prod(singl(x)) -> x 
+prod(U(x,y)) -> *(prod(x),prod(y)) 
+
+
+)

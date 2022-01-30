@@ -1,0 +1,9 @@
+(from AG01 4.31)
+(VAR x)
+(RULES
+a(d(x)) -> d(c(b(a(x))))
+b(c(x)) -> c(d(a(b(x))))
+a(c(x)) -> x
+b(d(x)) -> x
+)
+

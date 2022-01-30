@@ -1,0 +1,6 @@
+(VAR x y)
+(RULES
+  app(id, x) -> x
+  app(plus, 0) -> id
+  app(app(plus, app(s, x)), y) -> app(s, app(app(plus, x), y))
+)

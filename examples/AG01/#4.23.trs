@@ -1,0 +1,10 @@
+(from AG01 4.23)
+(VAR x y z)
+(RULES
+quot(0,s(y),s(z)) -> 0
+quot(s(x),s(y),z) -> quot(x,y,z)
+plus(0,y) -> y
+plus(s(x),y) -> s(plus(x,y))
+quot(x,0,s(z)) -> s(quot(x,plus(z,s(0)),s(z)))
+)
+(STRATEGY INNERMOST)

@@ -1,0 +1,33 @@
+(COMMENT
+ Liveness problem: elevator
+ Old transformation
+ Non-terminating!!!
+)
+(VAR x y z)
+(RULES
+
+top(U(x, y)) -> top(check(D(x,y)))
+D(x, B) -> U(x, B)
+
+F(x, U(O(y), z)) -> U(x, F(y, z))
+F(x, U(N(y), z)) -> U(x, F(y, z))
+
+D(O(x), F(y, z)) -> F(x, D(y, z))
+D(N(x), F(y, z)) -> F(x, D(y, z))
+
+F(x, U(E, y)) -> U(x, F(E, y))
+D(E, F(x, y)) -> F(E, D(x, y))
+
+E ->= N(E)
+
+check(O(x)) ->= O(x)
+check(U(x, y)) ->= U(check(x), y)
+check(U(x, y)) ->= U(x, check(y))
+check(D(x, y)) ->= D(check(x), y)
+check(D(x, y)) ->= D(x, check(y))
+check(F(x, y)) ->= F(check(x), y)
+check(F(x, y)) ->= F(x, check(y))
+check(O(x)) ->= O(check(x))
+check(N(x)) ->= N(check(x))
+
+)

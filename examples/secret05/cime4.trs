@@ -1,0 +1,14 @@
+(VAR X Y)
+(RULES
+g(X) -> u(h(X),h(X),X)
+u(d,c(Y),X) -> k(Y)
+h(d) -> c(a)
+h(d) -> c(b)
+f(k(a),k(b),X) -> f(X,X,X))
+
+(COMMENT does not terminate : 
+f(k(a),k(b),u(d,h(d),d)) ->
+f(u(d,h(d),d),u(d,h(d),d),u(d,h(d),d)) ->
+f(u(d,c(a),d),u(d,c(b),d),u(d,h(d),d)) ->
+f(k(a),k(b),u(d,h(d),d)) -> ..)
+
