@@ -1,10 +1,11 @@
-(from AG01 3.16)
-(VAR x y)
+(from AG01 3.12)
+(VAR x y n)
 (RULES
-times(x,0) -> 0
-times(x,s(y)) -> plus(times(x,y),x)
-plus(x,0) -> x
-plus(0,x) -> x
-plus(x,s(y)) -> s(plus(x,y))
-plus(s(x),y) -> s(plus(x,y))
+app(nil) -> nullVar
+app(add(n,x)) -> add(n,app(x))
+reverse(nil) -> nil
+reverse(add(n,x)) -> app(reverse(x))
+shuffle(nil) -> nil
+shuffle(add(n,x)) -> add(n,shuffle(reverse(x)))
 )
+(COMMENT TRS filtered for: shuffle(g), reverse(g), app(g,v))

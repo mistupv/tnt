@@ -1,17 +1,15 @@
+%runtime_entry(start) :- go_cli.
+%:- initialization go_cli.
 
 :- dynamic verbose/0.
 
-main :- 
-    prolog_flag(argv,ArgV),
-    get_options(ArgV,Options,_RemArgV), !,
-    %%print(Options),nl,print(RemArgV),
+go_cli :- 
+    current_prolog_flag(argv,ArgV),print(hello),
+    get_options(ArgV,Options,RemArgV), !,
     (member(verbose,Options) -> assert(verbose) ; true),
-    (member(file(F),Options) -> trans(F,Options) 
-     ; trans('sample_file.trs',Options)
-    ).
-    %%trans_files(RemArgV,Options).
+    trans_files(RemArgV,Options).
 
-%%trans_files([],Opt) :- !, trans('sample_file.trs',Opt).
+trans_files([],Opt) :- !, trans('sample_file.trs',Opt).
 trans_files([H|T],Opt) :-
     member(F,[H|T]), trans(F,Opt),
     fail.
@@ -30,7 +28,6 @@ recognise_option(Inputs,Flag,RemInputs) :-
    append(Heads,RemInputs,Inputs).
    
 recognised_option(['-v'],verbose).
-recognised_option(['-file',NT],file(NT)).
 recognised_option(['-o',F],output(F)).
 recognised_option(['-f',G],filter(G)).
 recognised_option(['-l'],labeling).
@@ -586,10 +583,11 @@ readFile(File) :-
     open(File,read,Stream),
     load_string([],Stream,Text),
     close(Stream),
-%%    print('***processing file***'),nl,
-%%    format(Text,[]),
-%%    print('*********************'),nl,
-    parse_trs_file(Text,[]),
+    %print('***processing file***'),nl,
+    %ormat(Text,[]),
+    %print('*********************'),nl,
+    string_codes(Text,TextList),
+    parse_trs_file(TextList,[]),
     assert_user_funs.
 
 load_string(Program,Stream,L) :-
@@ -624,20 +622,24 @@ parse_trs_file(S,S_) :-
 :- dynamic from/1.
 
 pfrom(S,S_) :-
-    append("(from",S2,S),   %% S  = "(from" + S2
+    string_codes("(from",FROM),
+    append(FROM,S2,S),   %% S  = "(from" + S2
     pblanks(S2,S3),
     ptext(S3,S4,Comment),
-    append(")",S_,S4),      %% S4 = ")" + S_
+    string_codes(")",CLOSING_BRACKET),
+    append(CLOSING_BRACKET,S_,S4),      %% S4 = ")" + S_
     assert(from(Comment)).
 
 :- dynamic userVars/1.
 
 pvar(S,S_) :-
-    append("(VAR",S2,S),    %% S  = "(VAR" + S2
+    string_codes("(VAR",VAR),
+    append(VAR,S2,S),    %% S  = "(VAR" + S2
     pblanks(S2,S3),
     pvarlist(S3,S4,Vars),
     (pblanks(S4,S5) ; S4 = S5),
-    append(")",S_,S5),      %% S5 = ")" + S_
+    string_codes(")",CLOSING_BRACKET),
+    append(CLOSING_BRACKET,S_,S5),      %% S5 = ")" + S_
     assert(userVars(Vars)).
 
 pvarlist(S,S_,[Vn]) :-
@@ -653,24 +655,24 @@ pvarlist(S,S_,[Vn|Vars]) :-
 :- dynamic comment/1.
 
 pcomment(S,S_) :-
-    append("(COMMENT",S2,S),   %% S  = "(COMMENT" + S2
+    string_codes("(COMMENT",COMMENT),
+    append(COMMENT,S2,S),   %% S  = "(COMMENT" + S2
     pblanks(S2,S3),
     ptext(S3,S4,Comment),
-    append(")",S_,S4),         %% S4 = ")" + S_
+    string_codes(")",CLOSING_BRACKET),
+    append(CLOSING_BRACKET,S_,S4),         %% S4 = ")" + S_
     assert(comment(Comment)).
-
-pcomment(S,S_) :-
-    append("ARCH=x86; OPSYS=linux; HEAP_SUFFIX=x86-linux",S2,S),   %% to solve problem with sml
-    pblanks(S2,S_).
 
 :- dynamic rule/2.
 
 prules(S,S_) :-
-    append("(RULES",S2,S),
+    string_codes("(RULES", RULES),
+    append(RULES,S2,S),
     pblanks(S2,S3),
     prulelist(S3,S4,Rules),
     (pblanks(S4,S5) ; S4=S5),
-    append(")",S_,S5),
+    string_codes(")",CLOSING_BRACKET),
+    append(CLOSING_BRACKET,S_,S5),
     assert_rules(Rules).
 
 assert_rules([]).
@@ -689,16 +691,19 @@ prulelist(S,S_,[Rule]) :-
 prule(S,S_,(Lhs,Rhs)) :-
     pterm(S,S2,Lhs),
     pblanks(S2,S3),
-    append("->",S4,S3),
+    string_codes("->",ARROW),
+    append(ARROW,S4,S3),
     pblanks(S4,S5),
     pterm(S5,S_,Rhs).
 
 pterm(S,S_,T) :-
     pid(S,S2,Fl),
     name(F,Fl),
-    append("(",S3,S2),
+    string_codes("(",OPENING_BRACKET),
+    append(OPENING_BRACKET,S3,S2),
     ptermseq(S3,S4,Args),
-    append(")",S_,S4),
+    string_codes(")",CLOSING_BRACKET),
+    append(CLOSING_BRACKET,S_,S4),
     T =.. [F|Args]. %% term reconstruction
 pterm(S,S_,Id) :-
     pid(S,S_,Idl),
@@ -707,7 +712,8 @@ pterm(S,S_,Id) :-
 ptermseq(S,S_,[T1|TR]) :-
     pterm(S,S2_,T1),
     pblanks(S2_,S2),
-    append(",",S3_,S2),
+    string_codes(",",COMMA),
+    append(COMMA,S3_,S2),
     pblanks(S3_,S3),
     ptermseq(S3,S_,TR).
 ptermseq(S,S_,[T]) :-
@@ -727,9 +733,9 @@ assert_user_funs.
 
 %% valid identifier
 
-pid(S,S_,Id) :- pid(S,S_,"",Id).
+pid(S,S_,Id) :- pid(S,S_,[],Id).
 
-%pid([H|R],Rest,"",Id) :- % start id
+%pid([H|R],Rest,[],Id) :- % start id
 %  !, 
 %  pminus(H),
 %  pid(R,Rest,[H],Id).
@@ -762,10 +768,11 @@ pblanks(S,S).
 
 %% valid text
 
-ptext(S,S_,Id) :- ptext(S,S_,"",Id).
+ptext(S,S_,Id) :- ptext(S,S_,[],Id).
 
 ptext([40|R],Rest,Id_,Id) :-
-  append(Id_,"(",Id2),
+  string_codes("(",OPENING_BRACKET),
+  append(Id_,OPENING_BRACKET,Id2),
   ptext(R,[41|R_],Id2,Id3),  %% 41 is ')'
   !,
   ptext(R_,Rest,Id3,Id).
