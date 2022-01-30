@@ -1,10 +1,10 @@
-%runtime_entry(start) :- go_cli.
-%:- initialization go_cli.
+%#!/usr/bin/env swipl  
+%:- initialization go_cli,halt.
 
 :- dynamic verbose/0.
 
 go_cli :- 
-    current_prolog_flag(argv,ArgV),print(hello),
+    current_prolog_flag(argv,ArgV),
     get_options(ArgV,Options,RemArgV), !,
     (member(verbose,Options) -> assert(verbose) ; true),
     trans_files(RemArgV,Options).
